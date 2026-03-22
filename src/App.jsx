@@ -797,7 +797,7 @@ function OdooPanel() {
         width: "100%",
         display: "block",
         height: "auto",
-        objectFit: "unset",
+        objectFit: "contain",
     }
 
     return (
@@ -1658,7 +1658,7 @@ export default function Portfolio() {
                 }, [])
                 return (
                     <motion.div animate={{ background: gutterColor }} transition={{ duration: 0.6, ease: "easeInOut" }}
-                        style={{ minHeight: "100vh", position: "relative" }}>
+                        style={{ minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
 
                         {/* NAV — full width, sits outside the content column */}
                         <div id="nav-sentinel" style={{ position: "sticky", top: 0, zIndex: 100, background: T.bg3, borderBottom: `1px solid ${T.border2}` }}>
