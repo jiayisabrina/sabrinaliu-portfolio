@@ -1720,19 +1720,33 @@ export default function Portfolio() {
 
                 </div>{/* end content column — ticker breaks out full width */}
 
-                {/* TICKER — full bleed, ignores content column gutters */}
-                <div style={{ width: "100%", height: 36, overflow: "hidden", borderTop: `1px solid ${T.pinkL}`, borderBottom: `1px solid ${T.pinkL}`, background: T.pinkBg, display: "flex", alignItems: "center" }}
-                    onMouseEnter={() => setTickerPaused(true)} onMouseLeave={() => setTickerPaused(false)}>
-                    <motion.div
-                        animate={{ x: tickerPaused ? undefined : [0, -1200] }}
-                        transition={{ duration: 22, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-                        style={{ display: "flex", whiteSpace: "nowrap" }}
-                    >
-                        {tickerItems.map((item, i) => (
-                            <span key={i} style={{ fontFamily: mono, fontWeight: 600, fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase", color: item.on ? T.pink : T.sand, padding: "0 24px", borderRight: `1px solid ${T.pinkL}` }}>{item.text}</span>
-                        ))}
-                    </motion.div>
-                </div>
+                {/* TICKER — full bleed, true infinite marquee */}
+                {(() => {
+                    const stripRef = useRef(null)
+                    return (
+                        <div style={{ width: "100%", height: 36, overflow: "hidden", borderTop: `1px solid ${T.pinkL}`, borderBottom: `1px solid ${T.pinkL}`, background: T.pinkBg, display: "flex", alignItems: "center" }}
+                            onMouseEnter={() => setTickerPaused(true)} onMouseLeave={() => setTickerPaused(false)}>
+                            <style>{`
+                                @keyframes ticker-scroll {
+                                    0%   { transform: translateX(0); }
+                                    100% { transform: translateX(-50%); }
+                                }
+                                .ticker-track {
+                                    display: flex;
+                                    whiteSpace: nowrap;
+                                    width: max-content;
+                                    animation: ticker-scroll 28s linear infinite;
+                                }
+                                .ticker-track.paused { animation-play-state: paused; }
+                            `}</style>
+                            <div className={`ticker-track${tickerPaused ? " paused" : ""}`}>
+                                {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+                                    <span key={i} style={{ fontFamily: mono, fontWeight: 600, fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase", color: item.on ? T.pink : T.sand, padding: "0 24px", borderRight: `1px solid ${T.pinkL}`, whiteSpace: "nowrap", flexShrink: 0 }}>{item.text}</span>
+                                ))}
+                            </div>
+                        </div>
+                    )
+                })()}
 
                 {/* re-open content column for everything below */}
                 <div style={{ maxWidth: 1440, margin: "0 auto", background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden" }}>
