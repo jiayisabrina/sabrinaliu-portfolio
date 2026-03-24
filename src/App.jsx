@@ -121,7 +121,7 @@ const PROJECTS = [
         type: "Content · SEO",
         typeVariant: "sage",
         tag: "Content Strategy · SEO · UX Writing · Feb 2026 — Ongoing",
-        desc: "Lead content strategist and writer — owned the full editorial calendar, keyword strategy, and production of 34 articles. The pivot that mattered: early GA4 analysis showed news content was generating traffic with near-zero conversion assist. I shifted the calendar entirely to evergreen buying guides mapped to high-intent queries. Organic traffic grew 60%. Multiple articles hit Google page 1 within weeks, and several are now cited by ChatGPT and Gemini as authoritative sources.",
+        desc: "Lead content strategist and writer — owned the full editorial calendar, keyword strategy, and production of 36 articles. The pivot that mattered: early GA4 analysis showed news content was generating traffic with near-zero conversion assist. I shifted the calendar entirely to evergreen buying guides mapped to high-intent queries. Organic traffic grew 60%. Multiple articles hit Google page 1 within weeks, and several are now cited by ChatGPT and Gemini as authoritative sources.",
         bgColor: "#fceef1",
         isBlog: true,
     },
@@ -447,6 +447,8 @@ function BlogPanel() {
 
     const ARTICLES = [
         // Buying Guides
+        { title: "How to Choose the Right Range Size (Complete Buying Guide)", category: "Buying Guide", date: "Mar 23, 2026", url: "https://www.shopappliances.com/blog/how-to-choose-the-right-range-size", desc: "Complete sizing guide covering 30\", 36\", and professional ranges — structured to help buyers measure cabinet openings and match range size to kitchen and cooking needs.", tags: ["Ranges", "Sizing", "Buying Guide"] },
+        { title: "Common Appliance Buying Mistakes to Avoid (and How to Get It Right)", category: "Buying Guide", date: "Mar 23, 2026", url: "https://www.shopappliances.com/blog/common-appliance-buying-mistakes", desc: "Mid-funnel guide targeting buyers in the research stage — covers measurement errors, hidden installation costs, and decision traps that lead to expensive regret.", tags: ["Buying Guide", "SEO", "Conversion"] },
         { title: "Built-In vs Freestanding Refrigerators: Pros, Cons & How to Choose in 2026", category: "Buying Guide", date: "Mar 19, 2026", url: "https://www.shopappliances.com/blog/built-in-vs-freestanding-refrigerators", desc: "Deep comparison covering design, cost, installation, and ventilation — structured to capture comparison-intent queries at the mid-funnel consideration stage.", tags: ["Refrigerators", "Comparison", "SEO"] },
         { title: "How to Choose the Right Dishwasher (Complete Buying Guide 2026)", category: "Buying Guide", date: "Mar 19, 2026", url: "https://www.shopappliances.com/blog/how-to-choose-the-right-dishwasher-2026", desc: "Full-funnel buying guide covering types, sizes, features, noise levels, and brand comparisons — designed to intercept high-intent shoppers at research stage.", tags: ["Dishwashers", "Buying Guide", "SEO"] },
         { title: "Dishwasher Quietness Guide: How to Choose a Truly Quiet Dishwasher", category: "Buying Guide", date: "Mar 19, 2026", url: "https://www.shopappliances.com/blog/dishwasher-quietness-guide-2026", desc: "Niche-intent guide targeting shoppers researching noise levels. Explains dBA ratings and maps noise tier to specific brand recommendations.", tags: ["Dishwashers", "Niche Intent", "dBA"] },
@@ -491,8 +493,8 @@ function BlogPanel() {
     const STATS = [
         { num: "60%", label: "Organic traffic growth" },
         { num: "P1",     label: "Google page 1 rankings" },
-        { num: "34",     label: "Total articles produced" },
-        { num: "10+",    label: "Sabrina Liu bylines" },
+        { num: "36",     label: "Total articles produced" },
+        { num: "12+",    label: "Sabrina Liu bylines" },
         { num: "AI",     label: "Cited by ChatGPT, Gemini & Notebook LM" },
     ]
 
