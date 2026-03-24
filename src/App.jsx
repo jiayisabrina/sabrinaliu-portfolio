@@ -1698,8 +1698,8 @@ export default function Portfolio() {
 
                         </div>
                         <div style={{ marginTop: "auto", paddingTop: 22, borderTop: `1px solid ${T.border}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 300, margin: 0 }}>
-                                UX · Brand · Content — mid-level.<br />I design systems that sell, flows that convert,<br />and brands that mean something. Brooklyn, NY.
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 420, margin: 0 }}>
+                                UX · Brand · Content — mid-level.<br />Design systems that sell, flows that convert, brands that mean something. Brooklyn, NY.
                             </p>
                             <motion.div data-cursor="true" whileHover={{ y: -2, background: "#d44c68" }} whileTap={{ y: 0 }}
                                 style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.12em", textTransform: "uppercase", background: T.pink, color: "#fff", padding: "13px 28px", borderRadius: 2, cursor: "pointer", flexShrink: 0 }}>
@@ -1776,13 +1776,13 @@ export default function Portfolio() {
                             The designer<br />behind<br /><em style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>the work.</em>
                         </div>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I'm Sabrina. I design UX, brand systems, and content — sometimes all three on the same project.
+                            I'm Sabrina. I design UX, brand systems, and content — sometimes all within the same project.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            My background went: studio art → data analytics → marketing → UX. Each step added a layer I still use. The art background shaped how I think about hierarchy and visual weight. The data work taught me to question my assumptions and measure what actually changed. Marketing showed me how people make decisions under low attention.
+                            My path into this work was not linear. I started in studio art while also exploring data analytics, and later moved into marketing before finding my way into UX. Each step added something I still use today. Art shaped how I think about hierarchy and visual weight. Data taught me to question my assumptions and pay attention to what actually changes. Marketing showed me how people make decisions when their attention is limited.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I'm most drawn to projects where the design problem and the business problem are tangled together — ERP systems that people actually resent using, e-commerce experiences that lose customers in the middle, content that gets traffic but doesn't convert. That's the kind of work I find genuinely interesting to untangle.
+                            I'm especially interested in problems where design and business are closely connected — ERP systems that people find frustrating to use, e-commerce experiences where customers drop off partway through, or content that brings in traffic but does not convert. That kind of work feels meaningful to me, and I enjoy taking the time to make it clearer and more effective.
                         </p>
 
                         {/* Design principles */}
