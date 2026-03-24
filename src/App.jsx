@@ -1776,13 +1776,13 @@ export default function Portfolio() {
                             The designer<br />behind<br /><em style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>the work.</em>
                         </div>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I'm Sabrina — a mid-level UX, brand, and content designer targeting in-house product teams, e-commerce brands, and early-stage startups where design has to work hard across multiple surfaces at once.
+                            I'm Sabrina. I design UX, brand systems, and content — sometimes all three on the same project.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            My background is unusual: studio art → data analytics → marketing → UX. That path wasn't accidental. It means I come into a project already thinking about the user, the metric, the brand, and the system — not just the screen. I've owned full design cycles solo: from research brief to shipped Figma spec, from content strategy to live SEO results.
+                            My background went: studio art → data analytics → marketing → UX. Each step added a layer I still use. The art background shaped how I think about hierarchy and visual weight. The data work taught me to question my assumptions and measure what actually changed. Marketing showed me how people make decisions under low attention.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            The work I want to do sits at the intersection of brand and function — ERP workflows that still feel human, e-commerce experiences that convert without being loud, editorial systems with a clear point of view. If you need someone who can hold the strategy and the craft at the same time, that's the role I'm built for.
+                            I'm most drawn to projects where the design problem and the business problem are tangled together — ERP systems that people actually resent using, e-commerce experiences that lose customers in the middle, content that gets traffic but doesn't convert. That's the kind of work I find genuinely interesting to untangle.
                         </p>
 
                         {/* Design principles */}
