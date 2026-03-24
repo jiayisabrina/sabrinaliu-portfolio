@@ -99,7 +99,7 @@ const PROJECTS = [
         type: "UX · ERP",
         typeVariant: "pink",
         tag: "UX Research · Systems Design · ERP · Jun–Oct 2025",
-        desc: "End-to-end redesign of Odoo across CRM, Sales, Inventory, and Operations — serving internal ops, sales reps, warehouse staff, and managers. Untangled a fragmented multi-module system into a cohesive, task-efficient experience.",
+        desc: "End-to-end redesign of Odoo across CRM, Sales, Inventory, and Operations — sole designer, reporting directly to the ops lead. Early research invalidated our assumed user flows: warehouse staff were completing tasks in a different order than the system expected, creating daily workarounds. I restarted the IA from their actual sequence, not the system's ideal one. The result: task completion time dropped and onboarding friction was measurably reduced across all four modules.",
         bgColor: T.pinkBg,
         isOdoo: true,
     },
@@ -110,7 +110,7 @@ const PROJECTS = [
         type: "UX · E-Commerce",
         typeVariant: "pink",
         tag: "UX Design · UI Design · Figma Spec · E-Commerce",
-        desc: "Designed and delivered a modular brand page system for Shop Appliances covering 35+ brands across 100+ appliance categories — from luxury European imports to mass-market household names. Built the full Figma feature spec used directly by the dev team.",
+        desc: "Sole designer on a modular brand page system for Shop Appliances — 35+ brands, 100+ categories. The key decision: instead of one universal template, I defined three distinct content voices by market tier (luxury, premium, mainstream) after auditing how different buyers actually make decisions. Luxury buyers need provenance. Premium buyers need tech proof. Mainstream buyers need social proof. The Figma spec I delivered was used directly by the dev team as the single source of truth — no design-to-dev translation layer.",
         bgColor: T.pinkBg,
         isShopAppliances: true,
     },
@@ -121,7 +121,7 @@ const PROJECTS = [
         type: "Content · SEO",
         typeVariant: "sage",
         tag: "Content Strategy · SEO · UX Writing · Feb 2026 — Ongoing",
-        desc: "Lead content strategist and writer for the Shop Appliances blog — 34 articles produced, 10+ with byline, spanning buying guides, maintenance, and installation content. Grew organic traffic 60% through data-driven SEO strategy.",
+        desc: "Lead content strategist and writer — owned the full editorial calendar, keyword strategy, and production of 34 articles. The pivot that mattered: early GA4 analysis showed news content was generating traffic with near-zero conversion assist. I shifted the calendar entirely to evergreen buying guides mapped to high-intent queries. Organic traffic grew 60%. Multiple articles hit Google page 1 within weeks, and several are now cited by ChatGPT and Gemini as authoritative sources.",
         bgColor: "#fceef1",
         isBlog: true,
     },
@@ -132,7 +132,7 @@ const PROJECTS = [
         type: "Editorial · Design",
         typeVariant: "sand",
         tag: "Editorial Design · Newsletter · Columbia SPS · Nov 2024",
-        desc: "End-to-end editorial design for The Self-Care Scoop — the Columbia SPS Office of Student Wellness monthly newsletter. Designed 17 pages of layout, typography, and illustration direction for a publication reaching the full graduate student body.",
+        desc: "Sole designer for The Self-Care Scoop — Columbia SPS Office of Student Wellness monthly newsletter. The core design problem: graduate students under high stress don't read, they scan. I borrowed editorial hierarchy from consumer wellness magazines (not institutional templates) to create a layout that works for three reader modes at once: cover-to-cover, scan-and-dip, and direct-access. Delivered 6 reusable templates so any future issue could be produced without a designer.",
         bgColor: T.bg2,
         isSelfCare: true,
     },
@@ -1699,7 +1699,7 @@ export default function Portfolio() {
                         </div>
                         <div style={{ marginTop: "auto", paddingTop: 22, borderTop: `1px solid ${T.border}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
                             <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 300, margin: 0 }}>
-                                Art background. Data instincts.<br />Designing things that feel obvious once you use them.<br />Brooklyn, NY.
+                                UX · Brand · Content — mid-level.<br />I design systems that sell, flows that convert,<br />and brands that mean something. Brooklyn, NY.
                             </p>
                             <motion.div data-cursor="true" whileHover={{ y: -2, background: "#d44c68" }} whileTap={{ y: 0 }}
                                 style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.12em", textTransform: "uppercase", background: T.pink, color: "#fff", padding: "13px 28px", borderRadius: 2, cursor: "pointer", flexShrink: 0 }}>
@@ -1776,13 +1776,13 @@ export default function Portfolio() {
                             The designer<br />behind<br /><em style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>the work.</em>
                         </div>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I'm Sabrina, a UX and UI designer shaped by both studio art and data driven marketing.
+                            I'm Sabrina — a mid-level UX, brand, and content designer targeting in-house product teams, e-commerce brands, and early-stage startups where design has to work hard across multiple surfaces at once.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I started in studio art and later moved into data and marketing, where I learned how products perform in real contexts and how people actually interact with them. That experience still shapes how I design today. I think about how things look, but just as much about how they behave, how they scale, and what they ask of the people using them.
+                            My background is unusual: studio art → data analytics → marketing → UX. That path wasn't accidental. It means I come into a project already thinking about the user, the metric, the brand, and the system — not just the screen. I've owned full design cycles solo: from research brief to shipped Figma spec, from content strategy to live SEO results.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I am most interested in the space where brand meets function. ERP workflows that still feel considered, e commerce experiences that sell without being loud, and editorial systems with clear hierarchy. To me, design is not just visual polish. It is structure, clarity, and a series of decisions that make something feel intuitive or frustrating.
+                            The work I want to do sits at the intersection of brand and function — ERP workflows that still feel human, e-commerce experiences that convert without being loud, editorial systems with a clear point of view. If you need someone who can hold the strategy and the craft at the same time, that's the role I'm built for.
                         </p>
 
                         {/* Design principles */}
@@ -1793,9 +1793,9 @@ export default function Portfolio() {
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                                 {[
-                                    { n: "I", title: "Start with the right questions", body: "Good work comes from understanding what actually matters. I focus on identifying the most important gaps, shaping what needs to be explored, and connecting that back to product decisions." },
-                                    { n: "II", title: "Structure and clarity come first", body: "Before thinking about visuals, I care about flows, hierarchy, and how something works end to end. The goal is to make things feel clear and usable, especially in real conditions where people are busy or distracted." },
-                                    { n: "III", title: "Design should feel considered and intentional", body: "Every detail contributes to how a product feels. I think about tone, rhythm, and restraint, and use data as a tool to support decisions, not just to validate them." },
+                                    { n: "I", title: "Diagnose before designing", body: "I spend more time on the problem than the solution. Most bad design comes from solving the wrong thing confidently. I map the system, pressure-test the brief, and identify the real friction before touching a frame." },
+                                    { n: "II", title: "Own the decision, document the why", body: "Every layout choice, content structure, and component decision has a reason. I write it down. That habit makes handoffs cleaner, reviews faster, and future iterations smarter — whether I'm the only designer or one of many." },
+                                    { n: "III", title: "The pivot is part of the process", body: "On the Odoo project, early research showed our assumed user flows were wrong — ops staff worked in a completely different order than we'd mapped. We threw out two weeks of wireframes and restarted from the corrected journey. The final product was sharper for it." },
                                 ].map((p, i, arr) => (
                                     <div key={p.n} style={{ display: "flex", gap: 0, borderBottom: i < arr.length - 1 ? `1px solid ${T.border}` : "none", paddingBottom: 18, paddingTop: i === 0 ? 0 : 18 }}>
                                         <div style={{ width: 36, flexShrink: 0 }}>
@@ -1823,7 +1823,7 @@ export default function Portfolio() {
                             {/* decorative large quote mark */}
                             <div style={{ position: "absolute", top: -20, right: 24, fontFamily: serif, fontSize: 160, lineHeight: 1, color: T.pink, opacity: 0.25, pointerEvents: "none", userSelect: "none" }}>"</div>
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(22px,2.8vw,34px)", lineHeight: 1.15, color: T.pink, textTransform: "uppercase", fontStyle: "italic", marginBottom: 16, position: "relative" }}>
-                                Where art direction meets systems thinking, and brand meets function.
+                                I don't just make things look good. I make them work, scale, and mean something.
                             </div>
                             <div style={{ width: 32, height: 2, background: T.pink, marginBottom: 14 }} />
                             <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.12em", color: T.ink3, textTransform: "uppercase" }}>Sabrina Liu · Brooklyn</div>
