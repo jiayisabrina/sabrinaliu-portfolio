@@ -492,10 +492,10 @@ function BlogPanel() {
 
     const STATS = [
         { num: "60%", label: "Organic traffic growth" },
-        { num: "P1",     label: "Google page 1 rankings" },
-        { num: "36",     label: "Total articles produced" },
-        { num: "12+",    label: "Sabrina Liu bylines" },
-        { num: "AI",     label: "Cited by ChatGPT, Gemini & Notebook LM" },
+        { num: "P1",  label: "Google page 1 rankings" },
+        { num: "36",  label: "Articles written" },
+        { num: "Feb", label: "2026 — ongoing" },
+        { num: "AI",  label: "Cited by ChatGPT, Gemini & Notebook LM" },
     ]
 
     return (
