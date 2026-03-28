@@ -242,7 +242,6 @@ const SA_TIER = {
 
 
 // ── ODOO SCREEN IMAGES ──────────────────────────────────────────────────────────
-import OI from './images_oi.js'
 
 // ── TEMPO CASE STUDY PANEL ───────────────────────────────────────────────────
 function TempoPanel() {
@@ -310,7 +309,7 @@ function TempoPanel() {
     ]
 
     return (
-        <div style={{ borderTop: `1px solid ${T.border}` }}>
+        <div style={{ borderTop: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* HEADER */}
@@ -554,7 +553,7 @@ function SelfCarePanel() {
     const [lightbox, setLightbox] = useState(null)
     const pages = Array.from({ length: 17 }, (_, i) => `nl${i + 1}`)
     return (
-        <div style={{ borderTop: `1px solid ${T.border}` }}>
+        <div style={{ borderTop: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
             <StatBar cols={4} stats={[
                 { num: "17",           label: "Pages designed" },
@@ -658,7 +657,7 @@ function BlogPanel() {
     ]
 
     return (
-        <div style={{ borderTop: `1px solid ${T.pinkL}` }}>
+        <div style={{ borderTop: `1px solid ${T.pinkL}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
 
             {/* HEADER */}
             <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
@@ -850,111 +849,10 @@ function BlogPanel() {
 
 // ── ODOO CASE STUDY PANEL ─────────────────────────────────────────────────────
 function OdooPanel() {
-    const [activeSection, setActiveSection] = useState("sales")
-    const [activeSubScreen, setActiveSubScreen] = useState(0)
-    const [activeOrderState, setActiveOrderState] = useState(0)
     const [lightbox, setLightbox] = useState(null)
 
-    const SECTIONS = [
-        { id: "sales",    label: "Sales Order" },
-        { id: "delivery", label: "Delivery" },
-        { id: "dropship", label: "Dropship" },
-        { id: "invoice",  label: "Invoice" },
-        { id: "po",       label: "Purchase Order" },
-        { id: "payment",  label: "Payment" },
-        { id: "portal",   label: "Customer Portal" },
-        { id: "components", label: "Components" },
-    ]
-
-    const SCREEN_GROUPS = {
-        sales: {
-            title: "Sales Order",
-            desc: "Custom Odoo sales order redesigned for appliance retail — featuring a persistent cross-module nav bar, inline stock and pricing data, and 5 specialized tabs: Order Lines, Other Info, Spiff Details, Commission Details, and Notes.",
-            screens: [
-                { label: "Order Lines",   img: OI.sales_order,           desc: "Main order form showing product lines with IC Stock, Vendor Stock, Free to Use, and QTY On Hand surfaced inline — eliminating the need to navigate to Inventory to check availability. Product images, parts grouping, and margin calculation all visible on one screen." },
-                { label: "Collapsed view", img: OI.sales_order_collapsed, desc: "Collapsed line view for scanning multiple products at once without scrolling through expanded detail rows. One-click expand per line for full detail." },
-                { label: "Other Info",    img: OI.other_info,            desc: "Comprehensive Other Info tab restructured into four logical groups: Sales (salesperson, team, pricelist), Delivery (incoterms, shipping policy, delivery date), Invoicing (fiscal position, workflow), and Tracking (source document, opportunity, campaign)." },
-                { label: "Spiff Details", img: OI.spiff,                 desc: "Custom Spiff tracking tab showing Return Spiff Amount, Total Spiff Amount, Spiff State, and Spiff Payment Status — surfaced directly on the order without requiring a separate module visit." },
-                { label: "Commission",    img: OI.commission,            desc: "Commission Details tab showing commission tracking per sales rep — custom module built to handle appliance retail commission structures with split and override capabilities." },
-                { label: "Notes",         img: OI.notes,                 desc: "Internal notes tab with rich text, @mentions, and activity scheduling — keeping all order communication in context rather than scattered across chatter." },
-            ]
-        },
-        delivery: {
-            title: "Delivery",
-            desc: "Redesigned delivery management for appliance fulfillment — integrated with DispatchTrack for last-mile logistics, with custom fields for DT Service Unit, shipment ETA, and Send2AM/2TQL/2AMxPacks dispatch actions.",
-            screens: [
-                { label: "Operations",     img: OI.delivery,      desc: "Main delivery screen showing contact, DT Status, source/destination locations, paid status, and DispatchTrack integration. Action buttons (Send to DispatchTrack, Send2AM, Send2TQL, Check DT Delivery Status) accessible without navigating away. Operations tab shows product demand vs quantity with ETA column." },
-                { label: "Additional Info", img: OI.delivery_info, desc: "Additional Info tab restructured into logical groups: Shipping (carrier, tracking, weight), Origin (source document, procurement group), and Misc (responsible, company). All previously buried in a single overwhelming tab." },
-            ]
-        },
-        dropship: {
-            title: "Dropship",
-            desc: "Separate dropship fulfillment flow with its own document type (DS prefix) — sharing the DispatchTrack integration and delivery UI pattern but routing through vendor direct-ship rather than warehouse.",
-            screens: [
-                { label: "Operations",      img: OI.dropship,      desc: "Dropship record mirroring the delivery layout with DS prefix numbering. Same DispatchTrack integration, same action buttons, separate from warehouse delivery operations for clean routing logic." },
-                { label: "Additional Info", img: OI.dropship_info,  desc: "Dropship-specific additional info with dropship-appropriate source document and procurement group fields." },
-            ]
-        },
-        invoice: {
-            title: "Invoice",
-            desc: "Redesigned customer invoice linked directly to the sales order — auto-populated product lines, payment terms surfaced on the main form, and Journal Items for accounting reconciliation.",
-            screens: [
-                { label: "Invoice Lines",   img: OI.invoice,         desc: "Main invoice form showing INV number, customer, invoice/payment/delivery dates, payment terms (30 Days surfaced at top level — not buried in Other Info), and journal. Invoice Lines tab with full product/account/tax breakdown." },
-                { label: "Journal Items",   img: OI.invoice_journal,  desc: "Journal Items tab showing debit/credit move lines for accounting reconciliation — accessible in context without leaving the invoice record." },
-                { label: "Other Info",      img: OI.invoice_other,    desc: "Invoice Other Info tab with company, bank account, EDI, and auto-posting configuration — reorganized from the default Odoo layout to surface most-used fields first." },
-            ]
-        },
-        po: {
-            title: "Purchase Order",
-            desc: "Customized purchase order for appliance procurement — mirroring the sales order field structure for consistency, with additional vendor-specific fields: deadline arrival, confirmation date, shipping type, tracking number, and pickup address.",
-            screens: [
-                { label: "Products",             img: OI.po,              desc: "PO main view matching the sales order layout — same product line structure with IC Stock, Vendor Stock, Qty on Hand inline. Send to InterCounty action for forwarding to distributor. Products, Other Info, and Special Instructions tabs." },
-                { label: "Collapsed",            img: OI.po_collapsed,    desc: "Collapsed PO view for multi-product orders — same collapse pattern as the sales order for consistent scanning across document types." },
-                { label: "Special Instructions", img: OI.po_instructions, desc: "Custom Special Instructions tab for vendor-specific delivery requirements, handling notes, and installation instructions — replacing free-text notes with structured fields." },
-                { label: "Other Info",           img: OI.po_other,        desc: "PO Other Info tab with shipping, reception, and additional information organized into clear groupings. Incoterms, fiscal position, and source document in context." },
-            ]
-        },
-        payment: {
-            title: "Payment & Transactions",
-            desc: "Payment processing screens covering individual payment records, transaction reconciliation, and freight payment tracking — all linked from the sales order cross-module nav bar.",
-            screens: [
-                { label: "Payment Record",       img: OI.payment,               desc: "Individual payment record (PBNK prefix) showing customer, amount, payment type (Send/Receive), journal, saved payment token, transaction ID (Stripe memo), and a payment reconcile action with credit/debit/full reconcile lines." },
-                { label: "Payment Transactions", img: OI.payment_transactions,   desc: "Payment transactions detail view showing linked Stripe/payment gateway transaction details alongside the Odoo accounting record — eliminating the need to check the payment gateway separately." },
-                { label: "Freight Payments",     img: OI.freight,               desc: "Dedicated freight payment tracking record — custom module for managing carrier payment reconciliation separate from customer payments." },
-            ]
-        },
-        portal: {
-            title: "Customer Portal — View Your Order",
-            desc: "Custom customer-facing order portal showing real-time order status across the full fulfillment pipeline: Ordered → Processed → Allocated → Partially Shipped → Shipped. Designed to reduce inbound support calls by giving customers self-serve order visibility.",
-            screens: [
-                { label: "Ordered",           img: OI.view_ordered,   desc: "Initial order confirmation state — shows total amount, order pipeline status bar, sale information, invoicing/shipping addresses, contact support column, and full product list with quantities, pricing, and tax breakdown." },
-                { label: "Allocated",         img: OI.view_allocated, desc: "Allocated state — inventory has been committed to the order. Status bar advances and messaging updates to reflect allocation confirmation." },
-                { label: "Partially Shipped", img: OI.view_partial,   desc: "Partial shipment state — some items have shipped, others still pending. The status bar and product list reflect the split shipment state so customers understand exactly what's in transit." },
-                { label: "Shipped",           img: OI.view_shipped,   desc: "Fully shipped state — all items dispatched. Final state in the customer-facing pipeline showing complete order fulfillment confirmation." },
-            ]
-        },
-        components: {
-            title: "Component Library",
-            desc: "Full Odoo component library built for the custom redesign — covering all UI elements used across Sales Orders, Deliveries, Invoices, Purchase Orders, and the Customer Portal. Designed for consistency across 28+ screens and handoff to the Odoo developer.",
-            screens: [
-                { label: "All Components", img: OI.components, desc: "Complete component sheet: cross-module nav bar, status badges, action button variants, form field states, tab navigation, pipeline indicators, table rows, and all custom elements. Built to ensure visual consistency across every document type in the redesign." },
-            ]
-        },
-    }
-
-    const group = SCREEN_GROUPS[activeSection]
-    const screens = group.screens
-    const currentScreen = screens[Math.min(activeSubScreen, screens.length - 1)]
-
-    const IMG_STYLE = {
-        width: "100%",
-        display: "block",
-        height: "auto",
-        objectFit: "unset",
-    }
-
     return (
-        <div style={{ borderTop: `1px solid ${T.pinkL}` }}>
+        <div style={{ borderTop: `1px solid ${T.pinkL}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* ── HEADER ── */}
@@ -1062,93 +960,9 @@ function OdooPanel() {
                 </div>
             </div>
 
-            {/* ── MAIN SCREEN EXPLORER ── */}
-            <div style={{ borderBottom: `1px solid ${T.border}`, background: T.bg }}>
-                <div style={{ padding: "32px clamp(40px,8vw,120px) 20px" }}>
-                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Screen Explorer</div>
-                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 0 }}>28+ screens across 8 document types</div>
-                </div>
-
-                <div style={{ display: "grid", gridTemplateColumns: "clamp(300px,42%,560px) 1fr", borderTop: `1px solid ${T.border}` }}>
-
-                    {/* LEFT — label + description */}
-                    <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 20 }}>
-                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(22px,2vw,28px)", textTransform: "uppercase", color: T.ink, lineHeight: 1.1 }}>{currentScreen.label}</div>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{group.desc}</p>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink3, margin: 0 }}>{currentScreen.desc}</p>
-                    </div>
-
-                    {/* RIGHT — tabs top, image bottom */}
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                        <div style={{ padding: "24px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 10 }}>
-                            {/* Section tabs */}
-                            <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
-                                {SECTIONS.map(s => (
-                                    <button key={s.id} onClick={() => { setActiveSection(s.id); setActiveSubScreen(0) }} style={{
-                                        fontFamily: mono, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase",
-                                        padding: "6px 12px", borderRadius: 2,
-                                        border: `1px solid ${activeSection === s.id ? T.pink : T.border2}`,
-                                        background: activeSection === s.id ? T.pink : "transparent",
-                                        color: activeSection === s.id ? "#fff" : T.ink3,
-                                        cursor: "pointer", transition: "all 0.15s",
-                                    }}>{s.label}</button>
-                                ))}
-                            </div>
-                            {/* Sub-screen tabs */}
-                            {screens.length > 1 && (
-                                <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
-                                    {screens.map((s, i) => (
-                                        <button key={i} onClick={() => setActiveSubScreen(i)} style={{
-                                            fontFamily: mono, fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase",
-                                            padding: "4px 10px", borderRadius: 2,
-                                            border: `1px solid ${activeSubScreen === i ? T.ink : T.border}`,
-                                            background: activeSubScreen === i ? T.ink : "transparent",
-                                            color: activeSubScreen === i ? T.bg : T.ink3,
-                                            cursor: "pointer", transition: "all 0.15s",
-                                        }}>{s.label}</button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Image */}
-                        <div style={{ padding: "36px clamp(32px,5vw,64px)", background: T.bg3, flex: 1 }}>
-                            {/* Desktop browser chrome frame */}
-                            <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
-                                {/* Browser top bar */}
-                                <div style={{ background: T.bg2, borderBottom: `1px solid ${T.border}`, padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
-                                    <div style={{ display: "flex", gap: 5 }}>
-                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#e8607a", opacity: 0.6 }} />
-                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sand, opacity: 0.6 }} />
-                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sage, opacity: 0.6 }} />
-                                    </div>
-                                    <div style={{ flex: 1, background: T.bg3, borderRadius: 4, padding: "3px 10px", display: "flex", alignItems: "center", gap: 6 }}>
-                                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: T.border2 }} />
-                                        <span style={{ fontFamily: mono, fontSize: 10, color: T.ink3, letterSpacing: "0.04em" }}>homery.odoo.com</span>
-                                    </div>
-                                </div>
-                                {/* Screen — constrained to 16:10 desktop ratio */}
-                                <div
-                                    onClick={() => currentScreen.img && setLightbox({ src: currentScreen.img, alt: currentScreen.label })}
-                                    style={{ aspectRatio: "16/10", maxHeight: "46vh", overflow: "hidden", cursor: currentScreen.img ? "zoom-in" : "default", background: T.bg2 }}>
-                                    {currentScreen.img ? (
-                                        <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
-                                    ) : (
-                                        <div style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                            <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            {currentScreen.img && <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", color: T.ink3, marginTop: 10, textAlign: "center" }}>Click to view full size</div>}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             {/* ── KEY DESIGN DECISIONS ── */}
             <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
-                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>03 — Design Decisions</div>
+                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Design Decisions</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>Decisions that defined the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     {[
@@ -1414,7 +1228,7 @@ function ShopAppliancesPanel() {
     const visible = brandFilter === "all" ? SA_BRANDS : SA_BRANDS.filter(b => b.tier === brandFilter)
 
     return (
-        <div style={{ borderTop: `1px solid ${T.pinkL}` }}>
+        <div style={{ borderTop: `1px solid ${T.pinkL}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
 
             {/* ── HEADER STRIP ── */}
             <div style={{
@@ -2060,7 +1874,7 @@ function LabSection() {
                 transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                 style={{ overflow: "hidden", background: T.bg2 }}
             >
-                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ borderBottom: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
                     <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)", background: T.bg2, display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
                         <div style={{ flex: 1, minWidth: 260 }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: T.sand, marginBottom: 10 }}>Editorial Design · Newsletter · Nov 2024</div>
