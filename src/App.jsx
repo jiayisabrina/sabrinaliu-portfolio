@@ -1519,7 +1519,7 @@ export default function Portfolio() {
                         </div>
 
                         {/* Content column with gutters */}
-                        <div style={{ maxWidth: 1440, margin: "0 auto", background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden", boxShadow: "0 0 60px rgba(0,0,0,0.07)" }}>
+                        <div style={{ background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden" }}>
 
                 {/* HERO */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(260px,30vw,360px)", minHeight: 560, borderBottom: `1px solid ${T.border}` }}>
