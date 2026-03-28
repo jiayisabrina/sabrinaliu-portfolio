@@ -1402,12 +1402,12 @@ function MagneticPhoto() {
             <motion.div
                 animate={{ rotateY: hovered ? 180 : 0 }}
                 transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
-                style={{ width: 200, height: 266, position: "relative", transformStyle: "preserve-3d", zIndex: 2 }}>
+                style={{ width: 280, height: 372, position: "relative", transformStyle: "preserve-3d", zIndex: 2 }}>
 
                 {/* FRONT — pixel bunny card */}
                 <div style={{
                     position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden",
-                    background: "#fff8f6", padding: "16px 16px 36px",
+                    background: "#fff8f6", padding: "24px 24px 48px",
                     boxShadow: "0 6px 28px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06)",
                     display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8,
                 }}>
@@ -1418,7 +1418,6 @@ function MagneticPhoto() {
                     </div>
                     {/* Polaroid caption */}
                     <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", color: T.ink3, textTransform: "uppercase", textAlign: "center", lineHeight: 2.0 }}>
-                        sabrina · 2026<br />
                         <span style={{ color: T.pink, fontSize: 9 }}>hover to meet me ♡</span>
                     </div>
                 </div>
@@ -1434,8 +1433,6 @@ function MagneticPhoto() {
                     </motion.div>
                 </div>
             </motion.div>
-
-            <div style={{ position: "absolute", bottom: 10, right: 12, fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: T.border2, zIndex: 2 }}>brooklyn, ny  |  2026</div>
         </div>
     )
 }
@@ -1587,7 +1584,7 @@ export default function Portfolio() {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <MagneticPhoto />
-                        <div style={{ padding: "12px 16px", display: "flex", gap: 6, flexWrap: "nowrap", background: T.bg2, justifyContent: "center", overflowX: "hidden" }}>
+                        <div style={{ padding: "16px 20px", display: "flex", gap: 10, flexWrap: "nowrap", background: T.bg2, justifyContent: "space-between" }}>
                             <Tag label="UX Design" variant="pink" />
                             <Tag label="Branding" variant="sand" />
                             <Tag label="Systems" variant="mist" />
