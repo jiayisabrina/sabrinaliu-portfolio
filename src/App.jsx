@@ -361,14 +361,15 @@ function TempoPanel() {
             ]} />
 
             {/* TABS */}
-            <div style={{ padding: "0 clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg, display: "flex", gap: 0 }}>
+            <div style={{ padding: "32px clamp(40px,8vw,120px) 40px", background: T.bg, display: "flex", gap: 8, flexWrap: "wrap" }}>
                 {tabs.map(t => (
                     <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
-                        fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase",
-                        padding: "16px 20px", background: "transparent", border: "none",
-                        borderBottom: activeTab === t.id ? `2px solid ${T.pink}` : "2px solid transparent",
-                        color: activeTab === t.id ? T.mist : T.ink3,
-                        cursor: "pointer", transition: "all 0.15s", marginBottom: -1,
+                        fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase",
+                        padding: "10px 20px", border: `1.5px solid ${activeTab === t.id ? T.pink : T.border2}`,
+                        background: activeTab === t.id ? T.pink : T.bg,
+                        color: activeTab === t.id ? "#fff" : T.ink3,
+                        borderRadius: 4, cursor: "pointer", transition: "all 0.15s",
+                        fontWeight: activeTab === t.id ? 600 : 400,
                     }}>{t.label}</button>
                 ))}
             </div>
@@ -379,18 +380,24 @@ function TempoPanel() {
                     {/* Personas */}
                     <div style={{ padding: "48px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>User Archetypes</div>
-                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>3 knowledge worker profiles</div>
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>3 women we designed for</div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 16 }}>
                             {PERSONAS.map((p, i) => (
-                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "44px clamp(40px,8vw,120px)", position: "relative" }}>
+                                <div key={i} style={{ background: T.bg2, borderRadius: 10, padding: "28px 28px 24px", position: "relative", overflow: "hidden" }}>
                                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: [T.pink, T.sand, T.sage][i] }} />
-                                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>{p.age} · {p.role}</div>
-                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink, marginBottom: 12 }}>{p.name}</div>
-                                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>Pain</div>
-                                    <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2, margin: "0 0 12px" }}>{p.pain}</p>
-                                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>Need</div>
-                                    <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2, margin: "0 0 16px" }}>{p.need}</p>
-                                    <div style={{ borderLeft: `2px solid ${[T.pink, T.sand, T.sage][i]}`, paddingLeft: 12, fontFamily: mono, fontSize: 13, fontStyle: "italic", color: T.ink3, lineHeight: 1.8 }}>"{p.quote}"</div>
+                                    <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>{p.age} · {p.role}</div>
+                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 20, textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink, marginBottom: 16 }}>{p.name}</div>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 16 }}>
+                                        <div>
+                                            <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: [T.pink, T.sand, T.sage][i], marginBottom: 4 }}>Pain</div>
+                                            <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.85, color: T.ink2, margin: 0 }}>{p.pain}</p>
+                                        </div>
+                                        <div>
+                                            <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: [T.pink, T.sand, T.sage][i], marginBottom: 4 }}>Need</div>
+                                            <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.85, color: T.ink2, margin: 0 }}>{p.need}</p>
+                                        </div>
+                                    </div>
+                                    <div style={{ borderLeft: `2px solid ${[T.pink, T.sand, T.sage][i]}`, paddingLeft: 12, fontFamily: mono, fontSize: 12, fontStyle: "italic", color: T.ink3, lineHeight: 1.8 }}>"{p.quote}"</div>
                                 </div>
                             ))}
                         </div>
@@ -469,14 +476,14 @@ function TempoPanel() {
                         <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 680, margin: "0 0 28px" }}>
                             Ditto integrates an optional menstrual cycle tracking layer that maps productivity recommendations to cycle phases. Energy, focus capacity, and recovery needs shift significantly across the cycle — most productivity apps ignore this entirely. Ditto surfaces it as a first-class scheduling input.
                         </p>
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px,1fr))", gap: 12 }}>
                             {[
                                 { phase: "Menstrual", days: "Days 1–5", color: "#e8a0b4", energy: "Low", rec: "Rest, reflection, light admin. Avoid high-stakes decisions or creative sprints." },
                                 { phase: "Follicular", days: "Days 6–13", color: T.pink, energy: "Rising", rec: "Ideal for new projects, brainstorming, and starting difficult work. Energy and focus are climbing." },
                                 { phase: "Ovulatory", days: "Days 14–16", color: T.sage, energy: "Peak", rec: "Schedule your most important work, presentations, and collaborative sessions here. Peak cognitive and social energy." },
                                 { phase: "Luteal", days: "Days 17–28", color: T.sand, energy: "Declining", rec: "Front-load the early luteal phase for deep work. Wind down toward rest as PMS symptoms may emerge. Protect recovery time." },
                             ].map((p, i) => (
-                                <div key={i} style={{ background: T.bg, padding: "40px clamp(32px,4vw,56px)", position: "relative" }}>
+                                <div key={i} style={{ background: T.bg2, borderRadius: 10, padding: "22px 22px 18px", position: "relative", overflow: "hidden" }}>
                                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: p.color }} />
                                     <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>{p.days}</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", color: T.ink, marginBottom: 4 }}>{p.phase}</div>
@@ -497,9 +504,9 @@ function TempoPanel() {
                     <div style={{ padding: "48px clamp(40px,8vw,120px)" }}>
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Component Library</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>24 atoms · 8 organisms</div>
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 12 }}>
                             {COMPONENTS.map((c, i) => (
-                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "40px clamp(32px,4vw,56px)" }}>
+                                <div key={i} style={{ background: T.bg2, borderRadius: 10, padding: "20px 22px" }}>
                                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: T.pink, marginBottom: 6 }}>Component</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>{c.name}</div>
                                     <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink2, margin: 0 }}>{c.desc}</p>
@@ -520,7 +527,7 @@ function TempoPanel() {
                             Fully interactive — navigate Dashboard, Focus, Insights, Cycle Layer, and Weekly Review. Click any cycle phase to explore the scheduling recommendations.
                         </p>
                     </div>
-                    <div style={{ padding: "40px clamp(40px,8vw,120px) 52px", background: T.bg3 }}>
+                    <div style={{ padding: "40px clamp(40px,8vw,120px) 52px" }}>
                         <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.16), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
                             {/* Browser chrome */}
                             <div style={{ background: T.bg2, padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
@@ -1146,7 +1153,7 @@ function OdooPanel() {
                         Fully interactive — navigate between Sales Orders, Deliveries, Invoices, POs, and the Customer Portal. Reflects the actual Odoo design system built for Homery.
                     </p>
                 </div>
-                <div style={{ padding: "24px clamp(40px,8vw,120px) 40px", background: T.bg3 }}>
+                <div style={{ padding: "24px clamp(40px,8vw,120px) 40px" }}>
                     <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.16), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
                         {/* Browser chrome */}
                         <div style={{ background: "#1f2232", padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
@@ -1173,20 +1180,20 @@ function OdooPanel() {
             <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>07 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Jun – Oct 2025 · 4 phases</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 14 }}>
                     {[
                         { num: "01", weeks: "Jun 2025", title: "Discovery & workflow mapping", body: "Embedded with all four user groups. Mapped every task across the full order lifecycle — from pre-order questionnaire to payment reconciliation. Identified where stock Odoo failed and where custom modules were needed.", detail: "Output: workflow map · 5 custom module requirements · friction inventory" },
                         { num: "02", weeks: "Jul 2025", title: "IA & module architecture", body: "Restructured the Odoo IA around the Homery order flow rather than Odoo's module boundaries. Designed the cross-module nav bar architecture. Specified custom module requirements for Spiff, Commission, and portal.", detail: "Output: IA map · nav bar spec · custom module requirements doc" },
                         { num: "03", weeks: "Aug – Sep 2025", title: "Wireframes & flow design", body: "Low-fidelity wireframes for all 8 document types with explicit before/after comparisons. Reviewed with all user groups. Iterated on the inline stock visibility pattern and cross-module nav bar until the ops team could complete all key tasks without module-switching.", detail: "Output: 60+ wireframe screens · 2 rounds of user review sessions" },
                         { num: "04", weeks: "Oct 2025", title: "High-fidelity UI & handoff", body: "Full high-fidelity designs for all screens, component library for Odoo custom views, email templates, and customer portal. Annotated specs for the Odoo developer covering all custom field additions and module requirements.", detail: "Output: 28+ final screens · component library · developer handoff doc" },
                     ].map((s, i) => (
-                        <div key={s.num} style={{ background: T.bg, padding: "40px clamp(28px,4vw,52px)", position: "relative" }}>
-                            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
+                        <div key={s.num} style={{ background: T.bg2, borderRadius: 10, padding: "22px 22px 18px", position: "relative", overflow: "hidden" }}>
+                            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", color: T.pink, marginBottom: 5 }}>{s.weeks}</div>
-                            <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 28, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
+                            <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 36, color: T.border2, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{s.title}</div>
-                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: "0 0 10px"}}>{s.body}</p>
-                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.9 }}>{s.detail}</div>
+                            <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.85, color: T.ink2, margin: "0 0 10px"}}>{s.body}</p>
+                            <div style={{ borderLeft: `2px solid ${[T.pink, T.sand, T.border2, T.pinkL][i]}`, paddingLeft: 10, fontFamily: mono, fontSize: 11, color: T.ink3, lineHeight: 1.9 }}>{s.detail}</div>
                         </div>
                     ))}
                 </div>
@@ -1385,15 +1392,15 @@ function ShopAppliancesPanel() {
             {/* ── PROCESS ── */}
             <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>04 — Process</div>
-                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>How it was built</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
+                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>How it was built</div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px,1fr))", gap: 16 }}>
                     {SA_PROCESS.map((s, i) => (
-                        <div key={s.num} style={{ background: T.bg, padding: "40px clamp(28px,4vw,52px)", position: "relative" }}>
-                            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.rust, T.sage][i] }} />
-                            <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 34, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
-                            <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{s.title}</div>
-                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: "0 0 12px"}}>{s.body}</p>
-                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.9 }}>{s.detail}</div>
+                        <div key={s.num} style={{ background: T.bg2, borderRadius: 10, padding: "24px 24px 20px", position: "relative", overflow: "hidden" }}>
+                            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: [T.pink, T.sand, T.rust, T.sage][i] }} />
+                            <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 38, color: T.border2, lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
+                            <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 10 }}>{s.title}</div>
+                            <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.85, color: T.ink2, margin: "0 0 12px" }}>{s.body}</p>
+                            <div style={{ borderLeft: `2px solid ${[T.pink, T.sand, T.rust, T.sage][i]}`, paddingLeft: 10, fontFamily: mono, fontSize: 11, color: T.ink3, lineHeight: 1.8 }}>{s.detail}</div>
                         </div>
                     ))}
                 </div>
@@ -1994,14 +2001,14 @@ export default function Portfolio() {
                 </div>
 
                 {/* TICKER */}
-                <div style={{ height: 32, overflow: "hidden", paddingBottom: "72px", background: T.bg3, display: "flex", alignItems: "center" }}
+                <div style={{ height: 32, overflow: "hidden", background: T.bg3, display: "flex", alignItems: "center" }}
                     onMouseEnter={() => setTickerPaused(true)} onMouseLeave={() => setTickerPaused(false)}>
                     <motion.div
-                        animate={{ x: tickerPaused ? undefined : [0, -1200] }}
-                        transition={{ duration: 22, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-                        style={{ display: "flex", whiteSpace: "nowrap" }}
+                        animate={{ x: tickerPaused ? undefined : ["0%", "-50%"] }}
+                        transition={{ duration: 24, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+                        style={{ display: "flex", whiteSpace: "nowrap", width: "max-content" }}
                     >
-                        {tickerItems.map((item, i) => (
+                        {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
                             <span key={i} style={{ fontFamily: mono, fontWeight: 700, fontSize: 12, letterSpacing: "0.22em", textTransform: "uppercase", color: item.on ? T.pink : T.border2, padding: "0 20px", borderRight: `1px solid ${T.border}` }}>{item.text}</span>
                         ))}
                     </motion.div>
