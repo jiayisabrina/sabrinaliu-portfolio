@@ -743,9 +743,10 @@ function OdooPanel() {
             </div>
 
             {/* ── MAIN SCREEN EXPLORER ── */}
-            <div style={{ padding: "32px clamp(20px,5vw,64px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
-                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Screen Explorer</div>
-                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>28+ screens across 8 document types</div>
+            <div style={{ borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+                <div style={{ padding: "32px clamp(20px,5vw,64px) 20px" }}>
+                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Screen Explorer</div>
+                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>28+ screens across 8 document types</div>
 
                 {/* Section tabs */}
                 <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 16 }}>
@@ -779,19 +780,18 @@ function OdooPanel() {
 
                 {/* Section description */}
                 <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: "0 0 14px", maxWidth: 760 }}>{group.desc}</p>
+                </div>
 
-                {/* Screen display */}
-                <div style={{ border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
-                    <div style={{ overflowY: "auto", maxHeight: "70vh" }}>
+                {/* Screen display — full width, no padding, no scroll */}
+                <div style={{ borderTop: `1px solid ${T.border}` }}>
                     {currentScreen.img ? (
-                        <img src={currentScreen.img} alt={currentScreen.label} style={IMG_STYLE} />
+                        <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", display: "block", height: "auto" }} />
                     ) : (
                         <div style={{ height: 320, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "center" }}>
                             <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
                         </div>
                     )}
-                    </div>
-                    <div style={{ padding: "14px 20px", background: T.bg2, borderTop: `1px solid ${T.border}` }}>
+                    <div style={{ padding: "14px clamp(20px,5vw,64px)", background: T.bg2, borderTop: `1px solid ${T.border}` }}>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 5 }}>{currentScreen.label}</div>
                         <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: 0 }}>{currentScreen.desc}</p>
                     </div>
@@ -1537,8 +1537,8 @@ export default function Portfolio() {
 
                         </div>
                         <div style={{ marginTop: "auto", paddingTop: 22, borderTop: `1px solid ${T.border}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 300, margin: 0 }}>
-                                Art background. Data instincts.<br />Designing things that feel obvious once you use them.<br />Brooklyn, NY.
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 420, margin: 0 }}>
+                                UX Designer — ERP, e-commerce, brand systems.<br />Design systems that sell, flows that convert,<br />brands that mean something. Brooklyn, NY.
                             </p>
                             <motion.div data-cursor="true" whileHover={{ y: -2, background: "#d44c68" }} whileTap={{ y: 0 }}
                                 style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.12em", textTransform: "uppercase", background: T.pink, color: "#fff", padding: "13px 28px", borderRadius: 2, cursor: "pointer", flexShrink: 0 }}>
@@ -1575,7 +1575,7 @@ export default function Portfolio() {
                 <div id="work" style={{ borderBottom: `1px solid ${T.border}` }}>
                     <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "16px clamp(20px,5vw,64px)", borderBottom: `1px solid ${T.border}`, flexWrap: "wrap", gap: 8 }}>
                         <span style={{ fontFamily: bebas, fontSize: 30, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink }}>Selected Work</span>
-                        <span style={{ fontFamily: mono, fontSize: 14, color: T.ink3, letterSpacing: "0.1em" }}>{String(PROJECTS.length).padStart(3,"0")} projects · click to expand</span>
+                        <span style={{ fontFamily: mono, fontSize: 14, color: T.ink3, letterSpacing: "0.1em" }}>click to expand</span>
                     </div>
                     {PROJECTS.map((p, i) => (
                         <WorkRow key={i} project={p} isOpen={openRows.has(i)} onToggle={() => toggleRow(i)} />
