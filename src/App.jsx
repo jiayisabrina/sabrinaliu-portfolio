@@ -317,12 +317,12 @@ function TempoPanel() {
             <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.bg2, borderBottom: `1px solid ${T.border}` }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
-                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.mist, marginBottom: 12 }}>
+                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
                             UX Research · Data Viz · Design System · Mobile · Concept 2025
                         </div>
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(37px,4vw,63px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>
                             Tempo<br />
-                            <span style={{ color: T.mist, fontStyle: "italic", fontWeight: 700 }}>Productivity Dashboard</span>
+                            <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Productivity Dashboard</span>
                         </div>
                         <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 480 }}>
                             Most productivity apps tell you what to do. Tempo tells you when you work best — surfacing your own behavioral patterns as a personal data layer so you can design your schedule around how you actually operate, not how you think you should.
@@ -345,7 +345,7 @@ function TempoPanel() {
                         </div>
                         {/* Concept badge */}
                         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: T.bg3, border: `1px solid ${T.border2}`, borderRadius: 2, padding: "8px 14px", width: "fit-content" }}>
-                            <div style={{ width: 6, height: 6, borderRadius: "50%", background: T.mist }} />
+                            <div style={{ width: 6, height: 6, borderRadius: "50%", background: T.pink }} />
                             <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: T.ink3 }}>Concept project — not shipped</span>
                         </div>
                     </div>
@@ -354,10 +354,10 @@ function TempoPanel() {
 
             {/* STATS */}
             <StatBar stats={[
-                { num: "6",   label: "User interviews",        accent: T.mist },
+                { num: "6",   label: "User interviews",        accent: T.pink },
                 { num: "3",   label: "User archetypes",        accent: T.sand },
                 { num: "24",  label: "Component atoms",        accent: T.sage },
-                { num: "4",   label: "Core screens",           accent: T.mist },
+                { num: "4",   label: "Core screens",           accent: T.pink },
                 { num: "5",   label: "Design decisions",       accent: T.pink },
             ]} />
 
@@ -367,7 +367,7 @@ function TempoPanel() {
                     <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
                         fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase",
                         padding: "16px 20px", background: "transparent", border: "none",
-                        borderBottom: activeTab === t.id ? `2px solid ${T.mist}` : "2px solid transparent",
+                        borderBottom: activeTab === t.id ? `2px solid ${T.pink}` : "2px solid transparent",
                         color: activeTab === t.id ? T.mist : T.ink3,
                         cursor: "pointer", transition: "all 0.15s", marginBottom: -1,
                     }}>{t.label}</button>
@@ -379,31 +379,31 @@ function TempoPanel() {
                 <div style={{ borderBottom: `1px solid ${T.border}` }}>
                     {/* Personas */}
                     <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
-                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>User Archetypes</div>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>User Archetypes</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>3 knowledge worker profiles</div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
                             {PERSONAS.map((p, i) => (
                                 <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "32px 28px", position: "relative" }}>
-                                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: [T.mist, T.sand, T.sage][i] }} />
+                                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: [T.pink, T.sand, T.sage][i] }} />
                                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>{p.age} · {p.role}</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink, marginBottom: 12 }}>{p.name}</div>
                                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>Pain</div>
                                     <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2, margin: "0 0 12px" }}>{p.pain}</p>
                                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>Need</div>
                                     <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2, margin: "0 0 16px" }}>{p.need}</p>
-                                    <div style={{ borderLeft: `2px solid ${[T.mist, T.sand, T.sage][i]}`, paddingLeft: 12, fontFamily: mono, fontSize: 13, fontStyle: "italic", color: T.ink3, lineHeight: 1.8 }}>"{p.quote}"</div>
+                                    <div style={{ borderLeft: `2px solid ${[T.pink, T.sand, T.sage][i]}`, paddingLeft: 12, fontFamily: mono, fontSize: 13, fontStyle: "italic", color: T.ink3, lineHeight: 1.8 }}>"{p.quote}"</div>
                                 </div>
                             ))}
                         </div>
                     </div>
                     {/* Research phases */}
                     <div style={{ padding: "48px clamp(40px,8vw,120px)" }}>
-                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Research Process</div>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Research Process</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>4 phases to design principles</div>
                         <div style={{ display: "flex", flexDirection: "column" }}>
                             {RESEARCH.map((r, i) => (
                                 <div key={i} style={{ display: "grid", gridTemplateColumns: "48px 1fr", gap: 24, paddingBottom: 28, paddingTop: i === 0 ? 0 : 28, borderBottom: i < RESEARCH.length - 1 ? `1px solid ${T.border}` : "none" }}>
-                                    <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 24, color: T.mist, lineHeight: 1 }}>{r.phase}</div>
+                                    <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 24, color: T.pink, lineHeight: 1 }}>{r.phase}</div>
                                     <div>
                                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 17, textTransform: "uppercase", letterSpacing: "0.05em", color: T.ink, marginBottom: 8 }}>{r.method}</div>
                                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 700 }}>{r.finding}</p>
@@ -418,7 +418,7 @@ function TempoPanel() {
             {/* TAB: DESIGN DECISIONS */}
             {activeTab === "decisions" && (
                 <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
-                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Design Decisions</div>
+                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Design Decisions</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>5 decisions that defined Tempo</div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         {DECISIONS.map((d, i) => (
@@ -514,7 +514,7 @@ function TempoPanel() {
             {/* TAB: SCREENS */}
             {activeTab === "screens" && (
                 <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
-                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Key Screens</div>
+                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Key Screens</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>4 core moments in the product</div>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))", gap: 24 }}>
                         {SCREENS.map((s, i) => (
@@ -537,7 +537,7 @@ function TempoPanel() {
                     </div>
                     <div style={{ marginTop: 32, padding: "20px 24px", background: T.bg3, border: `1px solid ${T.border}`, borderRadius: 4 }}>
                         <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink3, margin: 0 }}>
-                            <span style={{ color: T.mist, fontWeight: 600 }}>Note:</span> Tempo is a concept project. Screens above are structural wireframe-level representations. High-fidelity Figma screens available on request.
+                            <span style={{ color: T.pink, fontWeight: 600 }}>Note:</span> Tempo is a concept project. Screens above are structural wireframe-level representations. High-fidelity Figma screens available on request.
                         </p>
                     </div>
                 </div>
@@ -1084,16 +1084,32 @@ function OdooPanel() {
 
                         {/* Image */}
                         <div style={{ padding: "36px clamp(32px,5vw,64px)", background: T.bg3, flex: 1 }}>
-                            <div
-                                onClick={() => currentScreen.img && setLightbox({ src: currentScreen.img, alt: currentScreen.label })}
-                                style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}`, cursor: currentScreen.img ? "zoom-in" : "default" }}>
-                                {currentScreen.img ? (
-                                    <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", display: "block", height: "auto" }} />
-                                ) : (
-                                    <div style={{ height: 280, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                        <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
+                            {/* Desktop browser chrome frame */}
+                            <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
+                                {/* Browser top bar */}
+                                <div style={{ background: T.bg2, borderBottom: `1px solid ${T.border}`, padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                                    <div style={{ display: "flex", gap: 5 }}>
+                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#e8607a", opacity: 0.6 }} />
+                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sand, opacity: 0.6 }} />
+                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sage, opacity: 0.6 }} />
                                     </div>
-                                )}
+                                    <div style={{ flex: 1, background: T.bg3, borderRadius: 4, padding: "3px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: T.border2 }} />
+                                        <span style={{ fontFamily: mono, fontSize: 10, color: T.ink3, letterSpacing: "0.04em" }}>homery.odoo.com</span>
+                                    </div>
+                                </div>
+                                {/* Screen — constrained to 16:10 desktop ratio */}
+                                <div
+                                    onClick={() => currentScreen.img && setLightbox({ src: currentScreen.img, alt: currentScreen.label })}
+                                    style={{ aspectRatio: "16/10", overflow: "hidden", cursor: currentScreen.img ? "zoom-in" : "default", background: T.bg2 }}>
+                                    {currentScreen.img ? (
+                                        <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
+                                    ) : (
+                                        <div style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                            <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                             {currentScreen.img && <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", color: T.ink3, marginTop: 10, textAlign: "center" }}>Click to view full size</div>}
                         </div>
