@@ -1176,9 +1176,188 @@ function OdooPanel() {
                 </div>
             </div>
 
+            {/* ── USER FLOW ── */}
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>04 — User Flow</div>
+                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Order lifecycle — end to end</div>
+                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 640 }}>
+                    Every screen was designed around this flow. The cross-module nav bar makes every node one click away from any other.
+                </p>
+                {/* Flow diagram */}
+                <div style={{ overflowX: "auto", paddingBottom: 8 }}>
+                    <div style={{ display: "flex", alignItems: "stretch", gap: 0, minWidth: 860 }}>
+                        {[
+                            { stage: "Pre-sale", steps: ["Pre-order\nQuestionnaire", "CRM\nOpportunity"], color: T.pinkL, accent: T.pink },
+                            { stage: "Order", steps: ["Sales Order\ncreation", "PO\ngeneration", "Inventory\nallocation"], color: "#fdf8f0", accent: T.sand },
+                            { stage: "Fulfillment", steps: ["Warehouse\ndelivery", "Dropship\ndirect"], color: "#f2f4f0", accent: T.sage },
+                            { stage: "Last Mile", steps: ["DispatchTrack\ndispatch", "DT status\ntracking"], color: T.bg2, accent: T.border2 },
+                            { stage: "Finance", steps: ["Invoice\ngeneration", "Freight\npayment", "Commission\n& Spiff"], color: T.pinkBg, accent: T.pink },
+                            { stage: "Customer", steps: ["View Your\nOrder portal", "Status\nupdates"], color: "#f2f4f0", accent: T.sage },
+                        ].map((group, gi) => (
+                            <div key={gi} style={{ flex: 1, display: "flex", flexDirection: "column", borderRight: gi < 5 ? `1px solid ${T.border}` : "none" }}>
+                                {/* Stage header */}
+                                <div style={{ background: group.accent, padding: "8px 14px", display: "flex", alignItems: "center", gap: 6 }}>
+                                    <span style={{ fontFamily: mono, fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase", color: gi === 0 || gi === 4 ? "#fff" : T.ink, fontWeight: 600, opacity: gi === 0 || gi === 4 ? 1 : 0.85 }}>{group.stage}</span>
+                                </div>
+                                {/* Steps */}
+                                <div style={{ flex: 1, background: group.color, padding: "14px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
+                                    {group.steps.map((step, si) => (
+                                        <div key={si} style={{ background: "rgba(255,255,255,0.7)", border: `1px solid ${T.border}`, borderRadius: 6, padding: "9px 10px", position: "relative" }}>
+                                            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, background: group.accent, borderRadius: "6px 0 0 6px" }} />
+                                            <div style={{ fontFamily: mono, fontSize: 10, lineHeight: 1.5, color: T.ink, paddingLeft: 6, whiteSpace: "pre-line" }}>{step}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                                {/* Arrow */}
+                                {gi < 5 && (
+                                    <div style={{ position: "relative" }}>
+                                        <div style={{ position: "absolute", right: -10, top: "50%", transform: "translateY(-50%)", zIndex: 2, fontFamily: mono, fontSize: 14, color: T.border2, pointerEvents: "none" }}>→</div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    {/* Cross-module nav bar callout */}
+                    <div style={{ marginTop: 12, padding: "12px 16px", background: T.pinkBg, border: `1px solid ${T.pinkL}`, borderLeft: `3px solid ${T.pink}`, borderRadius: "0 6px 6px 0", display: "flex", alignItems: "center", gap: 12 }}>
+                        <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: T.pink, flexShrink: 0 }}>Cross-module nav bar</div>
+                        <div style={{ fontFamily: mono, fontSize: 12, color: T.ink2, lineHeight: 1.7 }}>Every node in this flow is one click away from any other. The persistent nav bar shows all linked records with live counts — no back navigation, no module switching.</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* ── DESIGN SYSTEM ── */}
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Design System</div>
+                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Built for an ERP, not a website</div>
+                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 640 }}>
+                    Every component was designed for high-density data environments — scannable at small sizes, consistent across all 8 document types, handed off to the developer as a single component sheet.
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 12, marginBottom: 20 }}>
+                    {/* Color tokens */}
+                    <div style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 8, padding: "20px" }}>
+                        <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Status color tokens</div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                            {[
+                                { label: "Confirmed / Active",    hex: "#0070f3", bg: "#e8f0fe", name: "blue" },
+                                { label: "Done / Paid",           hex: "#22863a", bg: "#d1e7dd", name: "green" },
+                                { label: "Cancelled / Error",     hex: "#d73a49", bg: "#ffeef0", name: "red" },
+                                { label: "Pending / Draft",       hex: "#e36209", bg: "#fff3cd", name: "orange" },
+                                { label: "Custom / Spiff",        hex: "#6f42c1", bg: "#f3eeff", name: "purple" },
+                            ].map(c => (
+                                <div key={c.name} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                                    <div style={{ width: 28, height: 20, borderRadius: 4, background: c.bg, border: `1px solid ${c.hex}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                                        <div style={{ width: 8, height: 8, borderRadius: "50%", background: c.hex }} />
+                                    </div>
+                                    <div style={{ fontFamily: mono, fontSize: 11, color: T.ink, flex: 1 }}>{c.label}</div>
+                                    <div style={{ fontFamily: mono, fontSize: 10, color: T.ink3 }}>{c.hex}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Typography */}
+                    <div style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 8, padding: "20px" }}>
+                        <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Type scale</div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                            {[
+                                { label: "Page title",    size: "18px", weight: "600", sample: "Sales Order SO-1042" },
+                                { label: "Section head",  size: "13px", weight: "600", sample: "Order Lines" },
+                                { label: "Field label",   size: "11px", weight: "500", sample: "CUSTOMER" },
+                                { label: "Body / value",  size: "13px", weight: "400", sample: "Homery – Brooklyn NY" },
+                                { label: "Badge / tag",   size: "10px", weight: "600", sample: "CONFIRMED" },
+                            ].map(t => (
+                                <div key={t.label} style={{ display: "flex", alignItems: "baseline", gap: 10, paddingBottom: 8, borderBottom: `1px solid ${T.border}` }}>
+                                    <div style={{ fontFamily: mono, fontSize: 10, color: T.ink3, width: 90, flexShrink: 0 }}>{t.label}</div>
+                                    <div style={{ fontFamily: "Inter, sans-serif", fontSize: t.size, fontWeight: t.weight, color: T.ink, flex: 1 }}>{t.sample}</div>
+                                    <div style={{ fontFamily: mono, fontSize: 9, color: T.ink3 }}>{t.size} / {t.weight}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Component inventory */}
+                    <div style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 8, padding: "20px" }}>
+                        <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Component inventory</div>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+                            {[
+                                "Cross-module nav bar", "Status badge", "Action button", "Tab navigation",
+                                "Order line row", "Pipeline indicator", "Inline stock cell", "Form field group",
+                                "Section header", "Chatter / notes", "Smart button", "Filter bar",
+                            ].map((c, i) => (
+                                <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", background: T.bg2, borderRadius: 4, border: `1px solid ${T.border}` }}>
+                                    <div style={{ width: 4, height: 4, borderRadius: "50%", background: T.pink, flexShrink: 0 }} />
+                                    <div style={{ fontFamily: mono, fontSize: 10, color: T.ink2 }}>{c}</div>
+                                </div>
+                            ))}
+                        </div>
+                        <div style={{ fontFamily: mono, fontSize: 10, color: T.ink3, marginTop: 10 }}>12 components · used across 28+ screens</div>
+                    </div>
+                </div>
+
+                {/* Spacing & grid callout */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                    <div style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 8, padding: "16px 20px" }}>
+                        <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: T.ink3, marginBottom: 10 }}>Spacing system</div>
+                        <div style={{ display: "flex", gap: 8, alignItems: "flex-end" }}>
+                            {[4,8,12,16,20,24,32].map(s => (
+                                <div key={s} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                                    <div style={{ width: s < 16 ? 8 : s < 24 ? 16 : 24, height: s, background: T.pink, opacity: 0.4 + (s/80), borderRadius: 2 }} />
+                                    <div style={{ fontFamily: mono, fontSize: 8, color: T.ink3 }}>{s}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 8, padding: "16px 20px" }}>
+                        <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: T.ink3, marginBottom: 10 }}>Design principles for ERP</div>
+                        {[
+                            "Data density first — every field earns its place",
+                            "Status is always visible — never buried in tabs",
+                            "One-click to any linked record — no back navigation",
+                        ].map((p, i) => (
+                            <div key={i} style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "flex-start" }}>
+                                <div style={{ fontFamily: mono, fontSize: 10, color: T.pink, flexShrink: 0, marginTop: 1 }}>0{i+1}</div>
+                                <div style={{ fontFamily: mono, fontSize: 12, color: T.ink2, lineHeight: 1.65 }}>{p}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* ── LIVE PROTOTYPE ── */}
+            <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ padding: "32px clamp(40px,8vw,120px) 20px" }}>
+                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>06 — Interactive Prototype</div>
+                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Live ERP prototype</div>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 0", maxWidth: 560 }}>
+                        Fully interactive — navigate between Sales Orders, Deliveries, Invoices, POs, and the Customer Portal. Reflects the actual Odoo design system built for Homery.
+                    </p>
+                </div>
+                <div style={{ padding: "24px clamp(40px,8vw,120px) 40px", background: T.bg3 }}>
+                    <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.16), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
+                        {/* Browser chrome */}
+                        <div style={{ background: "#1f2232", padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                            <div style={{ display: "flex", gap: 5 }}>
+                                <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.pink, opacity: 0.7 }} />
+                                <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sand, opacity: 0.7 }} />
+                                <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sage, opacity: 0.7 }} />
+                            </div>
+                            <div style={{ flex: 1, background: "rgba(255,255,255,0.08)", borderRadius: 4, padding: "3px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22863a" }} />
+                                <span style={{ fontFamily: mono, fontSize: 10, color: "rgba(255,255,255,0.5)", letterSpacing: "0.04em" }}>homery.odoo.com · prototype</span>
+                            </div>
+                        </div>
+                        <iframe
+                            src="/odoo-prototype.html"
+                            style={{ width: "100%", height: "72vh", minHeight: 480, border: "none", display: "block" }}
+                            title="Homery Odoo ERP prototype"
+                        />
+                    </div>
+                </div>
+            </div>
+
             {/* ── PROCESS ── */}
             <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
-                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>04 — Process</div>
+                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>07 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Jun – Oct 2025 · 4 phases</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
                     {[
@@ -1201,7 +1380,7 @@ function OdooPanel() {
 
             {/* ── OUTCOMES ── */}
             <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.pinkBg }}>
-                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Outcomes</div>
+                <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>08 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>What changed for Homery</div>
                 <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 24px", maxWidth: 600 }}>
                     A system that once required 3 module visits to answer a single question now answers it in one screen. The design didn't just clean up the UI — it eliminated entire categories of friction.

@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Homery · ERP System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#0070f3;--blue-dk:#0051b3;--blue-lt:#e8f0fe;
+  --green:#22863a;--green-lt:#d1e7dd;--green-dk:#0a3622;
+  --red:#d73a49;--red-lt:#ffeef0;
+  --orange:#e36209;--orange-lt:#fff3cd;
+  --purple:#6f42c1;
+  --gray-50:#f8f9fa;--gray-100:#f0f2f5;--gray-200:#e9ecef;
+  --gray-300:#dee2e6;--gray-400:#ced4da;--gray-500:#adb5bd;
+  --gray-600:#6c757d;--gray-700:#495057;--gray-800:#343a40;--gray-900:#212529;
+  --white:#fff;--font:'Inter',sans-serif;
+  --radius:4px;--shadow-sm:0 1px 3px rgba(0,0,0,0.08);
+  --shadow:0 2px 8px rgba(0,0,0,0.12);
+}
+html,body{height:100%;overflow:hidden;font-family:var(--font);font-size:13px;color:var(--gray-900);background:var(--gray-100)}
+button,input,select,textarea{font-family:var(--font)}
+
+/* ────────── LAYOUT ────────── */
+.app{display:grid;grid-template-rows:42px 1fr;height:100vh;overflow:hidden}
+.shell{display:flex;overflow:hidden}
+.sidebar{width:220px;background:#1f2232;display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
+.content{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+/* ────────── TOP NAV ────────── */
+.topnav{height:42px;background:#1f2232;display:flex;align-items:center;padding:0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.tn-logo{width:220px;padding:0 16px;display:flex;align-items:center;gap:9px;flex-shrink:0;border-right:1px solid rgba(255,255,255,0.07)}
+.tn-mark{width:26px;height:26px;background:var(--blue);border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;letter-spacing:-0.5px}
+.tn-name{color:#fff;font-weight:600;font-size:14px}
+.tn-apps{display:flex;align-items:stretch;padding:0 8px;gap:2px;flex:1}
+.tn-app{padding:0 12px;color:rgba(255,255,255,0.55);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;border-bottom:2px solid transparent;transition:all 0.12s;white-space:nowrap}
+.tn-app:hover{color:#fff;background:rgba(255,255,255,0.05)}
+.tn-app.active{color:#fff;border-bottom-color:var(--blue)}
+.tn-right{display:flex;align-items:center;gap:4px;padding:0 12px;border-left:1px solid rgba(255,255,255,0.07);margin-left:auto}
+.tn-search{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:5px 10px;color:#fff;font-size:12px;outline:none;width:180px;transition:all 0.15s}
+.tn-search::placeholder{color:rgba(255,255,255,0.35)}
+.tn-search:focus{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);width:220px}
+.tn-ico{width:28px;height:28px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);cursor:pointer;border-radius:var(--radius);transition:all 0.12s;font-size:13px}
+.tn-ico:hover{color:#fff;background:rgba(255,255,255,0.08)}
+.tn-avatar{width:26px;height:26px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;cursor:pointer}
+
+/* ────────── SIDEBAR ────────── */
+.sb-section{padding:16px 8px 4px 12px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.sb-item{display:flex;align-items:center;gap:9px;padding:7px 10px;margin:1px 6px;border-radius:5px;cursor:pointer;color:rgba(255,255,255,0.6);font-size:12px;font-weight:500;transition:all 0.12s}
+.sb-item:hover{background:rgba(255,255,255,0.07);color:#fff}
+.sb-item.active{background:var(--blue);color:#fff}
+.sb-icon{font-size:13px;width:16px;flex-shrink:0;text-align:center}
+.sb-badge{margin-left:auto;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);font-size:9px;font-weight:700;padding:1px 5px;border-radius:9px;min-width:16px;text-align:center}
+.sb-item.active .sb-badge{background:rgba(255,255,255,0.25)}
+.sb-div{height:1px;background:rgba(255,255,255,0.07);margin:6px 12px}
+
+/* ────────── MODULE BAR ────────── */
+.mod-bar{background:var(--white);border-bottom:2px solid var(--gray-200);display:flex;align-items:stretch;padding:0 20px;overflow-x:auto;flex-shrink:0}
+.mod-bar::-webkit-scrollbar{height:0}
+.mod-pill{display:inline-flex;align-items:center;gap:5px;padding:0 14px;border-bottom:2px solid transparent;cursor:pointer;font-size:11.5px;font-weight:500;color:var(--gray-600);transition:all 0.12s;flex-shrink:0;margin-bottom:-2px;white-space:nowrap;min-height:38px}
+.mod-pill:hover{color:var(--gray-900);background:var(--gray-50)}
+.mod-pill.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:600}
+.mod-pill .new{background:#fff3cd;border-radius:3px;padding:1px 6px;font-size:9px;font-weight:700;color:#856404;margin-right:2px}
+.mod-cnt{background:var(--gray-100);border-radius:9px;padding:1px 6px;font-size:10px;font-weight:600;color:var(--gray-600)}
+.mod-pill.active .mod-cnt{background:var(--blue-lt);color:var(--blue)}
+.mod-spacer{flex:1}
+.mod-selects{display:flex;gap:6px;align-items:center;padding:6px 0 6px 12px;border-left:1px solid var(--gray-200)}
+.mod-sel{border:1px solid var(--gray-300);border-radius:var(--radius);padding:4px 20px 4px 8px;font-size:11px;color:var(--gray-700);outline:none;cursor:pointer;background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='4'%3E%3Cpath d='M0 0l4 4 4-4z' fill='%236c757d'/%3E%3C/svg%3E") no-repeat right 6px center;appearance:none}
+
+/* ────────── PIPELINE ────────── */
+.pipeline{background:var(--white);border-bottom:1px solid var(--gray-200);padding:0 20px;display:flex;align-items:center;flex-shrink:0;min-height:44px}
+.pip-steps{display:flex;align-items:stretch;gap:1px}
+.pip-step{position:relative;cursor:pointer}
+.pip-lbl{padding:10px 18px 10px 26px;font-size:11.5px;font-weight:500;color:var(--gray-600);background:var(--gray-100);clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%,10px 50%);transition:all 0.12s;white-space:nowrap}
+.pip-step:first-child .pip-lbl{padding-left:16px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%)}
+.pip-step:last-child .pip-lbl{clip-path:polygon(0 0,100% 0,100% 100%,0 100%,10px 50%)}
+.pip-step.done .pip-lbl{background:var(--green-lt);color:var(--green-dk)}
+.pip-step.active .pip-lbl{background:var(--blue);color:#fff;font-weight:600}
+.pip-step:hover .pip-lbl{filter:brightness(0.97)}
+.pip-right{margin-left:auto;display:flex;align-items:center;gap:6px}
+.pip-badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.pip-badge.allocated{background:#fff3cd;color:#856404}
+.pip-badge.confirmed{background:var(--green-lt);color:var(--green-dk)}
+.pip-badge.posted{background:#cfe2ff;color:#084298}
+
+/* ────────── FORM AREA ────────── */
+.form-wrap{flex:1;overflow:hidden;display:grid;grid-template-columns:1fr 270px}
+.form-main{overflow-y:auto;display:flex;flex-direction:column}
+.chatter-pane{border-left:1px solid var(--gray-200);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}
+
+/* ────────── FORM HEADER ────────── */
+.fh{background:var(--white);border-bottom:1px solid var(--gray-200);padding:14px 20px;flex-shrink:0}
+.fh-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.fh-avatar{width:46px;height:46px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:17px;flex-shrink:0}
+.fh-info{flex:1}
+.fh-toggle{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.fh-radio{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--gray-600);cursor:pointer}
+.fh-radio input{accent-color:var(--blue)}
+.fh-name{font-size:17px;font-weight:600;color:var(--gray-900);margin-bottom:2px}
+.fh-sub{font-size:11.5px;color:var(--gray-500)}
+.fh-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+
+/* ────────── FIELD GRID ────────── */
+.field-grid{display:grid;gap:1px;background:var(--gray-200);border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden}
+.fg-col{background:var(--white);padding:10px 14px}
+.fg-row{display:flex;align-items:center;min-height:28px;gap:8px}
+.fg-lbl{font-size:11px;color:var(--gray-600);width:130px;flex-shrink:0}
+.fg-val{font-size:12px;color:var(--gray-800);flex:1}
+.fg-sel{width:100%;border:none;background:transparent;font-size:12px;color:var(--gray-700);outline:none;cursor:pointer;padding:2px 0}
+.fg-inp{width:100%;border:1px solid transparent;background:transparent;font-size:12px;color:var(--gray-800);outline:none;padding:2px 4px;border-radius:3px;transition:all 0.12s}
+.fg-inp:hover{border-color:var(--gray-300);background:var(--gray-50)}
+.fg-inp:focus{border-color:var(--blue);background:var(--white);box-shadow:0 0 0 2px rgba(0,112,243,0.15)}
+.fg-link{color:var(--blue);cursor:pointer;font-size:11.5px;display:block;margin-bottom:2px}
+.fg-link:hover{text-decoration:underline}
+.fg-tag-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.fg-tag{padding:2px 8px;border:1px solid var(--gray-300);border-radius:3px;font-size:11px;color:var(--gray-700);cursor:pointer;background:var(--white);transition:all 0.12s}
+.fg-tag:hover{border-color:var(--blue);color:var(--blue)}
+.fg-sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-500);margin:8px 0 6px}
+.fg-check{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray-700)}
+.fg-check input{accent-color:var(--blue);width:13px;height:13px}
+
+/* ────────── TABS ────────── */
+.tabs-bar{background:var(--white);border-bottom:1px solid var(--gray-200);display:flex;padding:0 20px;flex-shrink:0}
+.tab{padding:10px 16px;font-size:12px;font-weight:500;color:var(--gray-600);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.12s;white-space:nowrap}
+.tab:hover{color:var(--gray-900)}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:600}
+.tab-spacer{flex:1}
+.tab-tool{border:1px solid var(--gray-300);background:var(--white);border-radius:var(--radius);padding:4px 10px;font-size:11px;cursor:pointer;color:var(--gray-600);align-self:center;transition:all 0.12s}
+.tab-tool:hover{background:var(--gray-50)}
+
+/* ────────── TABLE ────────── */
+.tbl-wrap{overflow-x:auto}
+table.data{width:100%;border-collapse:collapse}
+table.data thead th{padding:8px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--gray-600);border-bottom:2px solid var(--gray-200);background:var(--gray-50);white-space:nowrap;text-align:left}
+table.data thead th.r{text-align:right}
+table.data tbody td{padding:8px 10px;font-size:12px;color:var(--gray-800);border-bottom:1px solid var(--gray-100);vertical-align:top}
+table.data tbody tr:hover td{background:#f8fbff}
+table.data tbody td.r{text-align:right}
+table.data tbody td.c{text-align:center}
+.tbl-inp{border:1px solid transparent;border-radius:3px;padding:2px 5px;font-size:12px;font-family:var(--font);color:var(--gray-800);background:transparent;outline:none;width:70px;text-align:right}
+.tbl-inp:hover{border-color:var(--gray-300);background:var(--gray-50)}
+.tbl-inp:focus{border-color:var(--blue);background:var(--white);box-shadow:0 0 0 2px rgba(0,112,243,0.15)}
+.tbl-badge{display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:600;background:var(--gray-100);color:var(--gray-700)}
+.tbl-link{color:var(--blue);cursor:pointer}
+.tbl-link:hover{text-decoration:underline}
+.del-btn{background:transparent;border:none;cursor:pointer;color:var(--gray-400);padding:3px 5px;border-radius:3px;font-size:13px;transition:all 0.12s;line-height:1}
+.del-btn:hover{color:var(--red);background:var(--red-lt)}
+.row-exp{border-top:1px solid var(--gray-100);padding:8px 10px;background:#fafbfc}
+.stock-strip{display:flex;gap:16px;font-size:11px}
+.sk-item{display:flex;align-items:center;gap:4px}
+.sk-lbl{color:var(--gray-500);font-weight:600;text-transform:uppercase;font-size:9.5px;letter-spacing:0.04em}
+.sk-val{font-weight:600;color:var(--gray-800)}
+.sk-val.ok{color:var(--green)}
+.sk-val.warn{color:var(--orange)}
+.parts-row{background:#f9f6ff;border-bottom:1px solid var(--gray-100)}
+.parts-row td{padding:6px 10px 6px 36px;font-size:11.5px}
+.parts-head td{background:#f3edf7;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--purple);padding:5px 10px 5px 24px}
+
+/* ────────── ADD ROW ────────── */
+.add-row{padding:8px 20px;display:flex;gap:16px;border-top:1px solid var(--gray-100)}
+.add-lnk{color:var(--blue);font-size:11.5px;font-weight:500;cursor:pointer;padding:3px 0}
+.add-lnk:hover{text-decoration:underline}
+
+/* ────────── TOTALS ────────── */
+.totals{padding:16px 20px;background:var(--white);border-top:1px solid var(--gray-200);display:flex;justify-content:flex-end}
+.totals-inner{width:300px}
+.tot-row{display:flex;justify-content:space-between;padding:4px 0;font-size:12.5px}
+.tot-row .lbl{color:var(--gray-600)}
+.tot-row .val{font-weight:500;color:var(--gray-900)}
+.tot-row.final{border-top:2px solid var(--gray-300);margin-top:6px;padding-top:10px;font-size:15px;font-weight:700}
+.tot-row.final .val{color:var(--blue)}
+.tot-row.sub{font-size:11.5px;color:var(--gray-500);padding:2px 0}
+.tot-row.sub .val{color:var(--gray-700);font-weight:400}
+
+/* ────────── BUTTONS ────────── */
+.btn{padding:6px 14px;border-radius:var(--radius);font-size:12px;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all 0.12s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-primary:hover{background:var(--blue-dk)}
+.btn-secondary{background:var(--white);color:var(--gray-700);border-color:var(--gray-300)}
+.btn-secondary:hover{background:var(--gray-50)}
+.btn-danger{background:var(--white);color:var(--red);border-color:var(--red)}
+.btn-danger:hover{background:var(--red-lt)}
+.btn-sm{padding:4px 10px;font-size:11px}
+.btn-outline{background:transparent;color:var(--blue);border-color:var(--blue)}
+.btn-outline:hover{background:var(--blue-lt)}
+.btn-success{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ────────── SIMPLE FORM ────────── */
+.sf{padding:20px;flex:1;background:var(--white)}
+.sf-row{display:flex;align-items:center;padding:9px 0;border-bottom:1px solid var(--gray-100);gap:12px}
+.sf-lbl{width:200px;font-size:12px;color:var(--gray-700);flex-shrink:0}
+.sf-val{font-size:12px;color:var(--gray-800);flex:1}
+.sf-inp{border:1px solid var(--gray-300);border-radius:3px;padding:4px 8px;font-size:12px;outline:none;width:160px}
+.sf-inp:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(0,112,243,0.15)}
+
+/* ────────── BADGES ────────── */
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:600}
+.badge-pending{background:#fff3cd;color:#856404}
+.badge-posted{background:#cfe2ff;color:#084298}
+.badge-done{background:var(--green-lt);color:var(--green-dk)}
+.badge-confirmed{background:var(--green-lt);color:var(--green-dk)}
+.badge-cancelled{background:var(--red-lt);color:var(--red)}
+.badge-draft{background:var(--gray-100);color:var(--gray-600)}
+
+/* ────────── CHATTER ────────── */
+.ct-actions{padding:10px 12px;border-bottom:1px solid var(--gray-200);display:flex;gap:5px;flex-wrap:wrap;flex-shrink:0;background:var(--white)}
+.ct-body{padding:12px;flex:1;overflow-y:auto}
+.ct-msg{margin-bottom:14px}
+.ct-mh{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.ct-av{width:24px;height:24px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px;font-weight:700;flex-shrink:0}
+.ct-name{font-size:11px;font-weight:600;color:var(--gray-800)}
+.ct-time{font-size:10px;color:var(--gray-500)}
+.ct-bubble{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);padding:8px 10px;font-size:11.5px;color:var(--gray-700);line-height:1.6}
+.ct-email{border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-top:5px}
+.ct-email-hdr{background:var(--gray-50);padding:6px 10px;font-size:10px;color:var(--gray-600);border-bottom:1px solid var(--gray-200)}
+.ct-email-body{padding:10px 12px;font-size:11.5px;color:var(--gray-700);line-height:1.65}
+.hm-logo{font-size:15px;font-weight:800;letter-spacing:0.04em;color:var(--gray-900);text-align:center;margin:8px 0;display:block}
+.hm-logo span{color:var(--blue)}
+.ct-cta-row{display:flex;gap:8px;margin:10px 0;justify-content:center}
+.ct-footer{font-size:9.5px;color:var(--gray-500);text-align:center;margin-top:6px;line-height:1.5}
+.ct-log{margin-bottom:10px;padding:7px 10px;border-left:3px solid var(--orange);background:#fffdf5;border-radius:0 3px 3px 0}
+.ct-log.blue{border-color:var(--blue);background:#f0f7ff}
+.ct-log-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--orange);margin-bottom:3px}
+.ct-log.blue .ct-log-lbl{color:var(--blue)}
+.ct-log-txt{font-size:11.5px;color:var(--gray-700)}
+.ct-act{display:flex;gap:8px;margin-bottom:10px;padding:8px;border:1px solid var(--gray-200);border-radius:var(--radius);background:var(--white)}
+.ct-act-ico{font-size:16px;flex-shrink:0}
+.ct-act-txt{font-size:11px;color:var(--gray-700);line-height:1.5}
+.ct-act-sub{font-size:10px;color:var(--gray-500);margin-top:2px}
+.ct-sched{border:1px solid var(--gray-200);border-radius:var(--radius);padding:10px;margin-top:6px;background:var(--gray-50)}
+.ct-sched-ttl{font-size:11px;font-weight:600;color:var(--gray-800);margin-bottom:8px}
+.ct-sched-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
+.ct-sched-fld label{display:block;font-size:10px;color:var(--gray-500);font-weight:500;margin-bottom:2px}
+.ct-sched-fld input,.ct-sched-fld select{width:100%;border:1px solid var(--gray-300);border-radius:3px;padding:4px 6px;font-size:11px;font-family:var(--font);outline:none}
+.ct-sched-fld textarea{width:100%;border:1px solid var(--gray-300);border-radius:3px;padding:4px 6px;font-size:11px;font-family:var(--font);outline:none;resize:none;height:40px}
+.ct-sched-btns{display:flex;gap:5px;flex-wrap:wrap}
+
+/* ────────── OTHER INFO GRID ────────── */
+.oi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:var(--white);flex:1}
+.oi-col{padding:14px 20px;border-right:1px solid var(--gray-200)}
+.oi-col:last-child{border-right:none}
+.oi-ttl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gray-500);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--gray-100)}
+
+/* ────────── DELIVERY FORM ────────── */
+.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-200);border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden}
+.del-col{background:var(--white);padding:12px 16px}
+
+/* ────────── INVOICE ────────── */
+.inv-head{padding:16px 20px;background:var(--white);border-bottom:1px solid var(--gray-200);flex-shrink:0}
+.inv-title{font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
+.inv-sub{font-size:12px;color:var(--gray-600)}
+.inv-fields{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-200);border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-top:14px}
+.inv-col{background:var(--white);padding:12px 16px}
+
+/* ────────── PORTAL ────────── */
+.portal-wrap{max-width:820px;margin:24px auto;padding:0 20px;overflow-y:auto;flex:1}
+.portal-title{font-size:22px;font-weight:700;color:var(--blue);margin-bottom:16px;text-align:center}
+.portal-amount{font-size:28px;font-weight:700;color:var(--gray-900);margin-bottom:8px}
+.portal-pip{display:flex;align-items:center;gap:2px;margin-bottom:14px;background:var(--gray-100);border-radius:20px;padding:4px;overflow:hidden}
+.portal-step{flex:1;text-align:center;padding:6px 10px;font-size:11px;font-weight:500;color:var(--gray-500);border-radius:16px;cursor:pointer;transition:all 0.12s;white-space:nowrap}
+.portal-step.active{background:var(--blue);color:#fff;font-weight:600}
+.portal-step.done{background:var(--green-lt);color:var(--green-dk)}
+.portal-card{background:var(--white);border:1px solid var(--gray-200);border-radius:6px;margin-bottom:14px;overflow:hidden}
+.portal-card-ttl{padding:10px 16px;background:var(--gray-50);border-bottom:1px solid var(--gray-200);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-600)}
+.portal-card-body{padding:14px 16px;font-size:12px;color:var(--gray-700);line-height:1.7}
+
+/* ────────── PAYMENT LIST ────────── */
+.pay-list{padding:0;background:var(--white);flex:1}
+
+/* ────────── SCROLLBARS ────────── */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:3px}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ────────── NOTES ────────── */
+.notes-wrap{padding:16px 20px;flex:1;background:var(--white)}
+.note-ta{width:100%;border:1px solid var(--gray-300);border-radius:var(--radius);padding:10px 12px;font-family:var(--font);font-size:12px;color:var(--gray-800);resize:none;min-height:100px;outline:none;line-height:1.6}
+.note-ta:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(0,112,243,0.15)}
+.note-tools{display:flex;align-items:center;gap:6px;margin-top:6px;padding-top:6px;border-top:1px solid var(--gray-200)}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ──── TOP NAV ──── -->
+<div class="topnav">
+  <div class="tn-logo">
+    <div class="tn-mark">H</div>
+    <div class="tn-name">Homery</div>
+  </div>
+  <div class="tn-apps">
+    <div class="tn-app">Discuss</div>
+    <div class="tn-app active" id="app-sales" onclick="switchApp('sales',this)">Sales</div>
+    <div class="tn-app" id="app-inv" onclick="switchApp('inventory',this)">Inventory</div>
+    <div class="tn-app" id="app-pur" onclick="switchApp('purchase',this)">Purchase</div>
+    <div class="tn-app" id="app-acc" onclick="switchApp('accounting',this)">Accounting</div>
+    <div class="tn-app" id="app-crm" onclick="switchApp('crm',this)">CRM</div>
+  </div>
+  <div class="tn-right">
+    <input class="tn-search" type="text" placeholder="🔍  Search..."/>
+    <div class="tn-ico" title="Calendar">📅</div>
+    <div class="tn-ico" title="Messages">💬</div>
+    <div class="tn-ico" title="Settings">⚙️</div>
+    <div class="tn-avatar">SL</div>
+  </div>
+</div>
+
+<!-- ──── SHELL ──── -->
+<div class="shell">
+
+  <!-- ──── SIDEBAR ──── -->
+  <div class="sidebar" id="sidebar"></div>
+
+  <!-- ──── CONTENT ──── -->
+  <div class="content" id="content"></div>
+
+</div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+let state = {
+  app: 'sales',
+  module: 'sales',   // which cross-module nav is active
+  tab: 'orderlines',
+  portalStep: 0,
+};
+
+// ════════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════════
+const PRODUCTS = [
+  { sku:'B36CT80SNS', fullSku:'B36CT80SNS 36 INCH SMART COUNTER DEPTH FRENCH DOOR REFRIGERATOR',
+    name:'36 Inch Smart Counter Depth French Door Refrigerator With 21 Cu. Ft. Capacity, Ice Maker, Internal Water Dispenser, Touch-Control Panel, LED Light, VitaFreshPro, Dual Evaporators, MultiAirFlow, Humidity-Controlled Drawers, Wifi Enabled, Remote Control, And ENERGY STAR Certified: Stainless Steel',
+    emoji:'🧊', qty:1, price:3899, cost:3899, tax:'11211 - NY', taxExcl:3899, disc:0,
+    ic:11, vs:0, fu:11, qoh:0,
+    parts:[{ sku:'5304520128', name:'Smart Choice 4\' X 5/8 Inch Stainless Steel Gas Connector', emoji:'🔧', qty:1, price:15, cost:15, tax:'11211 - NY', taxExcl:15, ic:2, vs:0, fu:1, qoh:0 }]
+  },
+  { sku:'EGR244MCCS', fullSku:'EGR244MCCS ELEMENT EGR244MCC 24 INCH FREESTANDING GAS RANGE',
+    name:'Element EGR244MCC 24 Inch Freestanding Gas Range With 4 Sealed Burners, 2.4 Cu. Ft. Oven Capacity, Storage Drawer And Digital Timer (Stainless Steel)',
+    emoji:'🍳', qty:1, price:490, cost:370, tax:'11211 - NY', taxExcl:490, disc:0,
+    ic:8, vs:0, fu:0, qoh:0, parts:[]
+  }
+];
+
+const SIDEBARS = {
+  sales: [
+    { section:'Orders' },
+    { id:'sales', label:'Sales Orders', icon:'📋', badge:'12' },
+    { id:'delivery', label:'Deliveries', icon:'🚚', badge:'5' },
+    { id:'dropship', label:'Dropship', icon:'📦' },
+    { divider:true },
+    { section:'Billing' },
+    { id:'invoice', label:'Invoices', icon:'🧾', badge:'3' },
+    { id:'payment', label:'Payments', icon:'💳' },
+    { id:'freight', label:'Freight Payments', icon:'🏭' },
+    { divider:true },
+    { section:'Portal' },
+    { id:'portal', label:'Customer Portal', icon:'🌐' },
+    { divider:true },
+    { id:'components', label:'Component Library', icon:'🎨' },
+  ],
+  purchase: [
+    { section:'Ordering' },
+    { id:'po', label:'Purchase Orders', icon:'🛒', badge:'8' },
+    { id:'rfq', label:'RFQ', icon:'📝', badge:'2' },
+    { divider:true },
+    { section:'Control' },
+    { id:'receipts', label:'Receipts', icon:'📥' },
+    { id:'bills', label:'Bills', icon:'🧾' },
+  ],
+  inventory: [
+    { section:'Operations' },
+    { id:'delivery', label:'Deliveries', icon:'🚚', badge:'5' },
+    { id:'receipts', label:'Receipts', icon:'📥' },
+    { id:'dropship', label:'Dropship', icon:'📦' },
+    { divider:true },
+    { section:'Products' },
+    { id:'products', label:'Products', icon:'📦' },
+  ],
+  accounting: [
+    { section:'Customers' },
+    { id:'invoice', label:'Invoices', icon:'🧾', badge:'3' },
+    { id:'payment', label:'Payments', icon:'💳' },
+    { divider:true },
+    { section:'Vendors' },
+    { id:'bills', label:'Bills', icon:'📄' },
+    { id:'freight', label:'Freight Payments', icon:'🏭' },
+  ],
+  crm: [
+    { section:'Pipeline' },
+    { id:'leads', label:'Leads', icon:'⚡', badge:'24' },
+    { id:'customers', label:'Customers', icon:'👥' },
+  ],
+};
+
+const MOD_BARS = {
+  sales: [
+    { label:'Payment', icon:'💳', count:0, mod:'payment' },
+    { label:'Purchase', icon:'S', count:0, mod:'po' },
+    { label:'Dropship', icon:'📦', count:0, mod:'dropship' },
+    { label:'Delivery', icon:'🚚', count:0, mod:'delivery' },
+    { label:'Payment Transactions', icon:'💳', count:0, mod:'payment' },
+    { label:'Invoice', icon:'🧾', count:0, mod:'invoice' },
+    { label:'Freight Payments', icon:'🏭', count:0, mod:'freight' },
+  ],
+  delivery: [
+    { label:'Sale Order', icon:'📋', count:'SO/00123', mod:'sales' },
+    { label:'Delivery', icon:'🚚', count:'WH/OUT', mod:'delivery' },
+    { label:'Invoice', icon:'🧾', count:0, mod:'invoice' },
+    { label:'Payment', icon:'💳', count:0, mod:'payment' },
+  ],
+  invoice: [
+    { label:'Sale Order', icon:'📋', count:'SO/00123', mod:'sales' },
+    { label:'Invoice', icon:'🧾', count:'INV/2025', mod:'invoice' },
+    { label:'Payment', icon:'💳', count:0, mod:'payment' },
+  ],
+  payment: [
+    { label:'Sale Order', icon:'📋', count:'SO/00123', mod:'sales' },
+    { label:'Invoice', icon:'🧾', count:'INV/2025', mod:'invoice' },
+    { label:'Payment', icon:'💳', count:'PBNK/2025', mod:'payment' },
+  ],
+  po: [
+    { label:'Sale Order', icon:'📋', count:'SO/00123', mod:'sales' },
+    { label:'Purchase', icon:'🛒', count:'PO/00445', mod:'po' },
+    { label:'Receipt', icon:'📥', count:0, mod:'delivery' },
+    { label:'Bill', icon:'📄', count:0, mod:'invoice' },
+  ],
+  portal: [],
+  dropship: [
+    { label:'Sale Order', icon:'📋', count:'SO/00123', mod:'sales' },
+    { label:'Dropship', icon:'📦', count:'DS/00041', mod:'dropship' },
+  ],
+  freight: [
+    { label:'Freight', icon:'🏭', count:'FRT/00028', mod:'freight' },
+  ],
+};
+
+// ════════════════════════════════════════════════════════════
+// RENDER MACHINE
+// ════════════════════════════════════════════════════════════
+function render() {
+  renderSidebar();
+  renderContent();
+}
+
+function renderSidebar() {
+  const items = SIDEBARS[state.app] || SIDEBARS.sales;
+  document.getElementById('sidebar').innerHTML = items.map(it => {
+    if (it.section) return `<div class="sb-section">${it.section}</div>`;
+    if (it.divider) return `<div class="sb-div"></div>`;
+    return `<div class="sb-item ${it.id===state.module?'active':''}" onclick="switchModule('${it.id}')">
+      <span class="sb-icon">${it.icon}</span>${it.label}
+      ${it.badge?`<span class="sb-badge">${it.badge}</span>`:''}
+    </div>`;
+  }).join('');
+}
+
+function renderContent() {
+  const el = document.getElementById('content');
+  const mod = state.module;
+
+  // Build module bar
+  const mbItems = (MOD_BARS[mod] || MOD_BARS.sales);
+  const modBar = `<div class="mod-bar">
+    <div class="mod-pill" style="pointer-events:none;opacity:0.6">
+      <span class="new">New</span>
+      <span style="font-size:10px;color:var(--gray-500)">Quotations<br><b style="color:var(--gray-800)">S12345</b></span>
+    </div>
+    ${mbItems.map(m => `
+      <div class="mod-pill ${m.mod===mod?'active':''}" onclick="switchModule('${m.mod}')">
+        <span style="font-size:12px">${m.icon}</span>${m.label}
+        <span class="mod-cnt">${m.count}</span>
+      </div>
+    `).join('')}
+    <div class="mod-spacer"></div>
+    <div class="mod-selects">
+      <select class="mod-sel"><option>Options</option></select>
+      <select class="mod-sel"><option>Company</option></select>
+    </div>
+  </div>`;
+
+  el.innerHTML = modBar + getModuleHTML();
+}
+
+function getModuleHTML() {
+  switch(state.module) {
+    case 'sales':    return renderSalesOrder();
+    case 'delivery': return renderDelivery();
+    case 'dropship': return renderDropship();
+    case 'invoice':  return renderInvoice();
+    case 'payment':  return renderPayment();
+    case 'freight':  return renderFreight();
+    case 'po':       return renderPO();
+    case 'portal':   return renderPortal();
+    default: return renderSalesOrder();
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// SALES ORDER
+// ════════════════════════════════════════════════════════════
+function renderSalesOrder() {
+  return `
+  <div class="pipeline">
+    <div class="pip-steps">
+      ${[['Quotation','done'],['Quotation Sent','done'],['Revision','active'],['Sales Order',''],['Cancelled','']].map(([l,s],i)=>`
+        <div class="pip-step ${s}"><div class="pip-lbl">${l}</div></div>
+      `).join('')}
+    </div>
+    <div class="pip-right">
+      <span class="pip-badge allocated">Partially Allocated</span>
+      <button class="btn btn-secondary btn-sm">Send Message</button>
+      <button class="btn btn-secondary btn-sm">Log Note</button>
+      <button class="btn btn-secondary btn-sm">Whatsapp</button>
+      <button class="btn btn-secondary btn-sm">Activities</button>
+    </div>
+  </div>
+
+  <div class="form-wrap">
+    <div class="form-main" id="formMain">
+      ${renderSOHeader()}
+      ${renderSOTabs()}
+      ${renderSOTabContent()}
+    </div>
+    ${renderChatter('sales')}
+  </div>`;
+}
+
+function renderSOHeader() {
+  return `<div class="fh">
+    <div class="fh-top">
+      <div class="fh-avatar">F</div>
+      <div class="fh-info">
+        <div class="fh-toggle">
+          <label class="fh-radio"><input type="radio" name="ctype" checked> Company</label>
+          <label class="fh-radio"><input type="radio" name="ctype"> Individual</label>
+        </div>
+        <div class="fh-name">First Last</div>
+        <div class="fh-sub">Order Number</div>
+      </div>
+      <div class="fh-actions">
+        <button class="btn btn-primary">Send by Email</button>
+        <button class="btn btn-secondary">Confirm</button>
+        <button class="btn btn-secondary">Create Invoice</button>
+        <button class="btn btn-secondary">Lock</button>
+      </div>
+    </div>
+
+    <div class="field-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <!-- Col 1: order fields -->
+      <div class="fg-col">
+        ${[['Invoice Address',''],['Recurring Plan',''],['Pricelist','USD'],['Payment Terms','30 Days'],['Order Source',''],['Source',''],].map(([l,v])=>`
+          <div class="fg-row">
+            <span class="fg-lbl">${l}</span>
+            <div class="fg-val"><select class="fg-sel"><option>${v||'Select'}</option></select></div>
+          </div>
+        `).join('')}
+        <div class="fg-row">
+          <span class="fg-lbl">Payment Check</span>
+          <div class="fg-val"><label class="fg-check"><input type="checkbox"> Verified</label></div>
+        </div>
+      </div>
+
+      <!-- Col 2: extra fields -->
+      <div class="fg-col">
+        ${[['Mobile / Phone',''],['Distributor',''],['Referrer',''],['Partner Limit','200,000.00'],['Total Credit','$0.00'],['Expiration',''],['Shipment Requested Date',''],['Imported Total','0.00'],['Customer Reference',''],['Shipping Instructions',''],['Special Instructions','']].map(([l,v])=>`
+          <div class="fg-row">
+            <span class="fg-lbl">${l}</span>
+            <div class="fg-val"><input class="fg-inp" type="text" value="${v}" placeholder="${v?'':l}"></div>
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Col 3: addresses -->
+      <div class="fg-col">
+        <div class="fg-sec">Customer Address</div>
+        <span class="fg-link">Street 1</span>
+        <span class="fg-link">Street 2</span>
+        <span class="fg-link">City &nbsp;·&nbsp; State &nbsp;·&nbsp; Zip Code</span>
+        <span class="fg-link">Country</span>
+        <div class="fg-tag-row" style="margin-bottom:12px">
+          <span class="fg-tag">Shipping Method</span>
+          <span class="fg-tag">TQL Quote</span>
+          <span class="fg-tag">Mark as Fraud</span>
+        </div>
+        <div class="fg-sec">Billing Address</div>
+        <span class="fg-link">Street 1</span>
+        <span class="fg-link">Street 2</span>
+        <span class="fg-link">City &nbsp;·&nbsp; State &nbsp;·&nbsp; Zip Code</span>
+        <span class="fg-link">Country</span>
+        <div class="fg-tag-row">
+          <span class="fg-tag">Fraud Check</span>
+          <span class="fg-tag">Identity Check</span>
+          <span class="fg-tag">Google</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderSOTabs() {
+  const tabs = [['orderlines','Order Lines'],['otherinfo','Other Info'],['spiff','Spiff Details'],['commission','Commission Details'],['notes','Notes']];
+  return `<div class="tabs-bar">
+    ${tabs.map(([id,lbl])=>`<div class="tab ${state.tab===id?'active':''}" onclick="switchTab('${id}')">${lbl}</div>`).join('')}
+    <div class="tab-spacer"></div>
+    <select class="tab-tool" style="margin:8px 0"><option>Options ▾</option></select>
+    <button class="tab-tool" style="margin:8px 0 8px 6px;font-size:14px">⇅</button>
+  </div>`;
+}
+
+function renderSOTabContent() {
+  switch(state.tab) {
+    case 'orderlines': return renderOrderLines();
+    case 'otherinfo':  return renderOtherInfo();
+    case 'spiff':      return renderSpiff();
+    case 'commission': return renderCommission();
+    case 'notes':      return renderNotes();
+    default: return renderOrderLines();
+  }
+}
+
+function renderOrderLines() {
+  const rows = PRODUCTS.map((p,pi) => `
+    <tr>
+      <td style="padding:10px 10px 0;vertical-align:top">
+        <div class="tbl-link" style="font-size:10.5px;font-weight:600;line-height:1.3;margin-bottom:3px">${p.fullSku}</div>
+        <div style="display:flex;gap:8px;margin-top:5px">
+          <button class="btn btn-outline btn-sm">Add</button>
+          <button class="btn btn-secondary btn-sm">Find Similar</button>
+        </div>
+      </td>
+      <td style="padding:10px 10px 0;vertical-align:top">
+        <div style="display:flex;gap:10px">
+          <div style="width:44px;height:44px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${p.emoji}</div>
+          <div style="font-size:11.5px;color:var(--gray-700);line-height:1.5;max-width:300px">${p.name}</div>
+        </div>
+      </td>
+      <td class="r" style="padding:10px 10px 0;vertical-align:top"><input class="tbl-inp" type="text" value="${p.qty}.00"></td>
+      <td class="r" style="padding:10px 10px 0;vertical-align:top;font-size:12px">${p.price.toFixed(2)}</td>
+      <td class="r" style="padding:10px 10px 0;vertical-align:top;font-size:12px">${p.cost.toFixed(2)}</td>
+      <td class="c" style="padding:10px 10px 0;vertical-align:top"><span class="tbl-badge">${p.tax}</span></td>
+      <td class="r" style="padding:10px 10px 0;vertical-align:top;font-size:12px">${p.taxExcl.toFixed(2)}</td>
+      <td class="r" style="padding:10px 10px 0;vertical-align:top;font-size:12px">${p.disc.toFixed(2)}</td>
+      <td style="padding:10px 10px 0;vertical-align:top"><button class="del-btn">🗑</button></td>
+    </tr>
+    <tr>
+      <td colspan="9" style="padding:0">
+        <div class="row-exp">
+          <div class="stock-strip">
+            <div class="sk-item"><span class="sk-lbl">IC Stock:</span><span class="sk-val ok">&nbsp;${p.ic}.00</span></div>
+            <div class="sk-item"><span class="sk-lbl">Vendor Stock:</span><span class="sk-val">&nbsp;${p.vs}.00</span></div>
+            <div class="sk-item"><span class="sk-lbl">Free to Use:</span><span class="sk-val ok">&nbsp;${p.fu}.00</span></div>
+            <div class="sk-item"><span class="sk-lbl">Qty on Hand:</span><span class="sk-val warn">&nbsp;${p.qoh}.00</span></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    ${p.parts.length ? `
+      <tr class="parts-head"><td colspan="9">PARTS</td></tr>
+      ${p.parts.map(pt=>`
+        <tr class="parts-row">
+          <td style="padding:7px 10px 7px 36px;font-size:10.5px">
+            <div class="tbl-link" style="font-weight:600">${pt.sku}</div>
+          </td>
+          <td style="padding:7px 10px">
+            <div style="display:flex;gap:8px;align-items:center">
+              <div style="width:28px;height:28px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:14px">${pt.emoji}</div>
+              <div style="font-size:11.5px;color:var(--gray-600)">${pt.name}</div>
+            </div>
+          </td>
+          <td class="r" style="font-size:12px;padding:7px 10px">${pt.qty}.00</td>
+          <td class="r" style="font-size:12px;padding:7px 10px">${pt.price.toFixed(2)}</td>
+          <td class="r" style="font-size:12px;padding:7px 10px">${pt.cost.toFixed(2)}</td>
+          <td class="c" style="padding:7px 10px"><span class="tbl-badge">${pt.tax}</span></td>
+          <td class="r" style="font-size:12px;padding:7px 10px">${pt.taxExcl.toFixed(2)}</td>
+          <td class="r" style="font-size:12px;padding:7px 10px">0.00</td>
+          <td style="padding:7px 10px"><button class="del-btn" style="font-size:11px">🗑</button></td>
+        </tr>
+        <tr class="parts-row">
+          <td colspan="9" style="padding:0 10px 8px 36px">
+            <div class="stock-strip" style="font-size:10.5px">
+              <div class="sk-item"><span class="sk-lbl">IC Stock:</span><span class="sk-val ok">&nbsp;${pt.ic}.00</span></div>
+              <div class="sk-item"><span class="sk-lbl">Vendor Stock:</span><span class="sk-val">&nbsp;${pt.vs}.00</span></div>
+              <div class="sk-item"><span class="sk-lbl">Free to Use:</span><span class="sk-val ok">&nbsp;${pt.fu}.00</span></div>
+              <div class="sk-item"><span class="sk-lbl">Qty on Hand:</span><span class="sk-val warn">&nbsp;${pt.qoh}.00</span></div>
+            </div>
+          </td>
+        </tr>
+      `).join('')}
+    ` : ''}
+  `).join('');
+
+  return `<div class="order-lines">
+    <div class="tbl-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th style="width:220px">Product Variant</th>
+            <th>Product</th>
+            <th class="r" style="width:80px">Ordered Qty</th>
+            <th class="r" style="width:90px">Unit Price</th>
+            <th class="r" style="width:80px">Cost</th>
+            <th class="c" style="width:90px">Taxes</th>
+            <th class="r" style="width:90px">Tax Excl.</th>
+            <th class="r" style="width:65px">Disc.%</th>
+            <th style="width:36px"></th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <div class="add-row">
+      <span class="add-lnk">+ Add a Product</span>
+      <span class="add-lnk">+ Add a Section</span>
+      <span class="add-lnk">+ Add a Note</span>
+      <span class="add-lnk">Catalog</span>
+    </div>
+    <div style="padding:6px 20px;font-size:10.5px;color:var(--gray-400);font-style:italic;border-top:1px solid var(--gray-100)">Terms and Conditions</div>
+    <div class="totals">
+      <div class="totals-inner">
+        <div class="tot-row"><span class="lbl">Untaxed Amount:</span><span class="val">$2,222.22</span></div>
+        <div class="tot-row"><span class="lbl">Tax (11211 - NY):</span><span class="val">$222.22</span></div>
+        <div class="tot-row final"><span class="lbl">Total:</span><span class="val">$2,444.44</span></div>
+        <div class="tot-row sub" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-200)"><span class="lbl">Margin:</span><span class="val">$222.00 (16.00%)</span></div>
+        <div class="tot-row sub"><span class="lbl">Payment Total:</span><span class="val">$0.00</span></div>
+        <div class="tot-row sub"><span class="lbl" style="color:var(--orange)">Total Remaining:</span><span class="val" style="color:var(--orange)">$2,444.44</span></div>
+        <div class="tot-row sub"><span class="lbl">Payment Authorized:</span><span class="val">$0.00</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderOtherInfo() {
+  return `<div class="oi-grid">
+    <div class="oi-col">
+      <div class="oi-ttl">Sales</div>
+      ${[['Salesperson','John D.'],['Sales Team','Direct Sales'],['Pricelist','USD — Public Pricelist'],['Source Document',''],['Opportunity',''],['Campaign','']].map(([l,v])=>`
+        <div class="fg-row" style="margin-bottom:6px">
+          <span class="fg-lbl">${l}</span>
+          <div class="fg-val"><input class="fg-inp" value="${v}" placeholder="${v?'':l}" style="width:100%"></div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="oi-col">
+      <div class="oi-ttl">Delivery</div>
+      ${[['Incoterms',''],['Shipping Policy','Ship all products at once'],['Delivery Date',''],['Commitment Date','']].map(([l,v])=>`
+        <div class="fg-row" style="margin-bottom:6px">
+          <span class="fg-lbl">${l}</span>
+          <div class="fg-val"><input class="fg-inp" value="${v}" placeholder="${v?'':l}" style="width:100%"></div>
+        </div>
+      `).join('')}
+      <div class="oi-ttl" style="margin-top:14px">Invoicing</div>
+      ${[['Fiscal Position',''],['Invoicing Policy','Invoice what is ordered'],['Auto-Post Bills','Off']].map(([l,v])=>`
+        <div class="fg-row" style="margin-bottom:6px">
+          <span class="fg-lbl">${l}</span>
+          <div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="oi-col">
+      <div class="oi-ttl">Tracking</div>
+      ${[['Source Document',''],['Opportunity',''],['Campaign',''],['Medium',''],['Source','']].map(([l,v])=>`
+        <div class="fg-row" style="margin-bottom:6px">
+          <span class="fg-lbl">${l}</span>
+          <div class="fg-val"><input class="fg-inp" value="${v}" placeholder="${v?'':l}" style="width:100%"></div>
+        </div>
+      `).join('')}
+      <div class="oi-ttl" style="margin-top:14px">Payment</div>
+      ${[['Payment Terms','30 Days'],['Fiscal Position','']].map(([l,v])=>`
+        <div class="fg-row" style="margin-bottom:6px">
+          <span class="fg-lbl">${l}</span>
+          <div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderSpiff() {
+  return `<div class="sf">
+    ${[['Return Spiff Amount','0.00',false],['Total Spiff Amount','0.00',false],['Spiff State','Pending',true],['Spiff Payment Status','Pending',true]].map(([l,v,badge])=>`
+      <div class="sf-row">
+        <span class="sf-lbl">${l}</span>
+        <span class="sf-val">${badge?`<span class="badge badge-pending">${v}</span>`:`<input class="sf-inp" type="text" value="${v}">`}</span>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function renderCommission() {
+  return `<div style="padding:16px 20px;background:var(--white);flex:1">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <span style="font-size:12px;font-weight:600;color:var(--gray-800)">Commission Breakdown</span>
+      <button class="btn btn-secondary btn-sm">+ Add Line</button>
+    </div>
+    <table class="data">
+      <thead>
+        <tr>
+          ${['Sales Rep','Commission %','Commission Amount','Status','Payment Date'].map(h=>`<th>${h}</th>`).join('')}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tbl-link">John D.</span></td>
+          <td>3.50%</td>
+          <td>$85.55</td>
+          <td><span class="badge badge-pending">Pending</span></td>
+          <td style="color:var(--gray-400)">—</td>
+        </tr>
+        <tr>
+          <td style="color:var(--gray-400);font-style:italic" colspan="5">Add a commission split...</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;padding:10px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius)">
+      <div style="font-size:11px;color:var(--gray-600);display:flex;gap:24px">
+        <span><b style="color:var(--gray-800)">Total Commission:</b> $85.55</span>
+        <span><b style="color:var(--gray-800)">Remaining:</b> $0.00</span>
+        <span><b style="color:var(--gray-800)">Override:</b> None</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderNotes() {
+  return `<div class="notes-wrap">
+    <div style="font-size:11px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Internal Notes</div>
+    <textarea class="note-ta" placeholder="Add internal notes visible to your team..."></textarea>
+    <div class="note-tools">
+      <button class="tab-tool">😊</button>
+      <button class="tab-tool">📎</button>
+      <button class="tab-tool" style="margin-left:auto">⤢</button>
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// DELIVERY
+// ════════════════════════════════════════════════════════════
+function renderDelivery() {
+  const tabs = [['operations','Operations'],['addinfo','Additional Info'],['note','Note']];
+  return `
+  <div class="pipeline">
+    <div class="pip-steps">
+      ${[['Draft','done'],['Waiting','done'],['Ready','active'],['Done','']].map(([l,s])=>`<div class="pip-step ${s}"><div class="pip-lbl">${l}</div></div>`).join('')}
+    </div>
+    <div class="pip-right">
+      <button class="btn btn-primary">Validate</button>
+      <button class="btn btn-secondary btn-sm">Send to DispatchTrack</button>
+      <button class="btn btn-secondary btn-sm">Send2AM</button>
+      <button class="btn btn-secondary btn-sm">Send2TQL</button>
+      <button class="btn btn-secondary btn-sm">Check DT Status</button>
+    </div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-main">
+      <div class="fh">
+        <div class="fh-top">
+          <div class="fh-avatar" style="background:#6f42c1;border-radius:8px;font-size:20px">⭐</div>
+          <div class="fh-info">
+            <div class="fh-name">Homer/OUT/03259</div>
+            <div class="fh-sub">Delivery</div>
+          </div>
+        </div>
+        <div class="del-grid">
+          <div class="del-col">
+            ${[['Contact','Appliance'],['DT Status',''],['Source Location',''],['Destination Location',''],['Delivered Date',''],['Scheduled Date',''],['Paid','checkbox'],['Sent to DispatchTrack','checkbox']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:5px">
+                <span class="fg-lbl">${l}</span>
+                <div class="fg-val">${v==='checkbox'?`<label class="fg-check"><input type="checkbox"></label>`:`<select class="fg-sel"><option>${v||'Select'}</option></select>`}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="del-col">
+            ${[['DT Service Unit','HH1'],['Shipment ETA Date',''],['DT Delivered Date',''],['# of Products','1.00'],['Total $ Value','0.00'],['Customer Reference','Reference'],['Special Instructions','Instructions'],['Source Document',''],['Shipping Instructions','']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:5px">
+                <span class="fg-lbl">${l}</span>
+                <div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div>
+              </div>
+            `).join('')}
+            <div class="fg-tag-row" style="margin-top:8px">
+              <span class="fg-tag">Send to DispatchTrack</span>
+              <span class="fg-tag">Send2AM</span>
+              <span class="fg-tag">Send2TQL</span>
+              <span class="fg-tag">Send2AMxPacks</span>
+              <span class="fg-tag" style="background:var(--blue);color:#fff;border-color:var(--blue)">Check DT Delivery Status</span>
+              <span class="fg-tag">Shipping Method</span>
+              <span class="fg-tag">Send2TQLxPacks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tabs-bar">
+        ${tabs.map(([id,lbl])=>`<div class="tab ${state.tab===id?'active':''}" onclick="switchTab('${id}')">${lbl}</div>`).join('')}
+      </div>
+      <table class="data" style="background:var(--white)">
+        <thead>
+          <tr>
+            ${['Product','LP','Packaging','Demand','ETA','Quantity','Unit',''].map(h=>`<th ${h?'':'style="width:36px"'}>${h}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="8" style="color:var(--gray-400);font-style:italic;padding:16px 10px;text-align:center">Add delivery lines to get started...</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="add-row"><span class="add-lnk">+ Add a Line</span></div>
+      <div style="display:flex;justify-content:flex-end;padding:12px 20px;border-top:1px solid var(--gray-200);background:var(--white)">
+        <button class="btn btn-primary">Put in Pack</button>
+      </div>
+    </div>
+    ${renderChatter('delivery')}
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// DROPSHIP (mirrors delivery with DS prefix)
+// ════════════════════════════════════════════════════════════
+function renderDropship() {
+  return renderDelivery().replace(/Homer\/OUT\/03259/g,'DS/00041').replace(/Delivery/g,'Dropship').replace(/Homer\/OUT/,'DS');
+}
+
+// ════════════════════════════════════════════════════════════
+// INVOICE
+// ════════════════════════════════════════════════════════════
+function renderInvoice() {
+  const tabs = [['invlines','Invoice Lines'],['journal','Journal Items'],['invother','Other Info']];
+  return `
+  <div class="pipeline">
+    <div class="pip-steps">
+      ${[['Draft','done'],['Posted','active'],['In Payment',''],['Paid','']].map(([l,s])=>`<div class="pip-step ${s}"><div class="pip-lbl">${l}</div></div>`).join('')}
+    </div>
+    <div class="pip-right">
+      <span class="pip-badge posted">Posted</span>
+      <button class="btn btn-primary">Send &amp; Print</button>
+      <button class="btn btn-success">Register Payment</button>
+      <button class="btn btn-secondary btn-sm">Reset to Draft</button>
+    </div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-main">
+      <div class="inv-head">
+        <div class="inv-title">INV/2025/01234</div>
+        <div class="inv-sub">Customer Invoice</div>
+        <div class="inv-fields" style="grid-template-columns:1fr 1fr">
+          <div class="inv-col">
+            <div class="fg-row" style="margin-bottom:6px">
+              <span class="fg-lbl">Customer</span>
+              <div class="fg-val"><span class="tbl-link">First Last</span></div>
+            </div>
+            <span class="fg-link" style="display:block;margin-left:130px;margin-top:-4px;font-size:11px">Street 1</span>
+            <span class="fg-link" style="display:block;margin-left:130px;font-size:11px">Street 2</span>
+            <span class="fg-link" style="display:block;margin-left:130px;font-size:11px">City · State · Zip Code</span>
+            <span class="fg-link" style="display:block;margin-left:130px;font-size:11px">Country</span>
+            <div class="fg-row" style="margin-top:8px">
+              <span class="fg-lbl">Delivery Address</span>
+              <div class="fg-val"><span class="tbl-link">Delivery Address</span></div>
+            </div>
+            <div class="fg-row">
+              <span class="fg-lbl">Invoice Number</span>
+              <div class="fg-val"><input class="fg-inp" value="" placeholder="Auto" style="width:100%"></div>
+            </div>
+          </div>
+          <div class="inv-col">
+            ${[['Invoice Date','07/24/2025'],['Payment Reference','INV/2025/01234'],['Payment Terms','30 Days'],['Delivery Date','07/23/2025'],['Journal','Customer Invoices in USD']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:6px">
+                <span class="fg-lbl">${l}</span>
+                <div class="fg-val" style="color:${l==='Payment Terms'?'var(--blue)':'var(--gray-800)'}">${l==='Payment Terms'?`<span class="tbl-link">${v}</span>`:`<input class="fg-inp" value="${v}" style="width:100%">`}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="tabs-bar">
+        ${tabs.map(([id,lbl])=>`<div class="tab ${state.tab===id?'active':''}" onclick="switchTab('${id}')">${lbl}</div>`).join('')}
+      </div>
+      ${renderInvoiceTab()}
+    </div>
+    ${renderChatter('invoice')}
+  </div>`;
+}
+
+function renderInvoiceTab() {
+  if (state.tab === 'journal') return `<div style="background:var(--white);flex:1">
+    <table class="data">
+      <thead><tr>${['Account','Label','Analytic','Debit','Credit','Tax','Amount Currency'].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="tbl-link">400000 Product Sales</span></td>
+          <td>Product Revenue</td><td>—</td>
+          <td class="r">$0.00</td><td class="r">$2,222.22</td>
+          <td><span class="tbl-badge">11211 - NY</span></td><td class="r">—</td>
+        </tr>
+        <tr>
+          <td><span class="tbl-link">251000 Tax Payable</span></td>
+          <td>Tax Collected</td><td>—</td>
+          <td class="r">$0.00</td><td class="r">$222.22</td><td>—</td><td class="r">—</td>
+        </tr>
+        <tr>
+          <td><span class="tbl-link">121000 Accounts Receivable</span></td>
+          <td>First Last</td><td>—</td>
+          <td class="r">$2,444.44</td><td class="r">$0.00</td><td>—</td><td class="r">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>`;
+  if (state.tab === 'invother') return `<div class="oi-grid">
+    <div class="oi-col"><div class="oi-ttl">Accounting</div>
+      ${[['Company','Homery LLC'],['Auto-Post','Off'],['Fiscal Position','']].map(([l,v])=>`<div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>`).join('')}
+    </div>
+    <div class="oi-col"><div class="oi-ttl">Bank</div>
+      ${[['Recipient Bank',''],['Payment QR-Code','Off']].map(([l,v])=>`<div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>`).join('')}
+    </div>
+    <div class="oi-col"><div class="oi-ttl">EDI</div>
+      ${[['EDI Document','None']].map(([l,v])=>`<div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>`).join('')}
+    </div>
+  </div>`;
+  // Invoice Lines (default)
+  return `<div style="background:var(--white);flex:1">
+    <table class="data">
+      <thead><tr>${['Product','Label','Account','Analytic Distribution','Quantity','UoM','Price','Taxes','Tax Excl.',''].map(h=>`<th ${h?'':'style="width:36px"'}>${h}</th>`).join('')}</tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="tbl-link">B36CT80SNS</span></td>
+          <td style="font-size:11px;color:var(--gray-600)">36 Inch Smart Refrigerator</td>
+          <td><span class="tbl-link">400000</span></td>
+          <td style="text-align:center">—</td>
+          <td class="r">1.00</td>
+          <td>Units</td>
+          <td class="r">$3,899.00</td>
+          <td><span class="tbl-badge">11211 - NY</span></td>
+          <td class="r">$3,899.00</td>
+          <td><button class="del-btn">🗑</button></td>
+        </tr>
+        <tr>
+          <td><span class="tbl-link">EGR244MCCS</span></td>
+          <td style="font-size:11px;color:var(--gray-600)">24 Inch Gas Range</td>
+          <td><span class="tbl-link">400000</span></td>
+          <td style="text-align:center">—</td>
+          <td class="r">1.00</td>
+          <td>Units</td>
+          <td class="r">$490.00</td>
+          <td><span class="tbl-badge">11211 - NY</span></td>
+          <td class="r">$490.00</td>
+          <td><button class="del-btn">🗑</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="add-row"><span class="add-lnk">+ Add</span></div>
+    <div class="totals">
+      <div class="totals-inner">
+        <div class="tot-row"><span class="lbl">Untaxed Amount:</span><span class="val"></span></div>
+        <div class="tot-row"><span class="lbl">Tax:</span><span class="val"></span></div>
+        <div class="tot-row final"><span class="lbl">Total:</span><span class="val"></span></div>
+        <div class="tot-row sub" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-200)"><span class="lbl">Amount Due:</span><span class="val" style="color:var(--orange);font-size:14px;font-weight:700">$2,444.44</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// PAYMENT
+// ════════════════════════════════════════════════════════════
+function renderPayment() {
+  return `
+  <div style="background:var(--white);flex:1;overflow-y:auto">
+    <table class="data">
+      <thead><tr>
+        <th style="width:36px"></th>
+        ${['Date','Number','Journal','Payment Method','Partner','Batch Payment','Amount in Currency','Amount','Amount Residual','Status'].map(h=>`<th>${h}</th>`).join('')}
+        <th style="width:36px"></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" style="accent-color:var(--blue)"></td>
+          <td>07/23/2025</td>
+          <td><span class="tbl-link">PBNK/2025/1234</span></td>
+          <td>Bank</td>
+          <td>Stripe</td>
+          <td><span class="tbl-link">First Last</span></td>
+          <td>—</td>
+          <td class="r">$22,222.22</td>
+          <td class="r">$22,222.22</td>
+          <td class="r">$22,222.22</td>
+          <td><span class="badge badge-posted">POSTED</span></td>
+          <td><button class="del-btn">🗑</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="add-row"><span class="add-lnk">+ Add a Line</span></div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// FREIGHT
+// ════════════════════════════════════════════════════════════
+function renderFreight() {
+  return `
+  <div class="pipeline">
+    <div class="pip-steps">
+      ${[['Draft','done'],['Validated','active'],['Reconciled','']].map(([l,s])=>`<div class="pip-step ${s}"><div class="pip-lbl">${l}</div></div>`).join('')}
+    </div>
+    <div class="pip-right">
+      <button class="btn btn-primary">Validate</button>
+      <button class="btn btn-secondary btn-sm">Reset to Draft</button>
+    </div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-main">
+      <div class="fh">
+        <div class="fh-name" style="margin-bottom:4px">FRT/2025/00028</div>
+        <div class="fh-sub">Freight Payment</div>
+        <div class="field-grid" style="grid-template-columns:1fr 1fr;margin-top:12px">
+          <div class="fg-col">
+            ${[['Partner','Carrier Name'],['Journal','Bank'],['Payment Date','07/23/2025'],['Amount','$450.00'],['Currency','USD'],['Payment Method','Stripe']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>
+            `).join('')}
+          </div>
+          <div class="fg-col">
+            ${[['Reference','INV/2025/0234'],['Memo','FRT - Brooklyn Delivery'],['Reconciled Invoice',''],['Source Document','SO/00123']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+      <div style="padding:16px 20px;background:var(--white)">
+        <div style="font-size:11px;font-weight:600;color:var(--gray-700);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Reconciliation</div>
+        <table class="data">
+          <thead><tr>${['Account','Label','Debit','Credit','Balance'].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="tbl-link">101000 Bank</span></td>
+              <td>FRT - Brooklyn Delivery</td>
+              <td class="r">—</td>
+              <td class="r">$450.00</td>
+              <td class="r">-$450.00</td>
+            </tr>
+            <tr>
+              <td><span class="tbl-link">500000 Freight Expense</span></td>
+              <td>Carrier Freight Cost</td>
+              <td class="r">$450.00</td>
+              <td class="r">—</td>
+              <td class="r">$0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    ${renderChatter('freight')}
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// PURCHASE ORDER
+// ════════════════════════════════════════════════════════════
+function renderPO() {
+  const tabs = [['products','Products'],['instructions','Special Instructions'],['poother','Other Info']];
+  return `
+  <div class="pipeline">
+    <div class="pip-steps">
+      ${[['RFQ','done'],['RFQ Sent','done'],['Purchase Order','active'],['Done','']].map(([l,s])=>`<div class="pip-step ${s}"><div class="pip-lbl">${l}</div></div>`).join('')}
+    </div>
+    <div class="pip-right">
+      <span class="pip-badge confirmed">Purchase Order</span>
+      <button class="btn btn-secondary btn-sm">Send by Email</button>
+      <button class="btn btn-primary">Confirm Order</button>
+      <button class="btn btn-secondary btn-sm">Receive Products</button>
+      <button class="btn btn-secondary btn-sm">Create Bill</button>
+    </div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-main">
+      <div class="fh">
+        <div class="fh-top">
+          <div class="fh-avatar" style="background:#22863a">V</div>
+          <div class="fh-info">
+            <div class="fh-name">PO/00445</div>
+            <div class="fh-sub">Vendor Name · Purchase Order</div>
+          </div>
+          <div class="fh-actions">
+            <button class="btn btn-secondary btn-sm">Send by Email</button>
+            <button class="btn btn-primary">Confirm Order</button>
+          </div>
+        </div>
+        <div class="field-grid" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="fg-col">
+            ${[['Vendor','Vendor Name'],['Vendor Reference',''],['Incoterms',''],['Shipping Type',''],['Confirmation Date',''],['Order Deadline','']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:5px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>
+            `).join('')}
+          </div>
+          <div class="fg-col">
+            ${[['Purchase Rep','John D.'],['Company','Homery LLC'],['Destination Location',''],['Source Document','SO/00123'],['Tracking Number',''],['Pickup Address','']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:5px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>
+            `).join('')}
+          </div>
+          <div class="fg-col">
+            ${[['Deadline Arrival',''],['Expected Arrival',''],['Taxes',''],['Fiscal Position',''],['Payment Terms','Net 30']].map(([l,v])=>`
+              <div class="fg-row" style="margin-bottom:5px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="tabs-bar">
+        ${tabs.map(([id,lbl])=>`<div class="tab ${state.tab===id?'active':''}" onclick="switchTab('${id}')">${lbl}</div>`).join('')}
+      </div>
+      ${renderPOTab()}
+    </div>
+    ${renderChatter('po')}
+  </div>`;
+}
+
+function renderPOTab() {
+  if (state.tab === 'instructions') return `<div class="sf">
+    ${[['Delivery Instructions',''],['Handling Notes',''],['Installation Requirements',''],['Vendor Special Notes',''],['Internal Reference','']].map(([l,v])=>`
+      <div class="sf-row"><span class="sf-lbl">${l}</span><span class="sf-val"><textarea class="note-ta" style="min-height:48px;width:260px" placeholder="Add ${l.toLowerCase()}...">${v}</textarea></span></div>
+    `).join('')}
+  </div>`;
+  if (state.tab === 'poother') return `<div class="oi-grid">
+    <div class="oi-col"><div class="oi-ttl">Shipping</div>
+      ${[['Incoterms',''],['Shipping Type','Standard'],['Freight Terms','FOB']].map(([l,v])=>`<div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>`).join('')}
+    </div>
+    <div class="oi-col"><div class="oi-ttl">Reception</div>
+      ${[['Received By',''],['Reception Date',''],['Quality Check','Required']].map(([l,v])=>`<div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>`).join('')}
+    </div>
+    <div class="oi-col"><div class="oi-ttl">Additional</div>
+      ${[['Source Document','SO/00123'],['Analytic Account',''],['Notes','']].map(([l,v])=>`<div class="fg-row" style="margin-bottom:6px"><span class="fg-lbl">${l}</span><div class="fg-val"><input class="fg-inp" value="${v}" style="width:100%"></div></div>`).join('')}
+    </div>
+  </div>`;
+  // Products (default)
+  return `<div style="background:var(--white);flex:1">
+    <table class="data">
+      <thead><tr>
+        ${['Product','Description','Qty','Unit','Unit Price','IC Stock','Vendor Stock','Qty on Hand','Taxes','Tax Excl.',''].map(h=>`<th ${h?'':'style="width:36px"'}>${h}</th>`).join('')}
+      </tr></thead>
+      <tbody>
+        ${PRODUCTS.map(p=>`
+          <tr>
+            <td><span class="tbl-link" style="font-size:10.5px">${p.sku}</span></td>
+            <td style="font-size:11.5px;color:var(--gray-600);max-width:200px">${p.name.slice(0,80)}...</td>
+            <td class="r"><input class="tbl-inp" value="${p.qty}.00"></td>
+            <td>Units</td>
+            <td class="r">$${p.cost.toFixed(2)}</td>
+            <td class="r" style="color:var(--green);font-weight:600">${p.ic}.00</td>
+            <td class="r">${p.vs}.00</td>
+            <td class="r" style="color:var(--orange)">${p.qoh}.00</td>
+            <td><span class="tbl-badge">${p.tax}</span></td>
+            <td class="r">$${p.cost.toFixed(2)}</td>
+            <td><button class="del-btn">🗑</button></td>
+          </tr>
+          ${p.parts.length?`
+            <tr class="parts-head"><td colspan="11">PARTS</td></tr>
+            ${p.parts.map(pt=>`<tr class="parts-row">
+              <td style="padding-left:24px"><span class="tbl-link" style="font-size:10px">${pt.sku}</span></td>
+              <td style="font-size:11px;color:var(--gray-600)">${pt.name}</td>
+              <td class="r">${pt.qty}.00</td><td>Units</td>
+              <td class="r">$${pt.cost.toFixed(2)}</td>
+              <td class="r" style="color:var(--green);font-weight:600">${pt.ic}.00</td>
+              <td class="r">${pt.vs}.00</td><td class="r" style="color:var(--orange)">${pt.qoh}.00</td>
+              <td><span class="tbl-badge">${pt.tax}</span></td>
+              <td class="r">$${pt.cost.toFixed(2)}</td>
+              <td><button class="del-btn">🗑</button></td>
+            </tr>`).join('')}
+          `:''}
+        `).join('')}
+      </tbody>
+    </table>
+    <div class="add-row"><span class="add-lnk">+ Add a Product</span><span class="add-lnk">+ Add a Section</span></div>
+    <div class="totals">
+      <div class="totals-inner">
+        <div class="tot-row"><span class="lbl">Untaxed Amount:</span><span class="val">$4,274.00</span></div>
+        <div class="tot-row"><span class="lbl">Tax:</span><span class="val">$427.40</span></div>
+        <div class="tot-row final"><span class="lbl">Total:</span><span class="val">$4,701.40</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// CUSTOMER PORTAL
+// ════════════════════════════════════════════════════════════
+function renderPortal() {
+  const steps = ['Ordered','Processed','Allocated','Partially Shipped','Shipped'];
+  const si = state.portalStep;
+  return `
+  <div class="form-wrap" style="display:flex;flex-direction:column">
+    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:10px 20px;display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <div style="font-size:12px;font-weight:600;color:var(--gray-700)">Portal View — Customer facing</div>
+      <div style="margin-left:auto;display:flex;gap:6px">
+        <button class="btn btn-secondary btn-sm" onclick="if(state.portalStep>0){state.portalStep--;render()}">← Prev State</button>
+        <button class="btn btn-secondary btn-sm" onclick="if(state.portalStep<4){state.portalStep++;render()}">Next State →</button>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:24px;background:var(--gray-100)">
+      <div style="max-width:820px;margin:0 auto">
+        <h1 style="font-size:22px;font-weight:700;color:var(--blue);margin-bottom:16px;text-align:center">Sales Order - S12345</h1>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap">
+          <div>
+            <div style="font-size:26px;font-weight:700;color:var(--gray-900)">$2,768.00</div>
+            <button class="btn btn-secondary btn-sm" style="margin-top:6px">🖨 View Details</button>
+          </div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:2px;background:var(--gray-200);border-radius:20px;padding:3px;overflow:hidden">
+              ${steps.map((s,i)=>`<div class="portal-step ${i===si?'active':i<si?'done':''}" onclick="state.portalStep=${i};render()">${s}</div>`).join('')}
+            </div>
+          </div>
+          ${si>=0?`<button class="btn btn-danger btn-sm">Cancel Order</button>`:''}
+        </div>
+
+        <!-- Info card -->
+        <div class="portal-card">
+          <div class="portal-card-ttl">Order Information</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0">
+            ${[
+              ['Sale Information', `Order Date: 07/29/2025<br>Expiration Date: 08/28/2025`],
+              ['Invoicing Address', 'Colliers International<br>1114 Avenue of the Americas<br>New York NY 10036<br>United States<br>+1 980-213-5303'],
+              ['Shipping Address', 'Colliers International<br>204 East 112 apt 64<br>New York NY 10029<br>United States'],
+              ['Contact Support', `Thank you for your order placed on ${new Date().toLocaleDateString()}. We're processing it and will update you as it moves through each stage.`],
+            ].map(([ttl,body])=>`<div style="padding:12px 14px;border-right:1px solid var(--gray-200)"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-500);margin-bottom:6px">${ttl}</div><div style="font-size:11.5px;color:var(--gray-700);line-height:1.6">${body}</div></div>`).join('')}
+          </div>
+        </div>
+
+        <!-- Product table -->
+        <div class="portal-card">
+          <div class="portal-card-ttl">Products</div>
+          <table class="data" style="margin:0">
+            <thead><tr>${['Product','Quantity','Unit Price','Taxes','Amount'].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="tbl-link">5LGR24410SS</span><br><span style="font-size:11px;color:var(--gray-600)">Beko Gas Range 24", 4 Burners, Stainless Steel</span></td>
+                <td>1.00 Units</td><td>$1,449.00</td>
+                <td><span style="font-size:11px;color:var(--gray-600)">Metropolitan Commuter Transportation District</span></td>
+                <td class="r">$1,449.00</td>
+              </tr>
+              <tr class="parts-head"><td colspan="5">PARTS</td></tr>
+              <tr class="parts-row">
+                <td style="padding-left:24px"><span class="tbl-link">5304520128</span> Smart Choice 4" x 5/8" Gas Connector</td>
+                <td>1.00 Units</td><td>$15.00</td>
+                <td style="font-size:11px;color:var(--gray-600)">Metropolitan Commuter Transportation District</td>
+                <td class="r">$15.00</td>
+              </tr>
+              <tr>
+                <td><span class="tbl-link">BGR241025S</span><br><span style="font-size:11px;color:var(--gray-600)">Blomberg Gas Range 24", 4 Sealed Burners, Stainless Steel</span></td>
+                <td>1.00 Units</td><td>$1,099.00</td>
+                <td style="font-size:11px;color:var(--gray-600)">Metropolitan Commuter Transportation District</td>
+                <td class="r">$1,099.00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="totals" style="border-top:none">
+            <div class="totals-inner">
+              <div class="tot-row"><span class="lbl">Untaxed Amount</span><span class="val">$2,548.00</span></div>
+              <div class="tot-row"><span class="lbl">Tax</span><span class="val">$220.00</span></div>
+              <div class="tot-row final"><span class="lbl">Total</span><span class="val">$2,768.00</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Terms -->
+        <div class="portal-card">
+          <div class="portal-card-ttl">Payment Terms</div>
+          <div class="portal-card-body"><span class="tbl-link">30 Days</span></div>
+        </div>
+
+        <!-- Communication -->
+        <div class="portal-card">
+          <div class="portal-card-ttl">Communication History</div>
+          <div class="portal-card-body">
+            <div style="color:var(--gray-400);font-style:italic;margin-bottom:10px">There are no comments for now.</div>
+            <textarea class="note-ta" style="min-height:70px" placeholder="Write a message..."></textarea>
+            <div class="note-tools"><button class="tab-tool">😊</button><button class="tab-tool">📎</button><button class="tab-tool" style="margin-left:auto">⤢</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// CHATTER
+// ════════════════════════════════════════════════════════════
+function renderChatter(ctx) {
+  return `<div class="chatter-pane">
+    <div class="ct-actions">
+      <button class="btn btn-primary btn-sm">Send Message</button>
+      <button class="btn btn-secondary btn-sm">Log Note</button>
+      <button class="btn btn-secondary btn-sm">Whatsapp</button>
+      <button class="btn btn-secondary btn-sm">Activities</button>
+    </div>
+    <div class="ct-body">
+      <!-- Schedule Activity block -->
+      <div class="ct-sched">
+        <div class="ct-sched-ttl">Schedule Activity</div>
+        <div class="ct-sched-grid">
+          <div class="ct-sched-fld"><label>Activity Type</label><select><option>To-Do</option><option>Email</option><option>Call</option><option>Meeting</option></select></div>
+          <div class="ct-sched-fld"><label>Due Date</label><input type="date" value="2025-07-22"></div>
+          <div class="ct-sched-fld" style="grid-column:1/-1"><label>Summary</label><input type="text" placeholder="e.g. Discuss Proposal"></div>
+          <div class="ct-sched-fld"><label>Assigned To</label><input type="text" placeholder="Agent Name"></div>
+          <div class="ct-sched-fld"><label>Note</label><textarea placeholder="Log a note..."></textarea></div>
+        </div>
+        <div class="ct-sched-btns">
+          <button class="btn btn-primary btn-sm">Schedule</button>
+          <button class="btn btn-secondary btn-sm">Schedule &amp; Mark as Done</button>
+          <button class="btn btn-secondary btn-sm">Done &amp; Schedule Next</button>
+          <button class="btn btn-danger btn-sm">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="ct-msg" style="margin-top:12px">
+        <div class="ct-mh">
+          <div class="ct-av">API</div>
+          <span class="ct-name">API</span>
+          <span class="ct-time">• Jun 28, 2025</span>
+        </div>
+        <div class="ct-email">
+          <div class="ct-email-hdr">Subject: <strong>Order #S12345 has been allocated</strong></div>
+          <div class="ct-email-body">
+            <span class="hm-logo">H<span>◆</span>MERY</span>
+            <p style="margin-bottom:8px">Your order is ready to ship.</p>
+            <p>Order <strong style="color:var(--blue)">#S12345</strong> has been allocated and you should be receiving an email with additional tracking information once your order is fully prepared and shipped out.</p>
+            <div class="ct-cta-row">
+              <button class="btn btn-primary btn-sm">View Your Order</button>
+              <button class="btn btn-secondary btn-sm">Contact Support</button>
+            </div>
+            <p class="ct-footer">Homery LLC · 1864 Bath Ave Brooklyn, New York 11214, United States<br>Customer-Care@Homery.com | +1 888-800-8050</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Log entries -->
+      <div class="ct-log">
+        <div class="ct-log-lbl">Status Changed</div>
+        <div class="ct-log-txt">Order moved from <strong>Quotation Sent</strong> → <strong>Revision</strong></div>
+      </div>
+      <div class="ct-log blue">
+        <div class="ct-log-lbl">Allocation</div>
+        <div class="ct-log-txt">IC Stock allocated: 11 units confirmed for <strong>S12345</strong></div>
+      </div>
+      <div class="ct-act">
+        <div class="ct-act-ico">📅</div>
+        <div>
+          <div class="ct-act-txt"><strong>Follow-up call</strong> scheduled — delivery window confirmation</div>
+          <div class="ct-act-sub">Due: Jun 30, 2025 · Assigned: John D.</div>
+        </div>
+      </div>
+      <div class="ct-msg">
+        <div class="ct-mh">
+          <div class="ct-av" style="background:#22863a">JD</div>
+          <span class="ct-name">John D.</span>
+          <span class="ct-time">• Jun 27, 2025</span>
+        </div>
+        <div class="ct-bubble">Customer confirmed delivery window for Thursday between 10am–2pm. DispatchTrack updated accordingly.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// CONTROLS
+// ════════════════════════════════════════════════════════════
+function switchApp(app, el) {
+  state.app = app;
+  state.module = app === 'purchase' ? 'po' : app === 'accounting' ? 'invoice' : app === 'inventory' ? 'delivery' : 'sales';
+  state.tab = 'orderlines';
+  document.querySelectorAll('.tn-app').forEach(e => e.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+function switchModule(mod) {
+  state.module = mod;
+  state.tab = mod === 'po' ? 'products' : mod === 'invoice' ? 'invlines' : mod === 'delivery' || mod === 'dropship' ? 'operations' : 'orderlines';
+  render();
+}
+
+function switchTab(tab) {
+  state.tab = tab;
+  // Re-render just the form main area for speed
+  const el = document.getElementById('formMain');
+  if (el) {
+    el.innerHTML = renderSOHeader() + renderSOTabs() + renderSOTabContent();
+  } else {
+    render();
+  }
+}
+
+// Init
+render();
+</script>
+</body>
+</html>
