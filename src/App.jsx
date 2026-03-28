@@ -782,17 +782,19 @@ function OdooPanel() {
                 <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: "0 0 14px", maxWidth: 760 }}>{group.desc}</p>
                 </div>
 
-                {/* Screen display — full width, no padding, no scroll */}
-                <div style={{ borderTop: `1px solid ${T.border}` }}>
-                    {currentScreen.img ? (
-                        <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", display: "block", height: "auto" }} />
-                    ) : (
-                        <div style={{ height: 320, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
-                        </div>
-                    )}
-                    <div style={{ padding: "14px clamp(40px,8vw,120px)", background: T.bg2, borderTop: `1px solid ${T.border}` }}>
-                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 5 }}>{currentScreen.label}</div>
+                {/* Screen display — presented with rounded frame */}
+                <div style={{ padding: "40px clamp(40px,8vw,120px)", borderTop: `1px solid ${T.border}`, background: T.bg3 }}>
+                    <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
+                        {currentScreen.img ? (
+                            <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", display: "block", height: "auto" }} />
+                        ) : (
+                            <div style={{ height: 320, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
+                            </div>
+                        )}
+                    </div>
+                    <div style={{ marginTop: 20, display: "flex", alignItems: "baseline", gap: 16 }}>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink }}>{currentScreen.label}</div>
                         <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{currentScreen.desc}</p>
                     </div>
                 </div>
