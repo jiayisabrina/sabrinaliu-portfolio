@@ -758,7 +758,7 @@ function OdooPanel() {
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 0 }}>28+ screens across 8 document types</div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "clamp(260px,32%,420px) 1fr", borderTop: `1px solid ${T.border}` }}>
+                <div style={{ display: "grid", gridTemplateColumns: "clamp(300px,42%,560px) 1fr", borderTop: `1px solid ${T.border}` }}>
 
                     {/* LEFT — label + description */}
                     <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 20 }}>
