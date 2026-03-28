@@ -383,7 +383,7 @@ function TempoPanel() {
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>3 knowledge worker profiles</div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
                             {PERSONAS.map((p, i) => (
-                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "32px 28px", position: "relative" }}>
+                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "44px clamp(40px,8vw,120px)", position: "relative" }}>
                                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: [T.pink, T.sand, T.sage][i] }} />
                                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>{p.age} · {p.role}</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink, marginBottom: 12 }}>{p.name}</div>
@@ -477,7 +477,7 @@ function TempoPanel() {
                                 { phase: "Ovulatory", days: "Days 14–16", color: T.sage, energy: "Peak", rec: "Schedule your most important work, presentations, and collaborative sessions here. Peak cognitive and social energy." },
                                 { phase: "Luteal", days: "Days 17–28", color: T.sand, energy: "Declining", rec: "Front-load the early luteal phase for deep work. Wind down toward rest as PMS symptoms may emerge. Protect recovery time." },
                             ].map((p, i) => (
-                                <div key={i} style={{ background: T.bg, padding: "28px 24px", position: "relative" }}>
+                                <div key={i} style={{ background: T.bg, padding: "40px clamp(32px,4vw,56px)", position: "relative" }}>
                                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: p.color }} />
                                     <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>{p.days}</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", color: T.ink, marginBottom: 4 }}>{p.phase}</div>
@@ -500,7 +500,7 @@ function TempoPanel() {
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>24 atoms · 8 organisms</div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
                             {COMPONENTS.map((c, i) => (
-                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "28px 24px" }}>
+                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "40px clamp(32px,4vw,56px)" }}>
                                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: T.pink, marginBottom: 6 }}>Component</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>{c.name}</div>
                                     <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink2, margin: 0 }}>{c.desc}</p>
@@ -563,7 +563,7 @@ function SelfCarePanel() {
                 { num: "Nov 2024",     label: "Published" },
             ]} />
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", borderBottom:`1px solid ${T.border}` }}>
-                <div style={{ padding:"32px clamp(28px,4vw,56px)", borderRight:`1px solid ${T.border}`, display:"flex", flexDirection:"column", gap:16 }}>
+                <div style={{ padding:"40px clamp(40px,8vw,120px)", borderRight:`1px solid ${T.border}`, display:"flex", flexDirection:"column", gap:16 }}>
                     <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>Overview</div>
                     <p style={{ fontFamily:cond, fontSize: 15, lineHeight:1.85, color:T.ink3, margin:0, fontWeight: 400 }}>
                         The Self-Care Scoop is the Columbia SPS Office of Student Wellness monthly newsletter. I designed a full 17-page editorial layout — cover, feature spreads, wellness tips, event calendar, and back matter — creating a cohesive visual identity that balances warmth with credibility for a graduate student audience.
@@ -577,7 +577,7 @@ function SelfCarePanel() {
                         ))}
                     </div>
                 </div>
-                <div style={{ padding:"28px clamp(28px,4vw,56px)", display:"flex", flexDirection:"column", gap:16 }}>
+                <div style={{ padding:"40px clamp(40px,8vw,120px)", display:"flex", flexDirection:"column", gap:16 }}>
                     <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>All Pages</div>
                     <div style={{ background: T.bg3, padding: "28px", borderRadius: 20, boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)" }}>
                         <div
@@ -771,7 +771,7 @@ function BlogPanel() {
                     <div style={{ display: "flex", flexDirection: "column", gap: 1, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
                         {ARTICLES.map((a, i) => (
                             <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                                style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "24px 32px", borderBottom: i < ARTICLES.length - 1 ? `1px solid ${T.border}` : "none", transition: "background 0.15s" }}>
+                                style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "24px clamp(40px,8vw,120px)", borderBottom: i < ARTICLES.length - 1 ? `1px solid ${T.border}` : "none", transition: "background 0.15s" }}>
                                 <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 16, alignItems: "start" }}>
                                     <div>
                                         <div style={{ display: "flex", gap: 8, marginBottom: 6, flexWrap: "wrap", alignItems: "center" }}>
@@ -1027,7 +1027,7 @@ function OdooPanel() {
 
             {/* ── PROBLEM ── */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", borderBottom: `1px solid ${T.border}` }}>
-                <div style={{ padding: "32px 28px 32px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
+                <div style={{ padding: "48px 40px 48px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Stock Odoo wasn't built<br />for appliance retail</div>
                     <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 12px"}}>
@@ -1042,7 +1042,7 @@ function OdooPanel() {
                         <div style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2 }}>Early research invalidated the original brief — stakeholders wanted a cosmetic refresh. Workflow mapping with warehouse staff showed the problem was structural: wrong IA, missing data surfaces, no cross-module cohesion. I reframed the scope from visual polish to system redesign. That decision defined the entire project.</div>
                     </div>
                 </div>
-                <div style={{ padding: "32px 28px", background: T.bg2 }}>
+                <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg2 }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>What needed solving</div>
                     {[
                         { t: "No unified order view",       b: "Checking order status required visiting Sales, Inventory, and Accounting separately. No cross-module status bar existed." },
@@ -1080,7 +1080,7 @@ function OdooPanel() {
 
                     {/* RIGHT — tabs top, image bottom */}
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                        <div style={{ padding: "24px 32px", borderBottom: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 10 }}>
+                        <div style={{ padding: "24px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 10 }}>
                             {/* Section tabs */}
                             <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
                                 {SECTIONS.map(s => (
@@ -1536,10 +1536,10 @@ function Chip({ label }) {
 // ── WORK ROW ──────────────────────────────────────────────────────────────────
 function WorkRow({ project, isOpen, onToggle }) {
     const accents = {
-        "001": { label: "ERP · Systems Design",   color: T.pink,  bg: T.pinkBg,  dots: ["64%","78%","88%"] },
-        "002": { label: "E-Commerce · Brand",      color: T.sand,  bg: "#fdf8f0", dots: ["60%","72%","84%"] },
-        "003": { label: "UX · Product · Mobile",   color: T.sage,  bg: "#f2f4f0", dots: ["65%","76%","87%"] },
-        "004": { label: "Content · SEO Strategy",  color: T.ink3,  bg: T.bg2,     dots: ["62%","74%","85%"] },
+        "001": { label: "ERP · Systems Design",   color: T.pink,  bg: T.pinkBg,  titleColor: T.pink,    dots: ["64%","78%","88%"] },
+        "002": { label: "E-Commerce · Brand",      color: T.sand,  bg: "#fdf8f0", titleColor: T.ink,     dots: ["60%","72%","84%"] },
+        "003": { label: "UX · Product · Mobile",   color: T.sage,  bg: "#f2f4f0", titleColor: T.pink,    dots: ["65%","76%","87%"] },
+        "004": { label: "Content · SEO Strategy",  color: T.ink3,  bg: T.bg2,     titleColor: T.ink,     dots: ["62%","74%","85%"] },
     }
     const accent = accents[project.num] || accents["001"]
     const rowRef = useRef(null)
@@ -1596,7 +1596,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
                         <div style={{ flex: 1 }}>
                             <motion.div
-                                animate={{ color: isOpen ? accent.color : T.ink }}
+                                animate={{ color: isOpen ? accent.titleColor : T.ink }}
                                 style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3.8vw,64px)", letterSpacing: "0.01em", textTransform: "uppercase", lineHeight: 1.0, marginBottom: 12 }}
                             >{project.title}</motion.div>
                             {/* Description preview — hides when open */}
@@ -2141,7 +2141,7 @@ export default function Portfolio() {
                         </div>
 
                         {/* Currently + Education stacked */}
-                        <div style={{ padding: "24px 32px", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+                        <div style={{ padding: "24px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Currently</div>
                             {[
                                 { dot: T.pink, label: "Open to full-time UX roles" },
