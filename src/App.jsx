@@ -399,7 +399,7 @@ function BlogPanel() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px,1fr))", borderBottom: `1px solid ${T.border}` }}>
                 {STATS.map((s, i) => (
                     <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                        style={{ padding: "36px 28px", borderRight: i < 3 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
+                        style={{ padding: "40px clamp(28px,4vw,52px)", borderRight: i < 3 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
                         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3.5vw,51px)", lineHeight: 1, color: T.pink, marginBottom: 5 }}>{s.num}</div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
@@ -711,7 +711,7 @@ function OdooPanel() {
                     { num: "5",   label: "Order states (portal)", accent: T.sand },
                 ].map((s, i) => (
                     <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                        style={{ padding: "36px 28px", borderRight: i < 5 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
+                        style={{ padding: "40px clamp(28px,4vw,52px)", borderRight: i < 5 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
                         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: s.accent }} />
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3vw,48px)", lineHeight: 1, color: T.pink, marginBottom: 5 }}>{s.num}</div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
@@ -860,7 +860,7 @@ function OdooPanel() {
                         { num: "03", weeks: "Aug – Sep 2025", title: "Wireframes & flow design", body: "Low-fidelity wireframes for all 8 document types with explicit before/after comparisons. Reviewed with all user groups. Iterated on the inline stock visibility pattern and cross-module nav bar until the ops team could complete all key tasks without module-switching.", detail: "Output: 60+ wireframe screens · 2 rounds of user review sessions" },
                         { num: "04", weeks: "Oct 2025", title: "High-fidelity UI & handoff", body: "Full high-fidelity designs for all screens, component library for Odoo custom views, email templates, and customer portal. Annotated specs for the Odoo developer covering all custom field additions and module requirements.", detail: "Output: 28+ final screens · component library · developer handoff doc" },
                     ].map((s, i) => (
-                        <div key={s.num} style={{ background: T.bg, padding: "36px 28px", position: "relative" }}>
+                        <div key={s.num} style={{ background: T.bg, padding: "40px clamp(28px,4vw,52px)", position: "relative" }}>
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", color: T.pink, marginBottom: 5 }}>{s.weeks}</div>
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 28, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
@@ -1087,7 +1087,7 @@ function ShopAppliancesPanel() {
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>How it was built</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
                     {SA_PROCESS.map((s, i) => (
-                        <div key={s.num} style={{ background: T.bg, padding: "36px 28px", position: "relative" }}>
+                        <div key={s.num} style={{ background: T.bg, padding: "40px clamp(28px,4vw,52px)", position: "relative" }}>
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.rust, T.sage][i] }} />
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 34, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{s.title}</div>
@@ -1203,7 +1203,7 @@ function Tag({ label, variant = "pink" }) {
     return (
         <motion.span whileHover={{ y: -2 }} style={{
             fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase",
-            padding: "5px 12px", borderRadius: 2, ...s,
+            padding: "5px 12px", borderRadius: 2, whiteSpace: "nowrap", flexShrink: 0, ...s,
         }}>{label}</motion.span>
     )
 }
@@ -1443,7 +1443,7 @@ function MagneticPhoto() {
 // ── STAT ─────────────────────────────────────────────────────────────────────
 function Stat({ num, label }) {
     return (
-        <motion.div whileHover={{ background: T.pinkBg }} style={{ padding: "36px 28px", cursor: "default", background: T.bg2, transition: "background 0.2s" }}>
+        <motion.div whileHover={{ background: T.pinkBg }} style={{ padding: "40px clamp(28px,4vw,52px)", cursor: "default", background: T.bg2, transition: "background 0.2s" }}>
             <motion.div whileHover={{ scale: 1.06, originX: 0 }} style={{ fontFamily: bebas, fontSize: 60, lineHeight: 1, color: T.pink, letterSpacing: "0.04em", marginBottom: 8 }}>{num}</motion.div>
             <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{label}</div>
         </motion.div>
@@ -1561,7 +1561,7 @@ export default function Portfolio() {
                         <div style={{ background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden" }}>
 
                 {/* HERO */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(260px,30vw,360px)", minHeight: 560, borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(320px,38vw,480px)", minHeight: 560, borderBottom: `1px solid ${T.border}` }}>
                     <div style={{ padding: "48px clamp(40px,8vw,120px) 40px", display: "flex", flexDirection: "column", borderRight: `1px solid ${T.border}` }}>
                         <div>
                             <div style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}>
@@ -1587,7 +1587,7 @@ export default function Portfolio() {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <MagneticPhoto />
-                        <div style={{ padding: "14px clamp(40px,8vw,120px)", display: "flex", gap: 8, flexWrap: "nowrap", background: T.bg2, overflowX: "auto" }}>
+                        <div style={{ padding: "12px 16px", display: "flex", gap: 6, flexWrap: "nowrap", background: T.bg2, justifyContent: "center", overflowX: "hidden" }}>
                             <Tag label="UX Design" variant="pink" />
                             <Tag label="Branding" variant="sand" />
                             <Tag label="Systems" variant="mist" />
