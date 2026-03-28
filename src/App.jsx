@@ -362,7 +362,7 @@ function BlogPanel() {
                             Shop Appliances<br />
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Blog & SEO</span>
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: 0, maxWidth: 440 }}>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 440 }}>
                             Lead content strategist and writer for the Shop Appliances blog — producing SEO-optimized buying guides, installation guides, and product content. Grew organic traffic by 60% through data-driven content planning, keyword strategy, and UX-informed writing that converts readers into buyers.
                         </p>
                     </div>
@@ -425,20 +425,20 @@ function BlogPanel() {
                         <div>
                             <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>The content strategy</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(23px,2vw,26px)", textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Content as a conversion funnel</div>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: "0 0 14px" }}>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 14px" }}>
                                 The blog wasn't built as a publishing exercise — it was designed as a marketing infrastructure layer. Every article was mapped to a point in the buyer journey and connected directly to product collections, brand pages, and category landing pages.
                             </p>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: "0 0 16px" }}>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 16px" }}>
                                 Content planning was driven by keyword research in SEMrush and performance data in GA4 — identifying high-volume, low-competition search queries where Shop Appliances could build authority quickly. The significant domain authority growth reflects the cumulative impact of consistent, strategically-targeted content.
                             </p>
                             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                                 <div style={{ background: T.pinkBg, border: `1px solid ${T.pinkL}`, borderLeft: `3px solid ${T.pink}`, borderRadius: "0 3px 3px 0", padding: "12px 14px" }}>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.08em", color: T.pink, marginBottom: 4 }}>Google page 1 rankings</div>
-                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: 0 }}>Multiple articles rank on page 1 of Google for their target keywords — buying guide queries, brand comparisons, and appliance-type searches — within weeks of publication on competitive, high-volume terms.</p>
+                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0 }}>Multiple articles rank on page 1 of Google for their target keywords — buying guide queries, brand comparisons, and appliance-type searches — within weeks of publication on competitive, high-volume terms.</p>
                                 </div>
                                 <div style={{ background: T.pinkBg, border: `1px solid ${T.pinkL}`, borderLeft: `3px solid ${T.pink}`, borderRadius: "0 3px 3px 0", padding: "12px 14px" }}>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.08em", color: T.pink, marginBottom: 4 }}>Cited by major AI platforms</div>
-                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: 0 }}>Content cited as a source by ChatGPT, Google Gemini, and Notebook LM when answering appliance queries — a signal of factual authority and structural clarity that AI systems recognize and surface to users.</p>
+                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0 }}>Content cited as a source by ChatGPT, Google Gemini, and Notebook LM when answering appliance queries — a signal of factual authority and structural clarity that AI systems recognize and surface to users.</p>
                                 </div>
                             </div>
                         </div>
@@ -457,7 +457,7 @@ function BlogPanel() {
                                         <div style={{ width: 3, height: "100%", minHeight: 28, background: c.color, flexShrink: 0, borderRadius: 1, marginTop: 3 }} />
                                         <div>
                                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 2 }}>{c.cat}</div>
-                                            <div style={{ fontFamily: mono, fontSize: 14, color: T.ink3, lineHeight: 1.6 }}>{c.desc}</div>
+                                            <div style={{ fontFamily: mono, fontSize: 14, color: T.ink2, lineHeight: 1.6 }}>{c.desc}</div>
                                         </div>
                                     </div>
                                 ))}
@@ -479,7 +479,7 @@ function BlogPanel() {
                                             <span style={{ fontFamily: mono, fontSize: 13, color: T.ink3 }}>{a.date}</span>
                                         </div>
                                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(18px,1.8vw,23px)", textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink, marginBottom: 6, lineHeight: 1.2 }}>{a.title}</div>
-                                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: "0 0 8px" }}>{a.desc}</p>
+                                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: "0 0 8px" }}>{a.desc}</p>
                                         <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
                                             {a.tags.map(tag => (
                                                 <span key={tag} style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.06em", padding: "2px 8px", borderRadius: 2, border: `1px solid ${T.border}`, color: T.ink3 }}>{tag}</span>
@@ -516,7 +516,7 @@ function BlogPanel() {
                                 <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(26px,2.5vw,37px)", color: T.border2, lineHeight: 1 }}>{s.num}</div>
                                 <div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink, marginBottom: 7 }}>{s.title}</div>
-                                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: 0, maxWidth: 640 }}>{s.body}</p>
+                                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 640 }}>{s.body}</p>
                                 </div>
                             </div>
                         ))}
@@ -667,7 +667,7 @@ function OdooPanel() {
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Order System</span><br />
                             Redesign
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: 0, maxWidth: 440 }}>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 440 }}>
                             End-to-end redesign of Homery's Odoo ERP across the full order lifecycle — from pre-order questionnaire to customer delivery portal. Custom modules for appliance retail: spiff tracking, commission management, DispatchTrack integration, freight payments, and a branded customer order portal.
                         </p>
                     </div>
@@ -715,10 +715,10 @@ function OdooPanel() {
                 <div style={{ padding: "32px 28px 32px clamp(20px,5vw,64px)", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Stock Odoo wasn't built<br />for appliance retail</div>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: "0 0 12px" }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 12px" }}>
                         Homery's operations run across sales, purchasing, warehousing, dropship, accounting, and last-mile delivery — all with appliance-retail-specific requirements that Odoo's default modules don't address. Spiff tracking, commission management, DispatchTrack dispatch, freight payment reconciliation, and a customer-facing order portal all needed to be designed from scratch.
                     </p>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: 0 }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0 }}>
                         Beyond custom modules, the base UX needed a complete rethink — stock availability buried in Inventory, pricing tier hidden in CRM, order status requiring visits to three modules. The team was working around the system rather than through it.
                     </p>
                 </div>
@@ -735,7 +735,7 @@ function OdooPanel() {
                             <div style={{ width: 5, height: 5, borderRadius: "50%", background: T.pink, flexShrink: 0, marginTop: 5 }} />
                             <div>
                                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 3 }}>{p.t}</div>
-                                <div style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3 }}>{p.b}</div>
+                                <div style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2 }}>{p.b}</div>
                             </div>
                         </div>
                     ))}
@@ -779,7 +779,7 @@ function OdooPanel() {
                 )}
 
                 {/* Section description */}
-                <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: "0 0 14px", maxWidth: 760 }}>{group.desc}</p>
+                <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: "0 0 14px", maxWidth: 760 }}>{group.desc}</p>
                 </div>
 
                 {/* Screen display — full width, no padding, no scroll */}
@@ -793,7 +793,7 @@ function OdooPanel() {
                     )}
                     <div style={{ padding: "14px clamp(20px,5vw,64px)", background: T.bg2, borderTop: `1px solid ${T.border}` }}>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 5 }}>{currentScreen.label}</div>
-                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: 0 }}>{currentScreen.desc}</p>
+                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0 }}>{currentScreen.desc}</p>
                     </div>
                 </div>
             </div>
@@ -821,7 +821,7 @@ function OdooPanel() {
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(26px,2.5vw,37px)", color: T.border2, lineHeight: 1 }}>{d.num}</div>
                             <div>
                                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>{d.title}</div>
-                                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: 0, maxWidth: 640 }}>{d.body}</p>
+                                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 640 }}>{d.body}</p>
                             </div>
                         </div>
                     ))}
@@ -845,7 +845,7 @@ function OdooPanel() {
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 28, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{s.title}</div>
                             <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.8, color: T.ink2, margin: "0 0 10px" }}>{s.body}</p>
-                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink3, lineHeight: 1.6 }}>{s.detail}</div>
+                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.6 }}>{s.detail}</div>
                         </div>
                     ))}
                 </div>
@@ -909,7 +909,7 @@ function ShopAppliancesPanel() {
                         Shop Appliances<br />
                         <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Brand System</span>
                     </div>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: 0, maxWidth: 420 }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 420 }}>
                         Designed and delivered a modular brand page system for Shop Appliances. The system covers every brand in their catalog, from mass-market household names to luxury European imports, each with a dedicated editorial landing page, structured category grid, and a comprehensive Figma spec used directly by the development team.
                     </p>
                 </div>
@@ -973,10 +973,10 @@ function ShopAppliancesPanel() {
                 <div style={{ padding: "36px 40px 36px 64px", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Generic pages,<br />no brand identity</div>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: "0 0 12px" }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 12px" }}>
                         Shop Appliances carries 35+ brands spanning three market tiers. Despite their depth of inventory, every brand was funneled through a generic collection page — no storytelling, no differentiation, no editorial hierarchy.
                     </p>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink3, margin: 0 }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0 }}>
                         High-intent shoppers researching a specific brand were landing on pages identical to a plain filtered product list.
                     </p>
                 </div>
@@ -991,7 +991,7 @@ function ShopAppliancesPanel() {
                     ].map((item, i) => (
                         <div key={i} style={{ display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" }}>
                             <span style={{ color: T.pink, fontFamily: mono, fontSize: 14, marginTop: 1, flexShrink: 0 }}>—</span>
-                            <span style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3 }}>{item}</span>
+                            <span style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2 }}>{item}</span>
                         </div>
                     ))}
                 </div>
@@ -1076,7 +1076,7 @@ function ShopAppliancesPanel() {
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 34, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{s.title}</div>
                             <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.8, color: T.ink2, margin: "0 0 12px" }}>{s.body}</p>
-                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink3, lineHeight: 1.6 }}>{s.detail}</div>
+                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.6 }}>{s.detail}</div>
                         </div>
                     ))}
                 </div>
@@ -1279,7 +1279,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                             <motion.p
                                 animate={{ opacity: isOpen ? 0 : 1, height: isOpen ? 0 : "auto" }}
                                 transition={{ duration: 0.25 }}
-                                style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink3, margin: 0, maxWidth: 560, overflow: "hidden" }}
+                                style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0, maxWidth: 560, overflow: "hidden" }}
                             >{project.desc}</motion.p>
                         </div>
 
@@ -1318,7 +1318,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                         </div>
                         <div style={{ padding: "28px clamp(16px,3vw,40px)", display: "flex", flexDirection: "column", gap: 12 }}>
                             <span style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: T.pink }}>{project.tag}</span>
-                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 1.85, color: T.ink3, margin: 0 }}>{project.desc}</p>
+                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 1.85, color: T.ink2, margin: 0 }}>{project.desc}</p>
                             <motion.span
                                 data-cursor="true"
                                 whileHover="hover"
@@ -1623,7 +1623,7 @@ export default function Portfolio() {
                                         </div>
                                         <div>
                                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 5 }}>{p.title}</div>
-                                            <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.75, color: T.ink3, margin: 0 }}>{p.body}</p>
+                                            <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.75, color: T.ink2, margin: 0 }}>{p.body}</p>
                                         </div>
                                     </div>
                                 ))}
