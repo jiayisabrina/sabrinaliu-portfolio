@@ -121,7 +121,7 @@ const PROJECTS = [
         type: "UX · Product · Mobile",
         typeVariant: "mist",
         tag: "UX Research · Data Viz · Design System · Mobile · Concept 2025",
-        desc: "A concept productivity app that surfaces when you work best — not just what to do next. Ditto uses your own behavioral patterns (deep work windows, distraction spikes, energy rhythms) as a personal data layer, with a built-in cycle-aware scheduling system designed for how female bodies actually work.",
+        desc: "A concept productivity app designed specifically for women — built around the insight that most productivity tools were made for a body without a cycle. Ditto surfaces your behavioral patterns and cycle phase as one unified scheduling layer, so your calendar finally reflects how you actually work.",
         bgColor: T.bg2,
         isTempo: true,
     },
@@ -251,36 +251,36 @@ function TempoPanel() {
 
     const PERSONAS = [
         {
-            name: "The Overloaded Manager", age: "32", role: "Product Manager, 60-hr weeks",
-            pain: "Meetings eat into deep work. Ends each day unsure if anything important actually got done.",
-            need: "Visibility into where time actually goes vs. where it should go.",
-            quote: "I feel productive but I can't point to what I built.",
+            name: "The Overloaded Manager", age: "34", role: "Product Manager, tech startup",
+            pain: "Back-to-back meetings swallow her mornings. She leaves every day feeling busy but unable to name what she actually built. Her cycle makes certain weeks harder — nobody talks about that at work.",
+            need: "Visibility into where her energy actually goes, and a system that works with her body — not against it.",
+            quote: "I'm always on, always performing. I don't even know what my natural rhythm feels like anymore.",
         },
         {
             name: "The Scattered Creative", age: "27", role: "UX Designer / Freelancer",
-            pain: "Works in bursts — highly productive for 2hrs, then crashes. Can't predict or replicate good days.",
-            need: "A system that works with her energy patterns, not against them.",
-            quote: "Some days I do my best work at 11pm. The 9-5 makes no sense for me.",
+            pain: "Output comes in intense bursts — wildly productive for 2 hours, then crashes. Can't predict or replicate her best days. Suspects her cycle is involved but has no way to track the connection.",
+            need: "A system that sees her energy patterns and helps her schedule around them, not shame her for not being consistent.",
+            quote: "Some days I do my best work at midnight. The 9-5 was never designed for someone like me.",
         },
         {
-            name: "The Anxious Achiever", age: "29", role: "Software Engineer, remote",
-            pain: "Always online, always available. Hard to justify not responding immediately. Focus is fragmented.",
-            need: "Permission structure to protect deep work — backed by data, not willpower.",
-            quote: "I need something to tell me it's okay to be unavailable for 2 hours.",
+            name: "The Quietly Exhausted", age: "30", role: "Software Engineer, remote",
+            pain: "Always online, always available. Feels guilty going offline even for 2 hours. In her luteal phase she pushes through instead of resting — and pays for it the rest of the week.",
+            need: "Data-backed permission to protect her focus and honor her body's needs — without having to explain herself to anyone.",
+            quote: "I need something to tell me it's okay to be unavailable. Not just okay — actually good for my work.",
         },
     ]
 
     const RESEARCH = [
-        { phase: "01", method: "Competitive Audit", finding: "Reviewed Notion, Linear, Todoist, Reclaim, Motion, and Structured. All focus on task management. None surface behavioral patterns or personal energy data. The gap: they tell you what to do, not when you're best equipped to do it." },
-        { phase: "02", method: "User Interviews (6 participants)", finding: "Interviewed knowledge workers across PM, design, engineering, and writing. Common theme: everyone had a rough intuition about when they work best but no system to surface or protect it. Most productivity tools add cognitive load instead of reducing it." },
-        { phase: "03", method: "Behavioral Analysis", finding: "Analyzed anonymized screen-time data patterns from interview participants. Identified 3 consistent productivity archetypes: Morning Sprinters (peak 8–11am), Midday Sustainers (consistent 10am–3pm), and Night Owls (irregular but high output after 8pm). All three were fighting standard 9–5 structures." },
-        { phase: "04", method: "Design Principles", finding: "Three guiding principles emerged: (1) Show patterns, don't prescribe behavior. (2) Make the invisible visible — most people don't know what they don't know about their own habits. (3) Protect focus first, then optimize — the system earns trust before asking for behavior change." },
+        { phase: "01", method: "Competitive Audit", finding: "Reviewed Notion, Linear, Todoist, Reclaim, Motion, and Structured. All focus on task management. None account for cyclical energy patterns, hormonal fluctuations, or the specific cognitive load patterns women report. The gap: these tools were built for a body that doesn't have a cycle." },
+        { phase: "02", method: "User Interviews (8 women)", finding: "Interviewed women across PM, design, engineering, and writing roles. Every participant had an intuition about when they work best — but no system to surface or protect it. Many noticed a connection between their cycle and their output. None had a tool that acknowledged this connection." },
+        { phase: "03", method: "Behavioral + Cycle Pattern Analysis", finding: "Cross-referenced self-reported productivity patterns with cycle phase data. Clear correlation emerged: follicular and ovulatory phases consistently showed highest focus depth. Luteal phase showed more fragmented sessions but stronger editing and detail work. Women were fighting biology instead of working with it." },
+        { phase: "04", method: "Design Principles", finding: "Three principles emerged: (1) Honor the cycle, don't pathologize it — energy variation is normal, not a bug. (2) Make invisible patterns visible — most women sense the cycle-productivity link but can't prove it. (3) Suggest, never prescribe — ditto nudges, it never commands." },
     ]
 
     const DECISIONS = [
         { num: "01", title: "Focus Score over task count", body: "Most productivity metrics reward volume — tasks completed, hours logged. Ditto's primary metric is a daily Focus Score: a weighted composite of session depth, distraction events, and recovery time. It's harder to game and more meaningful at a glance." },
         { num: "02", title: "Weekly Rhythm Heatmap as the hero visual", body: "The central dashboard element is a 7×24 grid showing focus quality across every hour of the past week. Color intensity = session depth. At a glance, users see their actual work patterns rather than an idealized calendar. This is the single most sticky feature in testing." },
-        { num: "03", title: "Soft blocks instead of hard lockouts", body: "Early prototypes used hard app blocks during focus sessions — users rejected them as punitive. Tempo uses soft blocks: friction, not walls. Attempting to open Slack during a focus session shows a gentle nudge (you have 18 minutes left) rather than an error. Users report this feels more respectful of their autonomy." },
+        { num: "03", title: "Soft blocks instead of hard lockouts", body: "Early prototypes used hard app blocks during focus sessions — women rejected them as punitive and patronizing. Ditto uses soft blocks: friction, not walls. Attempting to open Slack during a focus session shows a gentle nudge (you have 18 minutes left) rather than an error. Users report this feels respectful of their autonomy." },
         { num: "04", title: "Mobile as the ambient layer", body: "Desktop is where focused work happens. Mobile is the ambient check-in: glanceable daily score, quick session start, and end-of-day summary. The mobile app was designed for 10-second interactions — no scrolling, no decisions, just status at a glance." },
         { num: "05", title: "Design system built token-first", body: "Ditto's design system starts with semantic tokens mapped to productivity and cycle states. --color-rest (warm sand) signals luteal phase low-demand windows. --color-cycle (blush pink) marks menstrual and follicular phases. All components inherit from tokens, making the cycle overlay a configuration layer — not a redesign. Component library covers 24 atoms and 8 organisms." },
     ]
@@ -325,7 +325,7 @@ function TempoPanel() {
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Productivity Dashboard</span>
                         </div>
                         <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 480 }}>
-                            Most productivity apps tell you what to do. Ditto tells you when you work best — surfacing your own behavioral patterns as a personal data layer so you can design your schedule around how you actually operate, not how you think you should.
+                            Most productivity apps were designed for a body without a cycle. Ditto was designed for women — surfacing your behavioral patterns, your energy rhythms, and your cycle phase as a unified scheduling layer, so you can work with your body instead of against it.
                         </p>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -354,11 +354,11 @@ function TempoPanel() {
 
             {/* STATS */}
             <StatBar stats={[
-                { num: "6",   label: "User interviews",        accent: T.pink },
+                { num: "8",   label: "Women interviewed",      accent: T.pink },
                 { num: "3",   label: "User archetypes",        accent: T.sand },
                 { num: "24",  label: "Component atoms",        accent: T.sage },
                 { num: "4",   label: "Core screens",           accent: T.pink },
-                { num: "5",   label: "Design decisions",       accent: T.pink },
+                { num: "4",   label: "Cycle phases mapped",    accent: T.pink },
             ]} />
 
             {/* TABS */}
@@ -521,7 +521,7 @@ function TempoPanel() {
                             Fully interactive — navigate Dashboard, Focus, Insights, Cycle Layer, and Weekly Review. Click any cycle phase to explore the scheduling recommendations.
                         </p>
                     </div>
-                    <div style={{ padding: "0 clamp(40px,8vw,120px) 40px", background: T.bg3 }}>
+                    <div style={{ padding: "40px clamp(40px,8vw,120px) 52px", background: T.bg3 }}>
                         <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.16), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
                             {/* Browser chrome */}
                             <div style={{ background: T.bg2, borderBottom: `1px solid ${T.border}`, padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
@@ -537,7 +537,7 @@ function TempoPanel() {
                             </div>
                             <iframe
                                 src="/tempo-prototype.html"
-                                style={{ width: "100%", height: 560, border: "none", display: "block" }}
+                                style={{ width: "100%", height: 680, border: "none", display: "block" }}
                                 title="ditto app prototype"
                             />
                         </div>
