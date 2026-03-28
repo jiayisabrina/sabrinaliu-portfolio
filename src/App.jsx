@@ -369,7 +369,7 @@ function BlogPanel() {
                             Shop Appliances<br />
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Blog & SEO</span>
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 440}}>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 640}}>
                             Lead content strategist and writer for the Shop Appliances blog — producing SEO-optimized buying guides, installation guides, and product content. Grew organic traffic by 60% through data-driven content planning, keyword strategy, and UX-informed writing that converts readers into buyers.
                         </p>
                     </div>
@@ -676,7 +676,7 @@ function OdooPanel() {
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Order System</span><br />
                             Redesign
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 440}}>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 640}}>
                             End-to-end redesign of Homery's Odoo ERP across the full order lifecycle — from pre-order questionnaire to customer delivery portal. Custom modules for appliance retail: spiff tracking, commission management, DispatchTrack integration, freight payments, and a branded customer order portal.
                         </p>
                     </div>
@@ -1639,13 +1639,13 @@ export default function Portfolio() {
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(48px,5vw,80px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink }}>
                             The designer<br />behind<br /><em style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>the work.</em>
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, maxWidth: 480, margin: 0}}>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, maxWidth: 680, margin: 0}}>
                             I'm Sabrina, a UX and UI designer shaped by both studio art and data driven marketing.
                         </p>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, maxWidth: 480, margin: 0}}>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, maxWidth: 680, margin: 0}}>
                             I started in studio art and later moved into data and marketing, where I learned how products perform in real contexts and how people actually interact with them. That experience still shapes how I design today. I think about how things look, but just as much about how they behave, how they scale, and what they ask of the people using them.
                         </p>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, maxWidth: 480, margin: 0}}>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, maxWidth: 680, margin: 0}}>
                             I am most interested in the space where brand meets function. ERP workflows that still feel considered, e commerce experiences that sell without being loud, and editorial systems with clear hierarchy. To me, design is not just visual polish. It is structure, clarity, and a series of decisions that make something feel intuitive or frustrating.
                         </p>
 
