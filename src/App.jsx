@@ -313,7 +313,7 @@ function TempoPanel() {
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* HEADER */}
-            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", background: T.bg2, paddingBottom: "72px" }}>
+            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", paddingBottom: "72px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -361,7 +361,7 @@ function TempoPanel() {
             ]} />
 
             {/* TABS */}
-            <div style={{ padding: "32px clamp(40px,8vw,120px) 40px", background: T.bg, display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <div style={{ padding: "32px clamp(40px,8vw,120px) 40px", display: "flex", gap: 8, flexWrap: "wrap" }}>
                 {tabs.map(t => (
                     <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
                         fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase",
@@ -470,7 +470,7 @@ function TempoPanel() {
                     </div>
 
                     {/* Cycle tracking feature */}
-                    <div style={{ padding: "48px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Feature — Cycle-Aware Scheduling</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>Designed for how female bodies actually work</div>
                         <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 680, margin: "0 0 28px" }}>
@@ -667,7 +667,7 @@ function BlogPanel() {
         <div style={{ borderTop: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
 
             {/* HEADER */}
-            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", background: T.bg2, paddingBottom: "72px" }}>
+            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", paddingBottom: "72px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 40, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -707,7 +707,7 @@ function BlogPanel() {
             <StatBar stats={STATS} />
 
             {/* TABS */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
                     {[
                         { id: "overview", label: "Content strategy" },
@@ -777,7 +777,7 @@ function BlogPanel() {
                     <div style={{ display: "flex", flexDirection: "column", gap: 1, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
                         {ARTICLES.map((a, i) => (
                             <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                                style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "24px clamp(40px,8vw,120px)", borderBottom: i < ARTICLES.length - 1 ? `1px solid ${T.border}` : "none", transition: "background 0.15s" }}>
+                                style={{ background: T.bg, padding: "24px clamp(40px,8vw,120px)", borderBottom: i < ARTICLES.length - 1 ? `1px solid ${T.border}` : "none", transition: "background 0.15s" }}>
                                 <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 16, alignItems: "start" }}>
                                     <div>
                                         <div style={{ display: "flex", gap: 8, marginBottom: 6, flexWrap: "wrap", alignItems: "center" }}>
@@ -831,7 +831,7 @@ function BlogPanel() {
             </div>
 
             {/* OUTCOMES */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)" }}>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(23px,2vw,26px)", textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>What this demonstrates</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 8 }}>
                     {[
@@ -863,7 +863,7 @@ function OdooPanel() {
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* ── HEADER ── */}
-            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", background: T.bg2, paddingBottom: "72px" }}>
+            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", paddingBottom: "72px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -947,7 +947,7 @@ function OdooPanel() {
                         <div style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2 }}>Early research invalidated the original brief — stakeholders wanted a cosmetic refresh. Workflow mapping with warehouse staff showed the problem was structural: wrong IA, missing data surfaces, no cross-module cohesion. I reframed the scope from visual polish to system redesign. That decision defined the entire project.</div>
                     </div>
                 </div>
-                <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
+                <div style={{ padding: "64px clamp(40px,8vw,120px)" }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>What needed solving</div>
                     {[
                         { t: "No unified order view",       b: "Checking order status required visiting Sales, Inventory, and Accounting separately. No cross-module status bar existed." },
@@ -968,7 +968,7 @@ function OdooPanel() {
             </div>
 
             {/* ── KEY DESIGN DECISIONS ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Design Decisions</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>Decisions that defined the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -998,7 +998,7 @@ function OdooPanel() {
             </div>
 
             {/* ── USER FLOW ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>04 — User Flow</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Order lifecycle — end to end</div>
                 <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 640 }}>
@@ -1047,7 +1047,7 @@ function OdooPanel() {
             </div>
 
             {/* ── DESIGN SYSTEM ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Design System</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Built for an ERP, not a website</div>
                 <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 640 }}>
@@ -1177,7 +1177,7 @@ function OdooPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>07 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Jun – Oct 2025 · 4 phases</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 14 }}>
@@ -1200,7 +1200,7 @@ function OdooPanel() {
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>08 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>What changed for Homery</div>
                 <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 24px", maxWidth: 600 }}>
@@ -1240,7 +1240,7 @@ function ShopAppliancesPanel() {
             {/* ── HEADER STRIP ── */}
             <div style={{
                 padding: "40px clamp(40px,8vw,120px) 40px",
-                background: T.bg2,
+                
                 borderBottom: `1px solid ${T.pinkL}`,
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -1304,7 +1304,7 @@ function ShopAppliancesPanel() {
                         High-intent shoppers researching a specific brand were landing on pages identical to a plain filtered product list.
                     </p>
                 </div>
-                <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
+                <div style={{ padding: "64px clamp(40px,8vw,120px)" }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 16 }}>Constraints</div>
                     {[
                         "35+ brands with wildly different product depths — 1 category to 6+",
@@ -1322,7 +1322,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── UX ROLE ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>02 — UI / UX Thinking</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24, lineHeight: 1.1 }}>Design decisions that shaped the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -1345,7 +1345,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── BRANDS ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>03 — Brand Scope</div>
@@ -1390,7 +1390,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>04 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>How it was built</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px,1fr))", gap: 16 }}>
@@ -1407,7 +1407,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── LIVE PAGES ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Published Work</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Live brand pages</div>
                 <div style={{ display: "flex", flexDirection: "column", border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1416,7 +1416,7 @@ function ShopAppliancesPanel() {
                             key={p.brand}
                             whileHover={{ background: T.pinkBg }}
                             style={{
-                                background: i % 2 === 0 ? T.bg : T.bg2,
+                                background: T.bg,
                                 borderBottom: i < SA_LIVE.length - 1 ? `1px solid ${T.border}` : "none",
                                 padding: "16px 24px",
                                 display: "grid",
@@ -1470,7 +1470,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)" }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>06 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>What this unlocked</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
@@ -1734,7 +1734,7 @@ function StatBar({ stats, cols }) {
         <div style={{ display: "grid", gridTemplateColumns: gridCols }}>
             {stats.map((s, i) => (
                 <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                    style={{ padding: "44px clamp(32px,4vw,56px)", borderRight: i < stats.length - 1 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
+                    style={{ padding: "44px clamp(32px,4vw,56px)", borderRight: i < stats.length - 1 ? `1px solid ${T.border}` : "none", background: T.bg, position: "relative", transition: "background 0.2s" }}>
                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: s.accent || ACCENT_CYCLE[i % ACCENT_CYCLE.length] }} />
                     <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(36px,3.5vw,54px)", lineHeight: 1, color: T.pink, marginBottom: 8 }}>{s.num}</div>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
@@ -1879,10 +1879,10 @@ function LabSection() {
                 initial={false}
                 animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
                 transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                style={{ overflow: "hidden", background: T.bg2 }}
+                style={{ overflow: "hidden" }}
             >
                 <div style={{ maxWidth: 1400, margin: "0 auto", width: "100%" }}>
-                    <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)", background: T.bg2, display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
+                    <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)", display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
                         <div style={{ flex: 1, minWidth: 260 }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: T.sand, marginBottom: 10 }}>Editorial Design · Newsletter · Nov 2024</div>
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(28px,3vw,42px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 14 }}>The Self-Care Scoop</div>
@@ -2101,7 +2101,7 @@ export default function Portfolio() {
                         ]} />
 
                         {/* Approach tags — market/brand language */}
-                        <div style={{ padding: "24px 32px", borderTop: `1px solid ${T.border}`, paddingBottom: "72px", background: T.bg2 }}>
+                        <div style={{ padding: "24px 32px", borderTop: `1px solid ${T.border}`, paddingBottom: "72px" }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Approach</div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                                 {[
@@ -2120,7 +2120,7 @@ export default function Portfolio() {
                         </div>
 
                         {/* Currently + Education stacked */}
-                        <div style={{ padding: "24px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
+                        <div style={{ padding: "24px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Currently</div>
                             {[
                                 { dot: T.pink, label: "Open to full-time UX roles" },
@@ -2134,7 +2134,7 @@ export default function Portfolio() {
                             ))}
                         </div>
 
-                        <div style={{ padding: "24px 32px", background: T.bg2 }}>
+                        <div style={{ padding: "24px 32px" }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Education</div>
                             {[
                                 { school: "Columbia University", degree: "MS Applied Analytics", year: "2024" },
