@@ -252,14 +252,12 @@ function SelfCarePanel() {
     return (
         <div style={{ borderTop: `1px solid ${T.border}` }}>
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", borderBottom: `1px solid ${T.border}` }}>
-                {[["17","pages designed"],["1","publication"],["Columbia SPS","client"],["Nov 2024","published"]].map(([n,l],i) => (
-                    <div key={i} style={{ padding:"20px 24px", borderRight: i<3 ? `1px solid ${T.border}` : "none" }}>
-                        <div style={{ fontFamily:cond, fontWeight:900, fontSize: 34, color:T.pink, lineHeight:1 }}>{n}</div>
-                        <div style={{ fontFamily:mono, fontSize: 13, letterSpacing:"0.1em", textTransform:"uppercase", color:T.ink3, marginTop:4 }}>{l}</div>
-                    </div>
-                ))}
-            </div>
+            <StatBar cols={4} stats={[
+                { num: "17",           label: "Pages designed" },
+                { num: "1",            label: "Publication" },
+                { num: "Columbia SPS", label: "Client" },
+                { num: "Nov 2024",     label: "Published" },
+            ]} />
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", borderBottom:`1px solid ${T.border}` }}>
                 <div style={{ padding:"32px clamp(28px,4vw,56px)", borderRight:`1px solid ${T.border}`, display:"flex", flexDirection:"column", gap:16 }}>
                     <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>Overview</div>
@@ -396,16 +394,7 @@ function BlogPanel() {
             </div>
 
             {/* STATS */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px,1fr))", borderBottom: `1px solid ${T.border}` }}>
-                {STATS.map((s, i) => (
-                    <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                        style={{ padding: "40px clamp(28px,4vw,52px)", borderRight: i < 3 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
-                        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
-                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3.5vw,51px)", lineHeight: 1, color: T.pink, marginBottom: 5 }}>{s.num}</div>
-                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
-                    </motion.div>
-                ))}
-            </div>
+            <StatBar stats={STATS} />
 
             {/* TABS */}
             <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
@@ -701,23 +690,14 @@ function OdooPanel() {
             </div>
 
             {/* ── STATS ── */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px,1fr))", borderBottom: `1px solid ${T.border}` }}>
-                {[
-                    { num: "8",   label: "Screen groups", accent: T.pink },
-                    { num: "28+", label: "Screens designed", accent: T.sand },
-                    { num: "4",   label: "User roles",    accent: T.border2 },
-                    { num: "5",   label: "Custom modules", accent: T.pinkL },
-                    { num: "3",   label: "Fulfillment types", accent: T.pink },
-                    { num: "5",   label: "Order states (portal)", accent: T.sand },
-                ].map((s, i) => (
-                    <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                        style={{ padding: "40px clamp(28px,4vw,52px)", borderRight: i < 5 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
-                        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: s.accent }} />
-                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3vw,48px)", lineHeight: 1, color: T.pink, marginBottom: 5 }}>{s.num}</div>
-                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
-                    </motion.div>
-                ))}
-            </div>
+            <StatBar stats={[
+                { num: "8",   label: "Screen groups",        accent: T.pink },
+                { num: "28+", label: "Screens designed",     accent: T.sand },
+                { num: "4",   label: "User roles",           accent: T.border2 },
+                { num: "5",   label: "Custom modules",       accent: T.pinkL },
+                { num: "3",   label: "Fulfillment types",    accent: T.pink },
+                { num: "5",   label: "Order states (portal)",accent: T.sand },
+            ]} />
 
             {/* ── PROBLEM ── */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", borderBottom: `1px solid ${T.border}` }}>
@@ -955,29 +935,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── STATS ── */}
-            <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                borderBottom: `1px solid ${T.border}`,
-            }}>
-                {SA_STATS.map((s, i) => (
-                    <motion.div
-                        key={s.num}
-                        whileHover={{ background: T.pinkBg }}
-                        style={{
-                            padding: "28px 24px",
-                            borderRight: i < 3 ? `1px solid ${T.border}` : "none",
-                            background: T.bg2,
-                            transition: "background 0.2s",
-                            position: "relative",
-                        }}
-                    >
-                        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.rust, T.sage][i] }} />
-                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 46, lineHeight: 1, color: T.pink, marginBottom: 6 }}>{s.num}</div>
-                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
-                    </motion.div>
-                ))}
-            </div>
+            <StatBar stats={SA_STATS.map((s, i) => ({ ...s, accent: [T.pink, T.sand, T.rust, T.sage][i] }))} cols={4} />
 
             {/* ── PROBLEM ── */}
             <div style={{
@@ -1438,9 +1396,28 @@ function MagneticPhoto() {
 }
 
 // ── STAT ─────────────────────────────────────────────────────────────────────
+// ── UNIVERSAL STAT BAR ───────────────────────────────────────────────────────
+const ACCENT_CYCLE = [T.pink, T.sand, T.border2, T.pinkL, T.sage, T.rust]
+
+function StatBar({ stats, cols }) {
+    const gridCols = cols ? `repeat(${cols}, 1fr)` : `repeat(auto-fit, minmax(130px,1fr))`
+    return (
+        <div style={{ display: "grid", gridTemplateColumns: gridCols, borderBottom: `1px solid ${T.border}` }}>
+            {stats.map((s, i) => (
+                <motion.div key={i} whileHover={{ background: T.pinkBg }}
+                    style={{ padding: "44px clamp(32px,4vw,56px)", borderRight: i < stats.length - 1 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
+                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: s.accent || ACCENT_CYCLE[i % ACCENT_CYCLE.length] }} />
+                    <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(36px,3.5vw,54px)", lineHeight: 1, color: T.pink, marginBottom: 8 }}>{s.num}</div>
+                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
+                </motion.div>
+            ))}
+        </div>
+    )
+}
+
 function Stat({ num, label }) {
     return (
-        <motion.div whileHover={{ background: T.pinkBg }} style={{ padding: "40px clamp(28px,4vw,52px)", cursor: "default", background: T.bg2, transition: "background 0.2s" }}>
+        <motion.div whileHover={{ background: T.pinkBg }} style={{ padding: "44px clamp(32px,4vw,56px)", cursor: "default", background: T.bg2, transition: "background 0.2s", position: "relative" }}>
             <motion.div whileHover={{ scale: 1.06, originX: 0 }} style={{ fontFamily: bebas, fontSize: 60, lineHeight: 1, color: T.pink, letterSpacing: "0.04em", marginBottom: 8 }}>{num}</motion.div>
             <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{label}</div>
         </motion.div>
@@ -1686,18 +1663,12 @@ export default function Portfolio() {
                         </div>
 
                         {/* Stats — horizontal with big type */}
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", background: T.bg }}>
-                            {[
-                                { n: "3+", l: "Years in UX" },
-                                { n: "40+", l: "Screens shipped" },
-                                { n: "35%", l: "ROI uplift" },
-                                { n: "4", l: "Live products" },
-                            ].map(({ n, l }, i) => (
-                                <div key={i} style={{ borderRight: i % 2 === 0 ? `1px solid ${T.border}` : "none", borderBottom: i < 2 ? `1px solid ${T.border}` : "none" }}>
-                                    <Stat num={n} label={l} />
-                                </div>
-                            ))}
-                        </div>
+                        <StatBar cols={2} stats={[
+                            { num: "3+",  label: "Years in UX" },
+                            { num: "40+", label: "Screens shipped" },
+                            { num: "35%", label: "ROI uplift" },
+                            { num: "4",   label: "Live products" },
+                        ]} />
 
                         {/* Approach tags — market/brand language */}
                         <div style={{ padding: "24px 32px", borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
