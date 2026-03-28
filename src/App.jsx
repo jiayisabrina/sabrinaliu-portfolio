@@ -352,7 +352,7 @@ function BlogPanel() {
         <div style={{ borderTop: `1px solid ${T.pinkL}` }}>
 
             {/* HEADER */}
-            <div style={{ padding: "36px clamp(32px,7vw,96px) 32px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 40, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -362,7 +362,7 @@ function BlogPanel() {
                             Shop Appliances<br />
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Blog & SEO</span>
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 440 }}>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 440 }}>
                             Lead content strategist and writer for the Shop Appliances blog — producing SEO-optimized buying guides, installation guides, and product content. Grew organic traffic by 60% through data-driven content planning, keyword strategy, and UX-informed writing that converts readers into buyers.
                         </p>
                     </div>
@@ -392,16 +392,16 @@ function BlogPanel() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px,1fr))", borderBottom: `1px solid ${T.border}` }}>
                 {STATS.map((s, i) => (
                     <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                        style={{ padding: "24px 20px", borderRight: i < 3 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
+                        style={{ padding: "36px 28px", borderRight: i < 3 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
                         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3.5vw,51px)", lineHeight: 1, color: T.pink, marginBottom: 5 }}>{s.num}</div>
-                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.5 }}>{s.label}</div>
+                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
                     </motion.div>
                 ))}
             </div>
 
             {/* TABS */}
-            <div style={{ padding: "32px clamp(32px,7vw,96px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
                     {[
                         { id: "overview", label: "Content strategy" },
@@ -425,20 +425,20 @@ function BlogPanel() {
                         <div>
                             <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>The content strategy</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(23px,2vw,26px)", textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Content as a conversion funnel</div>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 14px" }}>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: "0 0 14px" }}>
                                 The blog wasn't built as a publishing exercise — it was designed as a marketing infrastructure layer. Every article was mapped to a point in the buyer journey and connected directly to product collections, brand pages, and category landing pages.
                             </p>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 16px" }}>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: "0 0 16px" }}>
                                 Content planning was driven by keyword research in SEMrush and performance data in GA4 — identifying high-volume, low-competition search queries where Shop Appliances could build authority quickly. The significant domain authority growth reflects the cumulative impact of consistent, strategically-targeted content.
                             </p>
                             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                                 <div style={{ background: T.pinkBg, border: `1px solid ${T.pinkL}`, borderLeft: `3px solid ${T.pink}`, borderRadius: "0 3px 3px 0", padding: "12px 14px" }}>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.08em", color: T.pink, marginBottom: 4 }}>Google page 1 rankings</div>
-                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0 }}>Multiple articles rank on page 1 of Google for their target keywords — buying guide queries, brand comparisons, and appliance-type searches — within weeks of publication on competitive, high-volume terms.</p>
+                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: 0 }}>Multiple articles rank on page 1 of Google for their target keywords — buying guide queries, brand comparisons, and appliance-type searches — within weeks of publication on competitive, high-volume terms.</p>
                                 </div>
                                 <div style={{ background: T.pinkBg, border: `1px solid ${T.pinkL}`, borderLeft: `3px solid ${T.pink}`, borderRadius: "0 3px 3px 0", padding: "12px 14px" }}>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.08em", color: T.pink, marginBottom: 4 }}>Cited by major AI platforms</div>
-                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0 }}>Content cited as a source by ChatGPT, Google Gemini, and Notebook LM when answering appliance queries — a signal of factual authority and structural clarity that AI systems recognize and surface to users.</p>
+                                    <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: 0 }}>Content cited as a source by ChatGPT, Google Gemini, and Notebook LM when answering appliance queries — a signal of factual authority and structural clarity that AI systems recognize and surface to users.</p>
                                 </div>
                             </div>
                         </div>
@@ -457,7 +457,7 @@ function BlogPanel() {
                                         <div style={{ width: 3, height: "100%", minHeight: 28, background: c.color, flexShrink: 0, borderRadius: 1, marginTop: 3 }} />
                                         <div>
                                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 2 }}>{c.cat}</div>
-                                            <div style={{ fontFamily: mono, fontSize: 14, color: T.ink2, lineHeight: 1.6 }}>{c.desc}</div>
+                                            <div style={{ fontFamily: mono, fontSize: 14, color: T.ink2, lineHeight: 1.9 }}>{c.desc}</div>
                                         </div>
                                     </div>
                                 ))}
@@ -471,7 +471,7 @@ function BlogPanel() {
                     <div style={{ display: "flex", flexDirection: "column", gap: 1, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
                         {ARTICLES.map((a, i) => (
                             <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                                style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "18px 24px", borderBottom: i < ARTICLES.length - 1 ? `1px solid ${T.border}` : "none", transition: "background 0.15s" }}>
+                                style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "24px 32px", borderBottom: i < ARTICLES.length - 1 ? `1px solid ${T.border}` : "none", transition: "background 0.15s" }}>
                                 <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 16, alignItems: "start" }}>
                                     <div>
                                         <div style={{ display: "flex", gap: 8, marginBottom: 6, flexWrap: "wrap", alignItems: "center" }}>
@@ -479,7 +479,7 @@ function BlogPanel() {
                                             <span style={{ fontFamily: mono, fontSize: 13, color: T.ink3 }}>{a.date}</span>
                                         </div>
                                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(18px,1.8vw,23px)", textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink, marginBottom: 6, lineHeight: 1.2 }}>{a.title}</div>
-                                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: "0 0 8px" }}>{a.desc}</p>
+                                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: "0 0 8px" }}>{a.desc}</p>
                                         <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
                                             {a.tags.map(tag => (
                                                 <span key={tag} style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.06em", padding: "2px 8px", borderRadius: 2, border: `1px solid ${T.border}`, color: T.ink3 }}>{tag}</span>
@@ -516,7 +516,7 @@ function BlogPanel() {
                                 <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(26px,2.5vw,37px)", color: T.border2, lineHeight: 1 }}>{s.num}</div>
                                 <div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink, marginBottom: 7 }}>{s.title}</div>
-                                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 640 }}>{s.body}</p>
+                                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 640 }}>{s.body}</p>
                                 </div>
                             </div>
                         ))}
@@ -525,7 +525,7 @@ function BlogPanel() {
             </div>
 
             {/* OUTCOMES */}
-            <div style={{ padding: "32px clamp(32px,7vw,96px)", background: T.bg2 }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.bg2 }}>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(23px,2vw,26px)", textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>What this demonstrates</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 8 }}>
                     {[
@@ -539,7 +539,7 @@ function BlogPanel() {
                             style={{ border: `1px solid ${T.border}`, borderRadius: 2, padding: "18px", background: T.bg, position: "relative", overflow: "hidden", transition: "all 0.2s" }}>
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.pink, marginBottom: 8 }}>{o.t}</div>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.8, color: T.ink2, margin: 0 }}>{o.b}</p>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{o.b}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -656,7 +656,7 @@ function OdooPanel() {
         <div style={{ borderTop: `1px solid ${T.pinkL}` }}>
 
             {/* ── HEADER ── */}
-            <div style={{ padding: "36px clamp(32px,7vw,96px) 32px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 40, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -667,7 +667,7 @@ function OdooPanel() {
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Order System</span><br />
                             Redesign
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 440 }}>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 440 }}>
                             End-to-end redesign of Homery's Odoo ERP across the full order lifecycle — from pre-order questionnaire to customer delivery portal. Custom modules for appliance retail: spiff tracking, commission management, DispatchTrack integration, freight payments, and a branded customer order portal.
                         </p>
                     </div>
@@ -702,23 +702,23 @@ function OdooPanel() {
                     { num: "5",   label: "Order states (portal)", accent: T.sand },
                 ].map((s, i) => (
                     <motion.div key={i} whileHover={{ background: T.pinkBg }}
-                        style={{ padding: "22px 18px", borderRight: i < 5 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
+                        style={{ padding: "36px 28px", borderRight: i < 5 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
                         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: s.accent }} />
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3vw,48px)", lineHeight: 1, color: T.pink, marginBottom: 5 }}>{s.num}</div>
-                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.5 }}>{s.label}</div>
+                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
                     </motion.div>
                 ))}
             </div>
 
             {/* ── PROBLEM ── */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", borderBottom: `1px solid ${T.border}` }}>
-                <div style={{ padding: "32px 28px 32px clamp(32px,7vw,96px)", borderRight: `1px solid ${T.border}` }}>
+                <div style={{ padding: "32px 28px 32px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Stock Odoo wasn't built<br />for appliance retail</div>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 12px" }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: "0 0 12px" }}>
                         Homery's operations run across sales, purchasing, warehousing, dropship, accounting, and last-mile delivery — all with appliance-retail-specific requirements that Odoo's default modules don't address. Spiff tracking, commission management, DispatchTrack dispatch, freight payment reconciliation, and a customer-facing order portal all needed to be designed from scratch.
                     </p>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0 }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: 0 }}>
                         Beyond custom modules, the base UX needed a complete rethink — stock availability buried in Inventory, pricing tier hidden in CRM, order status requiring visits to three modules. The team was working around the system rather than through it.
                     </p>
                 </div>
@@ -735,7 +735,7 @@ function OdooPanel() {
                             <div style={{ width: 5, height: 5, borderRadius: "50%", background: T.pink, flexShrink: 0, marginTop: 5 }} />
                             <div>
                                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 3 }}>{p.t}</div>
-                                <div style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2 }}>{p.b}</div>
+                                <div style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2 }}>{p.b}</div>
                             </div>
                         </div>
                     ))}
@@ -744,7 +744,7 @@ function OdooPanel() {
 
             {/* ── MAIN SCREEN EXPLORER ── */}
             <div style={{ borderBottom: `1px solid ${T.border}`, background: T.bg }}>
-                <div style={{ padding: "32px clamp(32px,7vw,96px) 20px" }}>
+                <div style={{ padding: "52px clamp(40px,8vw,120px) 28px" }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Screen Explorer</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>28+ screens across 8 document types</div>
 
@@ -779,7 +779,7 @@ function OdooPanel() {
                 )}
 
                 {/* Section description */}
-                <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: "0 0 14px", maxWidth: 760 }}>{group.desc}</p>
+                <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: "0 0 14px", maxWidth: 760 }}>{group.desc}</p>
                 </div>
 
                 {/* Screen display — full width, no padding, no scroll */}
@@ -791,15 +791,15 @@ function OdooPanel() {
                             <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
                         </div>
                     )}
-                    <div style={{ padding: "14px clamp(32px,7vw,96px)", background: T.bg2, borderTop: `1px solid ${T.border}` }}>
+                    <div style={{ padding: "14px clamp(40px,8vw,120px)", background: T.bg2, borderTop: `1px solid ${T.border}` }}>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 5 }}>{currentScreen.label}</div>
-                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0 }}>{currentScreen.desc}</p>
+                        <p style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{currentScreen.desc}</p>
                     </div>
                 </div>
             </div>
 
             {/* ── KEY DESIGN DECISIONS ── */}
-            <div style={{ padding: "32px clamp(32px,7vw,96px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>03 — Design Decisions</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>Decisions that defined the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -821,7 +821,7 @@ function OdooPanel() {
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(26px,2.5vw,37px)", color: T.border2, lineHeight: 1 }}>{d.num}</div>
                             <div>
                                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>{d.title}</div>
-                                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 640 }}>{d.body}</p>
+                                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 640 }}>{d.body}</p>
                             </div>
                         </div>
                     ))}
@@ -829,7 +829,7 @@ function OdooPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "32px clamp(32px,7vw,96px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>04 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Jun – Oct 2025 · 4 phases</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -839,20 +839,20 @@ function OdooPanel() {
                         { num: "03", weeks: "Aug – Sep 2025", title: "Wireframes & flow design", body: "Low-fidelity wireframes for all 8 document types with explicit before/after comparisons. Reviewed with all user groups. Iterated on the inline stock visibility pattern and cross-module nav bar until the ops team could complete all key tasks without module-switching.", detail: "Output: 60+ wireframe screens · 2 rounds of user review sessions" },
                         { num: "04", weeks: "Oct 2025", title: "High-fidelity UI & handoff", body: "Full high-fidelity designs for all screens, component library for Odoo custom views, email templates, and customer portal. Annotated specs for the Odoo developer covering all custom field additions and module requirements.", detail: "Output: 28+ final screens · component library · developer handoff doc" },
                     ].map((s, i) => (
-                        <div key={s.num} style={{ background: T.bg, padding: "22px 18px", position: "relative" }}>
+                        <div key={s.num} style={{ background: T.bg, padding: "36px 28px", position: "relative" }}>
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", color: T.pink, marginBottom: 5 }}>{s.weeks}</div>
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 28, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{s.title}</div>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.8, color: T.ink2, margin: "0 0 10px" }}>{s.body}</p>
-                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.6 }}>{s.detail}</div>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 10px" }}>{s.body}</p>
+                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.9 }}>{s.detail}</div>
                         </div>
                     ))}
                 </div>
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "32px clamp(32px,7vw,96px)", background: T.pinkBg }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.pinkBg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>What changed for Homery</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 8, marginBottom: 16 }}>
@@ -868,12 +868,12 @@ function OdooPanel() {
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(34px,3vw,48px)", color: T.border, lineHeight: 1, marginBottom: 8 }}>0{i+1}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.pink, marginBottom: 6 }}>{o.t}</div>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.8, color: T.ink2, margin: 0 }}>{o.b}</p>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{o.b}</p>
                         </motion.div>
                     ))}
                 </div>
                 <div style={{ background: T.ink, borderRadius: 2, padding: "18px 22px" }}>
-                    <p style={{ fontFamily: serif, fontSize: "clamp(18px,1.6vw,23px)", fontStyle: "italic", color: T.pinkL, lineHeight: 1.75, margin: 0, opacity: 0.9 }}>
+                    <p style={{ fontFamily: serif, fontSize: "clamp(18px,1.6vw,23px)", fontStyle: "italic", color: T.pinkL, lineHeight: 2.0, margin: 0, opacity: 0.9 }}>
                         "The goal was to make Odoo feel like it was built for Homery — not like Homery was forced to adapt to Odoo. Every custom module, every inline field, every cross-module link was a deliberate decision to reduce the distance between what the system showed and what the team actually needed to see."
                     </p>
                 </div>
@@ -909,7 +909,7 @@ function ShopAppliancesPanel() {
                         Shop Appliances<br />
                         <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Brand System</span>
                     </div>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0, maxWidth: 420 }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 420 }}>
                         Designed and delivered a modular brand page system for Shop Appliances. The system covers every brand in their catalog, from mass-market household names to luxury European imports, each with a dedicated editorial landing page, structured category grid, and a comprehensive Figma spec used directly by the development team.
                     </p>
                 </div>
@@ -958,7 +958,7 @@ function ShopAppliancesPanel() {
                     >
                         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.rust, T.sage][i] }} />
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 46, lineHeight: 1, color: T.pink, marginBottom: 6 }}>{s.num}</div>
-                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.5 }}>{s.label}</div>
+                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{s.label}</div>
                     </motion.div>
                 ))}
             </div>
@@ -973,10 +973,10 @@ function ShopAppliancesPanel() {
                 <div style={{ padding: "36px 40px 36px 64px", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Generic pages,<br />no brand identity</div>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: "0 0 12px" }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: "0 0 12px" }}>
                         Shop Appliances carries 35+ brands spanning three market tiers. Despite their depth of inventory, every brand was funneled through a generic collection page — no storytelling, no differentiation, no editorial hierarchy.
                     </p>
-                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, margin: 0 }}>
+                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: 0 }}>
                         High-intent shoppers researching a specific brand were landing on pages identical to a plain filtered product list.
                     </p>
                 </div>
@@ -991,7 +991,7 @@ function ShopAppliancesPanel() {
                     ].map((item, i) => (
                         <div key={i} style={{ display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" }}>
                             <span style={{ color: T.pink, fontFamily: mono, fontSize: 14, marginTop: 1, flexShrink: 0 }}>—</span>
-                            <span style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2 }}>{item}</span>
+                            <span style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2 }}>{item}</span>
                         </div>
                     ))}
                 </div>
@@ -1013,7 +1013,7 @@ function ShopAppliancesPanel() {
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 30, color: T.border2, lineHeight: 1 }}>{d.num}</div>
                             <div>
                                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>{d.title}</div>
-                                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.85, color: T.ink2, margin: 0, maxWidth: 580 }}>{d.body}</p>
+                                <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.05, color: T.ink2, margin: 0, maxWidth: 580 }}>{d.body}</p>
                             </div>
                         </div>
                     ))}
@@ -1071,12 +1071,12 @@ function ShopAppliancesPanel() {
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>How it was built</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
                     {SA_PROCESS.map((s, i) => (
-                        <div key={s.num} style={{ background: T.bg, padding: "24px 20px", position: "relative" }}>
+                        <div key={s.num} style={{ background: T.bg, padding: "36px 28px", position: "relative" }}>
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.rust, T.sage][i] }} />
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 34, color: T.border, lineHeight: 1, marginBottom: 8 }}>{s.num}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{s.title}</div>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.8, color: T.ink2, margin: "0 0 12px" }}>{s.body}</p>
-                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.6 }}>{s.detail}</div>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 12px" }}>{s.body}</p>
+                            <div style={{ borderLeft: `2px solid ${T.pinkL}`, paddingLeft: 10, fontFamily: mono, fontSize: 13, color: T.ink2, lineHeight: 1.9 }}>{s.detail}</div>
                         </div>
                     ))}
                 </div>
@@ -1172,7 +1172,7 @@ function ShopAppliancesPanel() {
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.rust, T.sage][i] }} />
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 38, color: T.border, lineHeight: 1, marginBottom: 10 }}>0{i + 1}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 8 }}>{o.t}</div>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.8, color: T.ink2, margin: 0 }}>{o.b}</p>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{o.b}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -1258,7 +1258,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                     ))}
                 </div>
 
-                <div style={{ padding: "clamp(22px,3vw,40px) clamp(32px,7vw,96px)" }}>
+                <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)" }}>
                     {/* Top row: num + type label */}
                     <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
                         <span style={{ fontFamily: serif, fontSize: 15, fontStyle: "italic", color: T.ink3, letterSpacing: "0.02em" }}>{project.num}</span>
@@ -1279,7 +1279,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                             <motion.p
                                 animate={{ opacity: isOpen ? 0 : 1, height: isOpen ? 0 : "auto" }}
                                 transition={{ duration: 0.25 }}
-                                style={{ fontFamily: mono, fontSize: 12, lineHeight: 1.75, color: T.ink2, margin: 0, maxWidth: 560, overflow: "hidden" }}
+                                style={{ fontFamily: mono, fontSize: 12, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 560, overflow: "hidden" }}
                             >{project.desc}</motion.p>
                         </div>
 
@@ -1318,7 +1318,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                         </div>
                         <div style={{ padding: "28px clamp(28px,4vw,56px)", display: "flex", flexDirection: "column", gap: 12 }}>
                             <span style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: T.pink }}>{project.tag}</span>
-                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 1.85, color: T.ink2, margin: 0 }}>{project.desc}</p>
+                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.05, color: T.ink2, margin: 0 }}>{project.desc}</p>
                             <motion.span
                                 data-cursor="true"
                                 whileHover="hover"
@@ -1401,7 +1401,7 @@ function MagneticPhoto() {
                         <PixelBunny color={T.pink} flip={true} />
                     </div>
                     {/* Polaroid caption */}
-                    <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", color: T.ink3, textTransform: "uppercase", textAlign: "center", lineHeight: 1.8 }}>
+                    <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", color: T.ink3, textTransform: "uppercase", textAlign: "center", lineHeight: 2.0 }}>
                         sabrina · 2026<br />
                         <span style={{ color: T.pink, fontSize: 9 }}>hover to meet me ♡</span>
                     </div>
@@ -1429,7 +1429,7 @@ function Stat({ num, label }) {
     return (
         <motion.div whileHover={{ background: T.pinkBg }} style={{ padding: "36px 28px", cursor: "default", background: T.bg2, transition: "background 0.2s" }}>
             <motion.div whileHover={{ scale: 1.06, originX: 0 }} style={{ fontFamily: bebas, fontSize: 60, lineHeight: 1, color: T.pink, letterSpacing: "0.04em", marginBottom: 8 }}>{num}</motion.div>
-            <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.5 }}>{label}</div>
+            <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, lineHeight: 1.8 }}>{label}</div>
         </motion.div>
     )
 }
@@ -1501,7 +1501,7 @@ export default function Portfolio() {
 
                         {/* NAV — full width, sits outside the content column */}
                         <div id="nav-sentinel" style={{ position: "sticky", top: 0, zIndex: 100, background: T.bg3, borderBottom: `1px solid ${T.border2}` }}>
-                            <div style={{ maxWidth: 1440, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 clamp(32px,7vw,96px)", height: 52 }}>
+                            <div style={{ maxWidth: 1440, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 clamp(40px,8vw,120px)", height: 52 }}>
                                 <span style={{ fontFamily: "'AcroterionJF', cursive", fontWeight: 700, fontSize: 30, color: T.pink, letterSpacing: "0.01em" }}>Sabrina Liu</span>
                                 <div style={{ display: "flex", gap: "clamp(16px,3vw,36px)" }}>
                                     {[["Work","work"],["About","about"],["Lab","lab"],["Contact","contact"]].map(([label, id]) => (
@@ -1523,7 +1523,7 @@ export default function Portfolio() {
 
                 {/* HERO */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(260px,30vw,360px)", minHeight: 560, borderBottom: `1px solid ${T.border}` }}>
-                    <div style={{ padding: "48px clamp(32px,7vw,96px) 40px", display: "flex", flexDirection: "column", borderRight: `1px solid ${T.border}` }}>
+                    <div style={{ padding: "48px clamp(40px,8vw,120px) 40px", display: "flex", flexDirection: "column", borderRight: `1px solid ${T.border}` }}>
                         <div>
                             <div style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}>
                                 <span style={{ display: "inline-block", width: 22, height: 1, background: T.ink3 }} />
@@ -1537,7 +1537,7 @@ export default function Portfolio() {
 
                         </div>
                         <div style={{ marginTop: "auto", paddingTop: 22, borderTop: `1px solid ${T.border}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 420, margin: 0 }}>
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.15, color: T.ink2, maxWidth: 420, margin: 0 }}>
                                 UX Designer — ERP, e-commerce, brand systems.<br />Design systems that sell, flows that convert,<br />brands that mean something. Brooklyn, NY.
                             </p>
                             <motion.div data-cursor="true" whileHover={{ y: -2, background: "#d44c68" }} whileTap={{ y: 0 }}
@@ -1573,7 +1573,7 @@ export default function Portfolio() {
 
                 {/* WORK */}
                 <div id="work" style={{ borderBottom: `1px solid ${T.border}` }}>
-                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "16px clamp(32px,7vw,96px)", borderBottom: `1px solid ${T.border}`, flexWrap: "wrap", gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "16px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, flexWrap: "wrap", gap: 8 }}>
                         <span style={{ fontFamily: bebas, fontSize: 30, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink }}>Selected Work</span>
                         <span style={{ fontFamily: mono, fontSize: 14, color: T.ink3, letterSpacing: "0.1em" }}>click to expand</span>
                     </div>
@@ -1587,7 +1587,7 @@ export default function Portfolio() {
                     style={{ display: "grid", gridTemplateColumns: "1fr clamp(280px,38%,480px)", borderBottom: `1px solid ${T.border}` }}>
 
                     {/* LEFT — bio + principles */}
-                    <div style={{ padding: "48px clamp(32px,7vw,96px)", borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 28 }}>
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 28 }}>
                         <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.22em", textTransform: "uppercase", color: T.ink3, display: "flex", alignItems: "center", gap: 10 }}>
                             <span style={{ display: "inline-block", width: 14, height: 1, background: T.ink3 }} />
                             02 — About
@@ -1595,13 +1595,13 @@ export default function Portfolio() {
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(48px,5vw,80px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink }}>
                             The designer<br />behind<br /><em style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>the work.</em>
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, maxWidth: 480, margin: 0 }}>
                             I'm Sabrina, a UX and UI designer shaped by both studio art and data driven marketing.
                         </p>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, maxWidth: 480, margin: 0 }}>
                             I started in studio art and later moved into data and marketing, where I learned how products perform in real contexts and how people actually interact with them. That experience still shapes how I design today. I think about how things look, but just as much about how they behave, how they scale, and what they ask of the people using them.
                         </p>
-                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, maxWidth: 480, margin: 0 }}>
                             I am most interested in the space where brand meets function. ERP workflows that still feel considered, e commerce experiences that sell without being loud, and editorial systems with clear hierarchy. To me, design is not just visual polish. It is structure, clarity, and a series of decisions that make something feel intuitive or frustrating.
                         </p>
 
@@ -1623,7 +1623,7 @@ export default function Portfolio() {
                                         </div>
                                         <div>
                                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink, marginBottom: 5 }}>{p.title}</div>
-                                            <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.75, color: T.ink2, margin: 0 }}>{p.body}</p>
+                                            <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{p.body}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -1718,7 +1718,7 @@ export default function Portfolio() {
 
                 {/* CTA */}
                 <motion.div id="contact" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}
-                    style={{ padding: "72px clamp(32px,7vw,96px)", background: T.pinkBg, borderTop: `1px solid ${T.pinkL}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 28, flexWrap: "wrap" }}>
+                    style={{ padding: "72px clamp(40px,8vw,120px)", background: T.pinkBg, borderTop: `1px solid ${T.pinkL}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 28, flexWrap: "wrap" }}>
                     <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(55px,7vw,110px)", lineHeight: 0.88, textTransform: "uppercase", color: T.ink }}>
                         Let's make<br />something that<br /><span style={{ color: T.pink, fontStyle: "italic" }}>feels like you.</span>
                     </div>
@@ -1736,7 +1736,7 @@ whileHover={{ color: T.pink }} style={{ fontFamily: mono, fontSize: 13, letterSp
 
                 {/* FOOTER — full width */}
                 <div style={{ background: T.bg3, borderTop: `1px solid ${T.border2}` }}>
-                    <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(32px,7vw,96px)", height: 44, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(40px,8vw,120px)", height: 44, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <span style={{ fontFamily: "'AcroterionJF', cursive", fontWeight: 600, fontSize: 16, color: T.ink3 }}>© 2026 Sabrina Liu — UX/UI Designer · Brooklyn, NY</span>
                         <span onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", color: T.ink3, cursor: "pointer" }}>↑ Top</span>
                     </div>
