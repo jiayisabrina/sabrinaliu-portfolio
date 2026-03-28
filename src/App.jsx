@@ -959,19 +959,26 @@ function OdooPanel() {
 
             {/* ── HEADER ── */}
             <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 40, alignItems: "start" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
                             UX Design · ERP · Jun – Oct 2025
                         </div>
-                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(37px,4vw,63px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>
+                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(37px,4vw,63px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>
                             Odoo<br />
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Order System</span><br />
                             Redesign
                         </div>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: 0, maxWidth: 640}}>
-                            End-to-end redesign of Homery's Odoo ERP across the full order lifecycle — from pre-order questionnaire to customer delivery portal. Custom modules for appliance retail: spiff tracking, commission management, DispatchTrack integration, freight payments, and a branded customer order portal.
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 24px", maxWidth: 600 }}>
+                            End-to-end redesign of Homery's Odoo ERP — sole designer on a system spanning 4 departments, 4 user roles, and 28+ screens. The challenge wasn't just visual: the existing system had no cross-module navigation, no inline stock data, and no customer-facing order visibility. Everything that's there now was designed from zero.
                         </p>
+                        {/* Pull quote */}
+                        <div style={{ borderLeft: `3px solid ${T.pink}`, paddingLeft: 20, marginTop: 8 }}>
+                            <p style={{ fontFamily: cond, fontStyle: "italic", fontWeight: 700, fontSize: "clamp(18px,2vw,22px)", lineHeight: 1.4, color: T.ink, margin: "0 0 6px" }}>
+                                "The team was working around the system rather than through it. That had to change."
+                            </p>
+                            <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink3 }}>Design rationale, Jun 2025</div>
+                        </div>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: "16px 28px" }}>
@@ -980,12 +987,27 @@ function OdooPanel() {
                                 { k: "Platform",  v: "Odoo ERP" },
                                 { k: "Modules",   v: "Sales · Purchase · Inventory · Accounting" },
                                 { k: "Users",     v: "Ops · Sales · Warehouse · Accounting" },
-                                { k: "Role",      v: "Lead UX Designer" },
+                                { k: "Role",      v: "Sole UX Designer" },
                                 { k: "Timeline",  v: "Jun – Oct 2025" },
                             ].map(m => (
                                 <div key={m.k}>
                                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: T.border2, marginBottom: 4 }}>{m.k}</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", color: T.ink }}>{m.v}</div>
+                                </div>
+                            ))}
+                        </div>
+                        {/* What I owned */}
+                        <div style={{ background: T.bg, border: `1px solid ${T.pinkL}`, borderRadius: 8, padding: "16px 20px" }}>
+                            <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 10 }}>What I owned</div>
+                            {[
+                                "Full UX across 8 document types — Sales, PO, Delivery, Dropship, Invoice, Payment, Portal, Components",
+                                "Designed 5 custom modules from scratch: Spiff, Commission, DispatchTrack, Freight Payments, Pre-order Questionnaire",
+                                "Embedded with each user group to map workflows before designing a single screen",
+                                "Delivered annotated specs, component library, and dev handoff doc to Odoo developer",
+                            ].map((item, i) => (
+                                <div key={i} style={{ display: "flex", gap: 10, marginBottom: i < 3 ? 8 : 0, alignItems: "flex-start" }}>
+                                    <div style={{ width: 4, height: 4, borderRadius: "50%", background: T.pink, flexShrink: 0, marginTop: 7 }} />
+                                    <div style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2 }}>{item}</div>
                                 </div>
                             ))}
                         </div>
@@ -1011,9 +1033,14 @@ function OdooPanel() {
                     <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 12px"}}>
                         Homery's operations run across sales, purchasing, warehousing, dropship, accounting, and last-mile delivery — all with appliance-retail-specific requirements that Odoo's default modules don't address. Spiff tracking, commission management, DispatchTrack dispatch, freight payment reconciliation, and a customer-facing order portal all needed to be designed from scratch.
                     </p>
-                    <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: 0}}>
+                    <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 20px"}}>
                         Beyond custom modules, the base UX needed a complete rethink — stock availability buried in Inventory, pricing tier hidden in CRM, order status requiring visits to three modules. The team was working around the system rather than through it.
                     </p>
+                    {/* The pivot */}
+                    <div style={{ background: T.pinkBg, border: `1px solid ${T.pinkL}`, borderLeft: `3px solid ${T.pink}`, borderRadius: "0 6px 6px 0", padding: "14px 16px" }}>
+                        <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 6 }}>The pivot</div>
+                        <div style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2 }}>Early research invalidated the original brief — stakeholders wanted a cosmetic refresh. Workflow mapping with warehouse staff showed the problem was structural: wrong IA, missing data surfaces, no cross-module cohesion. I reframed the scope from visual polish to system redesign. That decision defined the entire project.</div>
+                    </div>
                 </div>
                 <div style={{ padding: "32px 28px", background: T.bg2 }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>What needed solving</div>
@@ -1175,19 +1202,22 @@ function OdooPanel() {
             {/* ── OUTCOMES ── */}
             <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.pinkBg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Outcomes</div>
-                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>What changed for Homery</div>
+                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>What changed for Homery</div>
+                <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 24px", maxWidth: 600 }}>
+                    A system that once required 3 module visits to answer a single question now answers it in one screen. The design didn't just clean up the UI — it eliminated entire categories of friction.
+                </p>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 8, marginBottom: 16 }}>
                     {[
-                        { t: "Single system feel", b: "CRM, Sales, Inventory and Accounting now share a unified design language and the cross-module nav bar — no longer feeling like four separate tools." },
-                        { t: "Inline stock cuts navigation", b: "IC Stock, Vendor Stock, and Free to Use visible on every order line. Inventory tab visits during order building dropped to near zero." },
-                        { t: "Customer portal reduces calls", b: "View Your Order gives customers real-time order pipeline visibility — eliminating the most frequent category of inbound support requests." },
-                        { t: "Custom modules in Odoo context", b: "Spiff, Commission, DispatchTrack, Freight Payments, and Pre-Order Questionnaire all live in Odoo — no more spreadsheet workarounds or external tools for these workflows." },
+                        { num: "01", t: "One system, not six modules", b: "CRM, Sales, Inventory and Accounting now share a unified design language and cross-module nav bar. Staff describe it as finally feeling like one tool." },
+                        { num: "02", t: "Inventory tab visits: near zero", b: "IC Stock, Vendor Stock, and Free to Use visible on every order line. The most-reported time sink during discovery is now eliminated during order building." },
+                        { num: "03", t: "Customer portal absorbs inbound calls", b: "View Your Order gives customers real-time order pipeline visibility — eliminating the highest-volume category of inbound support requests." },
+                        { num: "04", t: "Five custom modules, zero spreadsheets", b: "Spiff, Commission, DispatchTrack, Freight Payments, and Pre-Order Questionnaire all live natively in Odoo. No more external workarounds." },
                     ].map((o, i) => (
                         <motion.div key={i}
                             whileHover={{ background: "#fff", borderColor: T.pinkL }}
                             style={{ border: `1px solid ${T.border}`, borderRadius: 2, padding: "18px", background: T.bg, position: "relative", overflow: "hidden", transition: "all 0.2s" }}>
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: [T.pink, T.sand, T.border2, T.pinkL][i] }} />
-                            <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(34px,3vw,48px)", color: T.border, lineHeight: 1, marginBottom: 8 }}>0{i+1}</div>
+                            <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(34px,3vw,48px)", color: T.border, lineHeight: 1, marginBottom: 8 }}>{o.num}</div>
                             <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.pink, marginBottom: 6 }}>{o.t}</div>
                             <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0}}>{o.b}</p>
                         </motion.div>
