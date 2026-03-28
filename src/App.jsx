@@ -893,11 +893,6 @@ function OdooPanel() {
                         </motion.div>
                     ))}
                 </div>
-                <div style={{ background: T.ink, borderRadius: 2, padding: "18px 22px" }}>
-                    <p style={{ fontFamily: serif, fontSize: "clamp(18px,1.6vw,23px)", fontStyle: "italic", color: T.pinkL, lineHeight: 2.0, margin: 0, opacity: 0.9 }}>
-                        "The goal was to make Odoo feel like it was built for Homery — not like Homery was forced to adapt to Odoo. Every custom module, every inline field, every cross-module link was a deliberate decision to reduce the distance between what the system showed and what the team actually needed to see."
-                    </p>
-                </div>
             </div>
         </div>
     )
@@ -1592,7 +1587,7 @@ export default function Portfolio() {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <MagneticPhoto />
-                        <div style={{ padding: "14px 16px", display: "flex", gap: 8, flexWrap: "wrap", background: T.bg2 }}>
+                        <div style={{ padding: "14px clamp(40px,8vw,120px)", display: "flex", gap: 8, flexWrap: "nowrap", background: T.bg2, overflowX: "auto" }}>
                             <Tag label="UX Design" variant="pink" />
                             <Tag label="Branding" variant="sand" />
                             <Tag label="Systems" variant="mist" />
