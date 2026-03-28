@@ -247,9 +247,11 @@ import OI from './images_oi.js'
 // ── SELF-CARE SCOOP PANEL ────────────────────────────────────────────────────
 function SelfCarePanel() {
     const [active, setActive] = useState(0)
+    const [lightbox, setLightbox] = useState(null)
     const pages = Array.from({ length: 17 }, (_, i) => `nl${i + 1}`)
     return (
         <div style={{ borderTop: `1px solid ${T.border}` }}>
+            {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", borderBottom: `1px solid ${T.border}` }}>
                 {[["17","pages designed"],["1","publication"],["Columbia SPS","client"],["Nov 2024","published"]].map(([n,l],i) => (
                     <div key={i} style={{ padding:"20px 24px", borderRight: i<3 ? `1px solid ${T.border}` : "none" }}>
@@ -276,9 +278,12 @@ function SelfCarePanel() {
                 <div style={{ padding:"28px clamp(28px,4vw,56px)", display:"flex", flexDirection:"column", gap:16 }}>
                     <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>All Pages</div>
                     <div style={{ background: T.bg3, padding: "28px", borderRadius: 20, boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)" }}>
-                        <div style={{ borderRadius: 12, overflow:"hidden", border:`1px solid ${T.border2}` }}>
+                        <div
+                            onClick={() => setLightbox({ src: LAB[pages[active]], alt: `Page ${active+1}` })}
+                            style={{ borderRadius: 12, overflow:"hidden", border:`1px solid ${T.border2}`, cursor: "zoom-in" }}>
                             <img src={LAB[pages[active]]} alt={`Page ${active+1}`} style={{ width:"100%", height:"auto", objectFit:"cover", objectPosition:"top", display:"block" }} />
                         </div>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", color: T.ink3, marginTop: 10, textAlign: "center" }}>Click to view full size</div>
                     </div>
                     <div style={{ display:"grid", gridTemplateColumns:"repeat(9,1fr)", gap:3 }}>
                         {pages.map((key,i) => (
@@ -555,6 +560,7 @@ function OdooPanel() {
     const [activeSection, setActiveSection] = useState("sales")
     const [activeSubScreen, setActiveSubScreen] = useState(0)
     const [activeOrderState, setActiveOrderState] = useState(0)
+    const [lightbox, setLightbox] = useState(null)
 
     const SECTIONS = [
         { id: "sales",    label: "Sales Order" },
@@ -656,6 +662,7 @@ function OdooPanel() {
 
     return (
         <div style={{ borderTop: `1px solid ${T.pinkL}` }}>
+            {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* ── HEADER ── */}
             <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
@@ -748,56 +755,66 @@ function OdooPanel() {
             <div style={{ borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ padding: "52px clamp(40px,8vw,120px) 28px" }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Screen Explorer</div>
-                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>28+ screens across 8 document types</div>
-
-                {/* Section tabs */}
-                <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 16 }}>
-                    {SECTIONS.map(s => (
-                        <button key={s.id} onClick={() => { setActiveSection(s.id); setActiveSubScreen(0) }} style={{
-                            fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase",
-                            padding: "7px 14px", borderRadius: 2,
-                            border: `1px solid ${activeSection === s.id ? T.pink : T.border2}`,
-                            background: activeSection === s.id ? T.pink : "transparent",
-                            color: activeSection === s.id ? "#fff" : T.ink3,
-                            cursor: "pointer", transition: "all 0.15s",
-                        }}>{s.label}</button>
-                    ))}
+                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 0 }}>28+ screens across 8 document types</div>
                 </div>
 
-                {/* Sub-screen tabs */}
-                {screens.length > 1 && (
-                    <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 12 }}>
-                        {screens.map((s, i) => (
-                            <button key={i} onClick={() => setActiveSubScreen(i)} style={{
-                                fontFamily: mono, fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase",
-                                padding: "5px 12px", borderRadius: 2,
-                                border: `1px solid ${activeSubScreen === i ? T.ink : T.border}`,
-                                background: activeSubScreen === i ? T.ink : "transparent",
-                                color: activeSubScreen === i ? T.bg : T.ink3,
-                                cursor: "pointer", transition: "all 0.15s",
-                            }}>{s.label}</button>
-                        ))}
+                <div style={{ display: "grid", gridTemplateColumns: "clamp(260px,32%,420px) 1fr", borderTop: `1px solid ${T.border}` }}>
+
+                    {/* LEFT — label + description */}
+                    <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 20 }}>
+                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(22px,2vw,28px)", textTransform: "uppercase", color: T.ink, lineHeight: 1.1 }}>{currentScreen.label}</div>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0 }}>{group.desc}</p>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink3, margin: 0 }}>{currentScreen.desc}</p>
                     </div>
-                )}
 
-                {/* Section description */}
-                <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: "0 0 14px", maxWidth: 760}}>{group.desc}</p>
-                </div>
-
-                {/* Screen display — presented with rounded frame */}
-                <div style={{ padding: "40px clamp(40px,8vw,120px)", borderTop: `1px solid ${T.border}`, background: T.bg3 }}>
-                    <div style={{ maxWidth: 900, margin: "0 auto", borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
-                        {currentScreen.img ? (
-                            <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", display: "block", height: "auto" }} />
-                        ) : (
-                            <div style={{ height: 320, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
+                    {/* RIGHT — tabs top, image bottom */}
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        <div style={{ padding: "24px 32px", borderBottom: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 10 }}>
+                            {/* Section tabs */}
+                            <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+                                {SECTIONS.map(s => (
+                                    <button key={s.id} onClick={() => { setActiveSection(s.id); setActiveSubScreen(0) }} style={{
+                                        fontFamily: mono, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase",
+                                        padding: "6px 12px", borderRadius: 2,
+                                        border: `1px solid ${activeSection === s.id ? T.pink : T.border2}`,
+                                        background: activeSection === s.id ? T.pink : "transparent",
+                                        color: activeSection === s.id ? "#fff" : T.ink3,
+                                        cursor: "pointer", transition: "all 0.15s",
+                                    }}>{s.label}</button>
+                                ))}
                             </div>
-                        )}
-                    </div>
-                    <div style={{ maxWidth: 900, margin: "20px auto 0", display: "flex", alignItems: "baseline", gap: 16 }}>
-                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.06em", color: T.ink }}>{currentScreen.label}</div>
-                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0}}>{currentScreen.desc}</p>
+                            {/* Sub-screen tabs */}
+                            {screens.length > 1 && (
+                                <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+                                    {screens.map((s, i) => (
+                                        <button key={i} onClick={() => setActiveSubScreen(i)} style={{
+                                            fontFamily: mono, fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase",
+                                            padding: "4px 10px", borderRadius: 2,
+                                            border: `1px solid ${activeSubScreen === i ? T.ink : T.border}`,
+                                            background: activeSubScreen === i ? T.ink : "transparent",
+                                            color: activeSubScreen === i ? T.bg : T.ink3,
+                                            cursor: "pointer", transition: "all 0.15s",
+                                        }}>{s.label}</button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Image */}
+                        <div style={{ padding: "28px 32px", background: T.bg3, flex: 1 }}>
+                            <div
+                                onClick={() => currentScreen.img && setLightbox({ src: currentScreen.img, alt: currentScreen.label })}
+                                style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}`, cursor: currentScreen.img ? "zoom-in" : "default" }}>
+                                {currentScreen.img ? (
+                                    <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", display: "block", height: "auto" }} />
+                                ) : (
+                                    <div style={{ height: 280, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                        <span style={{ fontFamily: mono, fontSize: 14, color: T.border2 }}>Image loading...</span>
+                                    </div>
+                                )}
+                            </div>
+                            {currentScreen.img && <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", color: T.ink3, marginTop: 10, textAlign: "center" }}>Click to view full size</div>}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1463,7 +1480,30 @@ function Cursor() {
     )
 }
 
-// ── ROOT ─────────────────────────────────────────────────────────────────────
+// ── LIGHTBOX ─────────────────────────────────────────────────────────────────
+function Lightbox({ src, alt, onClose }) {
+    useEffect(() => {
+        const handler = (e) => { if (e.key === "Escape") onClose() }
+        window.addEventListener("keydown", handler)
+        return () => window.removeEventListener("keydown", handler)
+    }, [onClose])
+    return (
+        <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={onClose}
+            style={{ position: "fixed", inset: 0, zIndex: 99999, background: "rgba(30,24,20,0.92)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "zoom-out", padding: 24 }}>
+            <motion.img
+                initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.25, ease: [0.4,0,0.2,1] }}
+                src={src} alt={alt}
+                onClick={e => e.stopPropagation()}
+                style={{ maxWidth: "92vw", maxHeight: "88vh", objectFit: "contain", borderRadius: 16, boxShadow: "0 24px 80px rgba(0,0,0,0.5)", cursor: "default" }}
+            />
+            <div onClick={onClose} style={{ position: "absolute", top: 20, right: 24, color: "#fff", fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, letterSpacing: "0.1em", cursor: "pointer", opacity: 0.7 }}>ESC / CLOSE ✕</div>
+        </motion.div>
+    )
+}
+
+
 export default function Portfolio() {
     const [openRows, setOpenRows] = useState(new Set())
     const [tickerPaused, setTickerPaused] = useState(false)
