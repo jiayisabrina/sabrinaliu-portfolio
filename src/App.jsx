@@ -99,7 +99,7 @@ const PROJECTS = [
         type: "UX · ERP",
         typeVariant: "pink",
         tag: "UX Research · Systems Design · ERP · Jun–Oct 2025",
-        desc: "End-to-end redesign of Odoo across CRM, Sales, Inventory, and Operations — sole designer, reporting directly to the ops lead. Early research invalidated our assumed user flows: warehouse staff were completing tasks in a different order than the system expected, creating daily workarounds. I restarted the IA from their actual sequence, not the system's ideal one. The result: task completion time dropped and onboarding friction was measurably reduced across all four modules.",
+        desc: "End-to-end redesign of Odoo across CRM, Sales, Inventory, and Operations — serving internal ops, sales reps, warehouse staff, and managers. Untangled a fragmented multi-module system into a cohesive, task-efficient experience.",
         bgColor: T.pinkBg,
         isOdoo: true,
     },
@@ -110,7 +110,7 @@ const PROJECTS = [
         type: "UX · E-Commerce",
         typeVariant: "pink",
         tag: "UX Design · UI Design · Figma Spec · E-Commerce",
-        desc: "Sole designer on a modular brand page system for Shop Appliances — 35+ brands, 100+ categories. The key decision: instead of one universal template, I defined three distinct content voices by market tier (luxury, premium, mainstream) after auditing how different buyers actually make decisions. Luxury buyers need provenance. Premium buyers need tech proof. Mainstream buyers need social proof. The Figma spec I delivered was used directly by the dev team as the single source of truth — no design-to-dev translation layer.",
+        desc: "Designed and delivered a modular brand page system for Shop Appliances covering 35+ brands across 100+ appliance categories — from luxury European imports to mass-market household names. Built the full Figma feature spec used directly by the dev team.",
         bgColor: T.pinkBg,
         isShopAppliances: true,
     },
@@ -121,7 +121,7 @@ const PROJECTS = [
         type: "Content · SEO",
         typeVariant: "sage",
         tag: "Content Strategy · SEO · UX Writing · Feb 2026 — Ongoing",
-        desc: "Lead content strategist and writer — owned the full editorial calendar, keyword strategy, and production of 36 articles. The pivot that mattered: early GA4 analysis showed news content was generating traffic with near-zero conversion assist. I shifted the calendar entirely to evergreen buying guides mapped to high-intent queries. Organic traffic grew 60%. Multiple articles hit Google page 1 within weeks, and several are now cited by ChatGPT and Gemini as authoritative sources.",
+        desc: "Lead content strategist and writer for the Shop Appliances blog — 34 articles produced, 10+ with byline, spanning buying guides, maintenance, and installation content. Grew organic traffic 60% through data-driven SEO strategy.",
         bgColor: "#fceef1",
         isBlog: true,
     },
@@ -132,7 +132,7 @@ const PROJECTS = [
         type: "Editorial · Design",
         typeVariant: "sand",
         tag: "Editorial Design · Newsletter · Columbia SPS · Nov 2024",
-        desc: "Sole designer for The Self-Care Scoop — Columbia SPS Office of Student Wellness monthly newsletter. The core design problem: graduate students under high stress don't read, they scan. I borrowed editorial hierarchy from consumer wellness magazines (not institutional templates) to create a layout that works for three reader modes at once: cover-to-cover, scan-and-dip, and direct-access. Delivered 6 reusable templates so any future issue could be produced without a designer.",
+        desc: "End-to-end editorial design for The Self-Care Scoop — the Columbia SPS Office of Student Wellness monthly newsletter. Designed 17 pages of layout, typography, and illustration direction for a publication reaching the full graduate student body.",
         bgColor: T.bg2,
         isSelfCare: true,
     },
@@ -247,77 +247,9 @@ import OI from './images_oi.js'
 // ── SELF-CARE SCOOP PANEL ────────────────────────────────────────────────────
 function SelfCarePanel() {
     const [active, setActive] = useState(0)
-    const [activeTab, setActiveTab] = useState("overview")
     const pages = Array.from({ length: 17 }, (_, i) => `nl${i + 1}`)
-
-    const RESEARCH = [
-        {
-            phase: "01", title: "Audience Definition",
-            method: "Stakeholder Interview · Demographic Analysis",
-            body: "Spoke with the Columbia SPS Office of Student Wellness to define the primary reader: graduate students aged 24–34, high academic load, limited time for long-form reading. Key insight — readers engage in micro-moments between classes or commuting, not sustained reading sessions.",
-            insight: "Design for 2-minute scan, not 10-minute read",
-        },
-        {
-            phase: "02", title: "Content Audit",
-            method: "Competitive Analysis · Format Review",
-            body: "Reviewed 12 university wellness publications to benchmark tone, layout density, and content mix. Most failed at visual hierarchy — every section competed equally for attention. Identified opportunity: editorial hierarchy borrowed from consumer magazines (Kinfolk, Well+Good) applied to institutional context.",
-            insight: "Institutional ≠ boring — editorial warmth builds trust",
-        },
-        {
-            phase: "03", title: "Reader Journey Mapping",
-            method: "Content Flow Mapping · Eye-Tracking Heuristics",
-            body: "Mapped how a graduate student would move through 17 pages under time pressure. Defined three reader types: Cover-to-cover (rare), Scan-and-dip (majority), Direct-access (specific section). Layout decisions — pull quotes, section labels, color-coded zones — serve all three types simultaneously.",
-            insight: "Three reader modes, one layout system",
-        },
-        {
-            phase: "04", title: "Visual Language Research",
-            method: "Moodboarding · Type Pairing · Color Psychology",
-            body: "Explored palettes and type systems for wellness contexts. Avoided clinical whites and sterile sans-serifs. Landed on warm off-whites, soft blush accents, and a serif/sans pairing that reads credible but approachable. Every color and type choice was tested against the brief: warmth + credibility for a graduate audience.",
-            insight: "Warm serif anchors — approachable but never juvenile",
-        },
-        {
-            phase: "05", title: "Template System Design",
-            method: "Modular Layout · Reuse Documentation",
-            body: "Designed 6 reusable page templates covering all content types: cover, feature spread, tips grid, Q&A, event calendar, and back matter. Documented as a style guide so future issues could be produced by anyone on the wellness team without a designer. Scalability was a hard requirement from the client.",
-            insight: "Every layout decision also a reuse decision",
-        },
-    ]
-
-    const MINDMAP = {
-        center: "Self-Care Scoop",
-        branches: [
-            {
-                label: "Audience",
-                color: T.pink,
-                nodes: ["Grad students 24–34", "High stress load", "Micro-reading moments", "Columbia SPS community"],
-            },
-            {
-                label: "Content",
-                color: T.sage,
-                nodes: ["Feature stories", "Wellness tips", "Event calendar", "Q&A section", "Back matter"],
-            },
-            {
-                label: "Design System",
-                color: T.sand,
-                nodes: ["6 page templates", "Serif + sans pairing", "Warm color palette", "Reusable components", "Style guide"],
-            },
-            {
-                label: "Goals",
-                color: T.ink2,
-                nodes: ["Warmth + credibility", "Scan-friendly layout", "Editorial hierarchy", "Future-proof templates"],
-            },
-            {
-                label: "Constraints",
-                color: T.rust,
-                nodes: ["17 pages", "Monthly cadence", "Non-designer handoff", "Institutional tone"],
-            },
-        ]
-    }
-
     return (
         <div style={{ borderTop: `1px solid ${T.border}` }}>
-
-            {/* STATS BAR */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", borderBottom: `1px solid ${T.border}` }}>
                 {[["17","pages designed"],["1","publication"],["Columbia SPS","client"],["Nov 2024","published"]].map(([n,l],i) => (
                     <div key={i} style={{ padding:"20px 24px", borderRight: i<3 ? `1px solid ${T.border}` : "none" }}>
@@ -326,117 +258,37 @@ function SelfCarePanel() {
                     </div>
                 ))}
             </div>
-
-            {/* TABS NAV */}
-            <div style={{ padding: "0 clamp(16px,3vw,40px)", borderBottom: `1px solid ${T.border}`, background: T.bg, display: "flex", gap: 0 }}>
-                {[
-                    { id: "overview",  label: "Overview & Pages" },
-                    { id: "research",  label: "UX Research" },
-                    { id: "mindmap",   label: "Mind Map" },
-                ].map(t => (
-                    <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
-                        fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase",
-                        padding: "16px 20px", background: "transparent", border: "none",
-                        borderBottom: activeTab === t.id ? `2px solid ${T.pink}` : "2px solid transparent",
-                        color: activeTab === t.id ? T.pink : T.ink3,
-                        cursor: "pointer", transition: "all 0.15s", marginBottom: -1,
-                    }}>{t.label}</button>
-                ))}
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", borderBottom:`1px solid ${T.border}` }}>
+                <div style={{ padding:"32px clamp(16px,3vw,40px)", borderRight:`1px solid ${T.border}`, display:"flex", flexDirection:"column", gap:16 }}>
+                    <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>Overview</div>
+                    <p style={{ fontFamily:mono, fontSize: 15, lineHeight:1.85, color:T.ink3, margin:0 }}>
+                        The Self-Care Scoop is the Columbia SPS Office of Student Wellness monthly newsletter. I designed a full 17-page editorial layout — cover, feature spreads, wellness tips, event calendar, and back matter — creating a cohesive visual identity that balances warmth with credibility for a graduate student audience.
+                    </p>
+                    <div style={{ display:"flex", flexDirection:"column", gap:8, marginTop:4 }}>
+                        {[["Editorial Design","Layout, typography hierarchy, and visual rhythm across 17 pages"],["Illustration Direction","Coordinated spot illustrations and decorative elements throughout"],["Brand Consistency","Developed a reusable template system for future issues"],["Client","Columbia SPS Office of Student Wellness"]].map(([label,body],i) => (
+                            <div key={i} style={{ display:"flex", gap:12, paddingBottom:8, borderBottom:`1px solid ${T.border}` }}>
+                                <div style={{ fontFamily:mono, fontSize: 12, fontWeight:700, color:T.ink, minWidth:120 }}>{label}</div>
+                                <div style={{ fontFamily:mono, fontSize: 12, color:T.ink3, lineHeight:1.65 }}>{body}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div style={{ padding:"32px clamp(16px,3vw,40px)", display:"flex", flexDirection:"column", gap:16 }}>
+                    <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>All Pages</div>
+                    <div style={{ background:T.bg3, border:`1px solid ${T.border}`, overflow:"hidden", width:"100%", aspectRatio:"1/1" }}>
+                        <img src={LAB[pages[active]]} alt={`Page ${active+1}`} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top", display:"block" }} />
+                    </div>
+                    <div style={{ display:"grid", gridTemplateColumns:"repeat(9,1fr)", gap:3 }}>
+                        {pages.map((key,i) => (
+                            <motion.div key={i} onClick={() => setActive(i)} whileHover={{ scale:1.06 }}
+                                style={{ aspectRatio:"1", overflow:"hidden", cursor:"pointer", border: active===i ? `2px solid ${T.pink}` : `1px solid ${T.border}`, background:T.bg3 }}>
+                                <img src={LAB[key]} alt={`p${i+1}`} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top", display:"block" }} />
+                            </motion.div>
+                        ))}
+                    </div>
+                    <div style={{ fontFamily:mono, fontSize: 13, color:T.ink3 }}>Page {active+1} of 17 — click thumbnail to view</div>
+                </div>
             </div>
-
-            {/* TAB: OVERVIEW */}
-            {activeTab === "overview" && (
-                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", borderBottom:`1px solid ${T.border}` }}>
-                    <div style={{ padding:"32px clamp(16px,3vw,40px)", borderRight:`1px solid ${T.border}`, display:"flex", flexDirection:"column", gap:16 }}>
-                        <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>Overview</div>
-                        <p style={{ fontFamily:mono, fontSize: 15, lineHeight:1.85, color:T.ink3, margin:0 }}>
-                            The Self-Care Scoop is the Columbia SPS Office of Student Wellness monthly newsletter. I designed a full 17-page editorial layout — cover, feature spreads, wellness tips, event calendar, and back matter — creating a cohesive visual identity that balances warmth with credibility for a graduate student audience.
-                        </p>
-                        <div style={{ display:"flex", flexDirection:"column", gap:8, marginTop:4 }}>
-                            {[["Editorial Design","Layout, typography hierarchy, and visual rhythm across 17 pages"],["Illustration Direction","Coordinated spot illustrations and decorative elements throughout"],["Brand Consistency","Developed a reusable template system for future issues"],["Client","Columbia SPS Office of Student Wellness"]].map(([label,body],i) => (
-                                <div key={i} style={{ display:"flex", gap:12, paddingBottom:8, borderBottom:`1px solid ${T.border}` }}>
-                                    <div style={{ fontFamily:mono, fontSize: 12, fontWeight:700, color:T.ink, minWidth:120 }}>{label}</div>
-                                    <div style={{ fontFamily:mono, fontSize: 12, color:T.ink3, lineHeight:1.65 }}>{body}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div style={{ padding:"32px clamp(16px,3vw,40px)", display:"flex", flexDirection:"column", gap:16 }}>
-                        <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>All Pages</div>
-                        <div style={{ background:T.bg3, border:`1px solid ${T.border}`, overflow:"hidden", width:"100%", aspectRatio:"1/1" }}>
-                            <img src={LAB[pages[active]]} alt={`Page ${active+1}`} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top", display:"block" }} />
-                        </div>
-                        <div style={{ display:"grid", gridTemplateColumns:"repeat(9,1fr)", gap:3 }}>
-                            {pages.map((key,i) => (
-                                <motion.div key={i} onClick={() => setActive(i)} whileHover={{ scale:1.06 }}
-                                    style={{ aspectRatio:"1", overflow:"hidden", cursor:"pointer", border: active===i ? `2px solid ${T.pink}` : `1px solid ${T.border}`, background:T.bg3 }}>
-                                    <img src={LAB[key]} alt={`p${i+1}`} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top", display:"block" }} />
-                                </motion.div>
-                            ))}
-                        </div>
-                        <div style={{ fontFamily:mono, fontSize: 13, color:T.ink3 }}>Page {active+1} of 17 — click thumbnail to view</div>
-                    </div>
-                </div>
-            )}
-
-            {/* TAB: UX RESEARCH */}
-            {activeTab === "research" && (
-                <div style={{ padding: "40px clamp(16px,3vw,40px)", borderBottom: `1px solid ${T.border}` }}>
-                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 28 }}>Research Process — 5 phases</div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-                        {RESEARCH.map((r, i) => (
-                            <div key={i} style={{ display: "grid", gridTemplateColumns: "48px 1fr", gap: 0, borderBottom: i < RESEARCH.length - 1 ? `1px solid ${T.border}` : "none", paddingBottom: 28, paddingTop: i === 0 ? 0 : 28 }}>
-                                <div>
-                                    <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 22, color: T.pink, lineHeight: 1 }}>{r.phase}</div>
-                                </div>
-                                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                                    <div style={{ display: "flex", alignItems: "baseline", gap: 16, flexWrap: "wrap" }}>
-                                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.05em", color: T.ink }}>{r.title}</div>
-                                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: T.ink3, background: T.bg2, padding: "3px 8px", borderRadius: 2 }}>{r.method}</div>
-                                    </div>
-                                    <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.8, color: T.ink3, margin: 0, maxWidth: 680 }}>{r.body}</p>
-                                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 4 }}>
-                                        <div style={{ width: 3, height: 3, borderRadius: "50%", background: T.pink }} />
-                                        <div style={{ fontFamily: mono, fontSize: 12, color: T.pink, fontStyle: "italic" }}>Key insight: {r.insight}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            {/* TAB: MIND MAP */}
-            {activeTab === "mindmap" && (
-                <div style={{ padding: "40px clamp(16px,3vw,40px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
-                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 28 }}>Project Mind Map</div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, position: "relative" }}>
-                        {/* Center node */}
-                        <div style={{ gridColumn: "1 / -1", display: "flex", justifyContent: "center", marginBottom: 8 }}>
-                            <div style={{ background: T.ink, color: "#fff", fontFamily: cond, fontWeight: 900, fontSize: 20, letterSpacing: "0.08em", textTransform: "uppercase", padding: "14px 32px", borderRadius: 2, textAlign: "center" }}>
-                                {MINDMAP.center}
-                            </div>
-                        </div>
-                        {/* Branch columns */}
-                        {MINDMAP.branches.map((branch, bi) => (
-                            <div key={bi} style={{ background: T.bg2, border: `1px solid ${T.border}`, borderTop: `3px solid ${branch.color}`, borderRadius: 2, overflow: "hidden" }}>
-                                <div style={{ padding: "12px 16px", borderBottom: `1px solid ${T.border}` }}>
-                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 14, textTransform: "uppercase", letterSpacing: "0.1em", color: branch.color }}>{branch.label}</div>
-                                </div>
-                                <div style={{ padding: "12px 16px", display: "flex", flexDirection: "column", gap: 8 }}>
-                                    {branch.nodes.map((node, ni) => (
-                                        <div key={ni} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                            <div style={{ width: 5, height: 5, borderRadius: "50%", background: branch.color, flexShrink: 0 }} />
-                                            <span style={{ fontFamily: mono, fontSize: 12, color: T.ink2, lineHeight: 1.5 }}>{node}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-
         </div>
     )
 }
@@ -447,8 +299,6 @@ function BlogPanel() {
 
     const ARTICLES = [
         // Buying Guides
-        { title: "How to Choose the Right Range Size (Complete Buying Guide)", category: "Buying Guide", date: "Mar 23, 2026", url: "https://www.shopappliances.com/blog/how-to-choose-the-right-range-size", desc: "Complete sizing guide covering 30\", 36\", and professional ranges — structured to help buyers measure cabinet openings and match range size to kitchen and cooking needs.", tags: ["Ranges", "Sizing", "Buying Guide"] },
-        { title: "Common Appliance Buying Mistakes to Avoid (and How to Get It Right)", category: "Buying Guide", date: "Mar 23, 2026", url: "https://www.shopappliances.com/blog/common-appliance-buying-mistakes", desc: "Mid-funnel guide targeting buyers in the research stage — covers measurement errors, hidden installation costs, and decision traps that lead to expensive regret.", tags: ["Buying Guide", "SEO", "Conversion"] },
         { title: "Built-In vs Freestanding Refrigerators: Pros, Cons & How to Choose in 2026", category: "Buying Guide", date: "Mar 19, 2026", url: "https://www.shopappliances.com/blog/built-in-vs-freestanding-refrigerators", desc: "Deep comparison covering design, cost, installation, and ventilation — structured to capture comparison-intent queries at the mid-funnel consideration stage.", tags: ["Refrigerators", "Comparison", "SEO"] },
         { title: "How to Choose the Right Dishwasher (Complete Buying Guide 2026)", category: "Buying Guide", date: "Mar 19, 2026", url: "https://www.shopappliances.com/blog/how-to-choose-the-right-dishwasher-2026", desc: "Full-funnel buying guide covering types, sizes, features, noise levels, and brand comparisons — designed to intercept high-intent shoppers at research stage.", tags: ["Dishwashers", "Buying Guide", "SEO"] },
         { title: "Dishwasher Quietness Guide: How to Choose a Truly Quiet Dishwasher", category: "Buying Guide", date: "Mar 19, 2026", url: "https://www.shopappliances.com/blog/dishwasher-quietness-guide-2026", desc: "Niche-intent guide targeting shoppers researching noise levels. Explains dBA ratings and maps noise tier to specific brand recommendations.", tags: ["Dishwashers", "Niche Intent", "dBA"] },
@@ -492,10 +342,10 @@ function BlogPanel() {
 
     const STATS = [
         { num: "60%", label: "Organic traffic growth" },
-        { num: "P1",  label: "Google page 1 rankings" },
-        { num: "36",  label: "Articles written" },
-        { num: "Feb", label: "2026 — ongoing" },
-        { num: "AI",  label: "Cited by ChatGPT, Gemini & Notebook LM" },
+        { num: "P1",     label: "Google page 1 rankings" },
+        { num: "34",     label: "Total articles produced" },
+        { num: "10+",    label: "Sabrina Liu bylines" },
+        { num: "AI",     label: "Cited by ChatGPT, Gemini & Notebook LM" },
     ]
 
     return (
@@ -799,7 +649,7 @@ function OdooPanel() {
         width: "100%",
         display: "block",
         height: "auto",
-        objectFit: "contain",
+        objectFit: "unset",
     }
 
     return (
@@ -932,7 +782,7 @@ function OdooPanel() {
 
                 {/* Screen display */}
                 <div style={{ border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
-                    <div style={{ overflow: "hidden" }}>
+                    <div style={{ overflowY: "auto", maxHeight: "70vh" }}>
                     {currentScreen.img ? (
                         <img src={currentScreen.img} alt={currentScreen.label} style={IMG_STYLE} />
                     ) : (
@@ -1370,25 +1220,23 @@ function WorkRow({ project, isOpen, onToggle }) {
     const accent = accents[project.num] || accents["001"]
     const rowRef = useRef(null)
 
-    useEffect(() => {
-        if (isOpen) {
+    const handleToggle = () => {
+        const opening = !isOpen
+        onToggle()
+        if (opening) {
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     if (rowRef.current) {
-                        const rect = rowRef.current.getBoundingClientRect()
-                        window.scrollTo({ top: window.scrollY + rect.top - 52, behavior: "smooth" })
+                        const top = rowRef.current.getBoundingClientRect().top + window.scrollY - 52
+                        window.scrollTo({ top, behavior: "smooth" })
                     }
                 })
             })
         }
-    }, [isOpen])
-
-    const handleToggle = () => {
-        onToggle()
     }
 
     return (
-        <div ref={rowRef} id={`work-row-${project.num}`} style={{ borderBottom: `1px solid ${T.border}` }}>
+        <div ref={rowRef} style={{ borderBottom: `1px solid ${T.border}` }}>
             <motion.div
                 data-cursor="true"
                 onClick={handleToggle}
@@ -1613,21 +1461,10 @@ function Cursor() {
 
 // ── ROOT ─────────────────────────────────────────────────────────────────────
 export default function Portfolio() {
-    const [openRow, setOpenRow] = useState(null)
+    const [openRows, setOpenRows] = useState(new Set())
     const [tickerPaused, setTickerPaused] = useState(false)
     const tickerItems = [...TICKER_ITEMS, ...TICKER_ITEMS]
-    const rowRefs = useRef({})
-
-    const toggleRow = (i) => {
-        if (openRow === i) { setOpenRow(null); return }
-        if (openRow !== null) {
-            // switching rows: close first, wait for layout collapse, then open
-            setOpenRow(null)
-            setTimeout(() => setOpenRow(i), 350)
-        } else {
-            setOpenRow(i)
-        }
-    }
+    const toggleRow = (i) => setOpenRows(prev => { const next = new Set(prev); next.has(i) ? next.delete(i) : next.add(i); return next })
 
     return (
         <>
@@ -1642,7 +1479,7 @@ export default function Portfolio() {
                         { id: "nav-sentinel", color: T.bg3 },
                         { id: "work",         color: T.bg },
                         { id: "about",        color: T.bg2 },
-                        { id: "contact",      color: T.bg2 },
+                        { id: "contact",      color: T.pinkBg },
                     ]
                     const obs = new IntersectionObserver((entries) => {
                         entries.forEach(e => {
@@ -1660,12 +1497,12 @@ export default function Portfolio() {
                 }, [])
                 return (
                     <motion.div animate={{ background: gutterColor }} transition={{ duration: 0.6, ease: "easeInOut" }}
-                        style={{ minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+                        style={{ minHeight: "100vh", position: "relative" }}>
 
                         {/* NAV — full width, sits outside the content column */}
                         <div id="nav-sentinel" style={{ position: "sticky", top: 0, zIndex: 100, background: T.bg3, borderBottom: `1px solid ${T.border2}` }}>
                             <div style={{ maxWidth: 1440, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 clamp(20px,5vw,64px)", height: 52 }}>
-                                <span style={{ fontFamily: "'AcroterionJF', cursive", fontWeight: 300, fontSize: 30, color: T.pink, letterSpacing: "0.01em" }}>Sabrina Liu</span>
+                                <span style={{ fontFamily: "'AcroterionJF', cursive", fontWeight: 700, fontSize: 30, color: T.pink, letterSpacing: "0.01em" }}>Sabrina Liu</span>
                                 <div style={{ display: "flex", gap: "clamp(16px,3vw,36px)" }}>
                                     {[["Work","work"],["About","about"],["Lab","lab"],["Contact","contact"]].map(([label, id]) => (
                                         <motion.span key={id} data-cursor="true"
@@ -1682,7 +1519,7 @@ export default function Portfolio() {
                         </div>
 
                         {/* Content column with gutters */}
-                        <div style={{ maxWidth: 1440, margin: "0 auto", background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden" }}>
+                        <div style={{ maxWidth: 1440, margin: "0 auto", background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden", boxShadow: "0 0 60px rgba(0,0,0,0.07)" }}>
 
                 {/* HERO */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(260px,30vw,360px)", minHeight: 560, borderBottom: `1px solid ${T.border}` }}>
@@ -1690,7 +1527,7 @@ export default function Portfolio() {
                         <div>
                             <div style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}>
                                 <span style={{ display: "inline-block", width: 22, height: 1, background: T.ink3 }} />
-                                Portfolio · Updated 2026
+                                Portfolio · 2024–2026
                             </div>
                             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
                                 style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(92px,11vw,170px)", lineHeight: 0.87, letterSpacing: "-0.02em", textTransform: "uppercase", color: T.ink }}>
@@ -1700,8 +1537,8 @@ export default function Portfolio() {
 
                         </div>
                         <div style={{ marginTop: "auto", paddingTop: 22, borderTop: `1px solid ${T.border}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
-                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 420, margin: 0 }}>
-                                UX · Brand · Content — mid-level.<br />Design systems that sell, flows that convert, brands that mean something. Brooklyn, NY.
+                            <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.95, color: T.ink2, maxWidth: 300, margin: 0 }}>
+                                Art background. Data instincts.<br />Designing things that feel obvious once you use them.<br />Brooklyn, NY.
                             </p>
                             <motion.div data-cursor="true" whileHover={{ y: -2, background: "#d44c68" }} whileTap={{ y: 0 }}
                                 style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.12em", textTransform: "uppercase", background: T.pink, color: "#fff", padding: "13px 28px", borderRadius: 2, cursor: "pointer", flexShrink: 0 }}>
@@ -1720,38 +1557,19 @@ export default function Portfolio() {
                     </div>
                 </div>
 
-                </div>{/* end content column — ticker breaks out full width */}
-
-                {/* TICKER — full bleed, true infinite marquee */}
-                {(() => {
-                    const stripRef = useRef(null)
-                    return (
-                        <div style={{ width: "100%", height: 36, overflow: "hidden", borderTop: `1px solid ${T.pinkL}`, borderBottom: `1px solid ${T.pinkL}`, background: T.pinkBg, display: "flex", alignItems: "center" }}
-                            onMouseEnter={() => setTickerPaused(true)} onMouseLeave={() => setTickerPaused(false)}>
-                            <style>{`
-                                @keyframes ticker-scroll {
-                                    0%   { transform: translateX(0); }
-                                    100% { transform: translateX(-50%); }
-                                }
-                                .ticker-track {
-                                    display: flex;
-                                    whiteSpace: nowrap;
-                                    width: max-content;
-                                    animation: ticker-scroll 28s linear infinite;
-                                }
-                                .ticker-track.paused { animation-play-state: paused; }
-                            `}</style>
-                            <div className={`ticker-track${tickerPaused ? " paused" : ""}`}>
-                                {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-                                    <span key={i} style={{ fontFamily: mono, fontWeight: 600, fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase", color: item.on ? T.pink : T.sand, padding: "0 24px", borderRight: `1px solid ${T.pinkL}`, whiteSpace: "nowrap", flexShrink: 0 }}>{item.text}</span>
-                                ))}
-                            </div>
-                        </div>
-                    )
-                })()}
-
-                {/* re-open content column for everything below */}
-                <div style={{ maxWidth: 1440, margin: "0 auto", background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden" }}>
+                {/* TICKER */}
+                <div style={{ height: 32, overflow: "hidden", borderBottom: `1px solid ${T.border}`, background: T.bg3, display: "flex", alignItems: "center" }}
+                    onMouseEnter={() => setTickerPaused(true)} onMouseLeave={() => setTickerPaused(false)}>
+                    <motion.div
+                        animate={{ x: tickerPaused ? undefined : [0, -1200] }}
+                        transition={{ duration: 22, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+                        style={{ display: "flex", whiteSpace: "nowrap" }}
+                    >
+                        {tickerItems.map((item, i) => (
+                            <span key={i} style={{ fontFamily: mono, fontWeight: 700, fontSize: 12, letterSpacing: "0.22em", textTransform: "uppercase", color: item.on ? T.pink : T.border2, padding: "0 20px", borderRight: `1px solid ${T.border}` }}>{item.text}</span>
+                        ))}
+                    </motion.div>
+                </div>
 
                 {/* WORK */}
                 <div id="work" style={{ borderBottom: `1px solid ${T.border}` }}>
@@ -1760,7 +1578,7 @@ export default function Portfolio() {
                         <span style={{ fontFamily: mono, fontSize: 14, color: T.ink3, letterSpacing: "0.1em" }}>{String(PROJECTS.length).padStart(3,"0")} projects · click to expand</span>
                     </div>
                     {PROJECTS.map((p, i) => (
-                        <WorkRow key={i} project={p} isOpen={openRow === i} onToggle={() => toggleRow(i)} />
+                        <WorkRow key={i} project={p} isOpen={openRows.has(i)} onToggle={() => toggleRow(i)} />
                     ))}
                 </div>
 
@@ -1778,13 +1596,13 @@ export default function Portfolio() {
                             The designer<br />behind<br /><em style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>the work.</em>
                         </div>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I'm Sabrina. I design UX, brand systems, and content — sometimes all within the same project.
+                            I'm Sabrina, a UX and UI designer shaped by both studio art and data driven marketing.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            My path into this work was not linear. I started in studio art while also exploring data analytics, and later moved into marketing before finding my way into UX. Each step added something I still use today. Art shaped how I think about hierarchy and visual weight. Data taught me to question my assumptions and pay attention to what actually changes. Marketing showed me how people make decisions when their attention is limited.
+                            I started in studio art and later moved into data and marketing, where I learned how products perform in real contexts and how people actually interact with them. That experience still shapes how I design today. I think about how things look, but just as much about how they behave, how they scale, and what they ask of the people using them.
                         </p>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.9, color: T.ink2, maxWidth: 480, margin: 0 }}>
-                            I'm especially interested in problems where design and business are closely connected — ERP systems that people find frustrating to use, e-commerce experiences where customers drop off partway through, or content that brings in traffic but does not convert. That kind of work feels meaningful to me, and I enjoy taking the time to make it clearer and more effective.
+                            I am most interested in the space where brand meets function. ERP workflows that still feel considered, e commerce experiences that sell without being loud, and editorial systems with clear hierarchy. To me, design is not just visual polish. It is structure, clarity, and a series of decisions that make something feel intuitive or frustrating.
                         </p>
 
                         {/* Design principles */}
@@ -1795,9 +1613,9 @@ export default function Portfolio() {
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                                 {[
-                                    { n: "I", title: "Diagnose before designing", body: "I spend more time on the problem than the solution. Most bad design comes from solving the wrong thing confidently. I map the system, pressure-test the brief, and identify the real friction before touching a frame." },
-                                    { n: "II", title: "Own the decision, document the why", body: "Every layout choice, content structure, and component decision has a reason. I write it down. That habit makes handoffs cleaner, reviews faster, and future iterations smarter — whether I'm the only designer or one of many." },
-                                    { n: "III", title: "The pivot is part of the process", body: "On the Odoo project, early research showed our assumed user flows were wrong — ops staff worked in a completely different order than we'd mapped. We threw out two weeks of wireframes and restarted from the corrected journey. The final product was sharper for it." },
+                                    { n: "I", title: "Start with the right questions", body: "Good work comes from understanding what actually matters. I focus on identifying the most important gaps, shaping what needs to be explored, and connecting that back to product decisions." },
+                                    { n: "II", title: "Structure and clarity come first", body: "Before thinking about visuals, I care about flows, hierarchy, and how something works end to end. The goal is to make things feel clear and usable, especially in real conditions where people are busy or distracted." },
+                                    { n: "III", title: "Design should feel considered and intentional", body: "Every detail contributes to how a product feels. I think about tone, rhythm, and restraint, and use data as a tool to support decisions, not just to validate them." },
                                 ].map((p, i, arr) => (
                                     <div key={p.n} style={{ display: "flex", gap: 0, borderBottom: i < arr.length - 1 ? `1px solid ${T.border}` : "none", paddingBottom: 18, paddingTop: i === 0 ? 0 : 18 }}>
                                         <div style={{ width: 36, flexShrink: 0 }}>
@@ -1825,7 +1643,7 @@ export default function Portfolio() {
                             {/* decorative large quote mark */}
                             <div style={{ position: "absolute", top: -20, right: 24, fontFamily: serif, fontSize: 160, lineHeight: 1, color: T.pink, opacity: 0.25, pointerEvents: "none", userSelect: "none" }}>"</div>
                             <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(22px,2.8vw,34px)", lineHeight: 1.15, color: T.pink, textTransform: "uppercase", fontStyle: "italic", marginBottom: 16, position: "relative" }}>
-                                I don't just make things look good. I make them work, scale, and mean something.
+                                Where art direction meets systems thinking, and brand meets function.
                             </div>
                             <div style={{ width: 32, height: 2, background: T.pink, marginBottom: 14 }} />
                             <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.12em", color: T.ink3, textTransform: "uppercase" }}>Sabrina Liu · Brooklyn</div>
@@ -1900,7 +1718,7 @@ export default function Portfolio() {
 
                 {/* CTA */}
                 <motion.div id="contact" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}
-                    style={{ padding: "72px clamp(20px,5vw,64px)", background: T.bg2, borderTop: `1px solid ${T.border}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 28, flexWrap: "wrap" }}>
+                    style={{ padding: "72px clamp(20px,5vw,64px)", background: T.pinkBg, borderTop: `1px solid ${T.pinkL}`, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 28, flexWrap: "wrap" }}>
                     <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(55px,7vw,110px)", lineHeight: 0.88, textTransform: "uppercase", color: T.ink }}>
                         Let's make<br />something that<br /><span style={{ color: T.pink, fontStyle: "italic" }}>feels like you.</span>
                     </div>
@@ -1919,11 +1737,7 @@ whileHover={{ color: T.pink }} style={{ fontFamily: mono, fontSize: 13, letterSp
                 {/* FOOTER — full width */}
                 <div style={{ background: T.bg3, borderTop: `1px solid ${T.border2}` }}>
                     <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(20px,5vw,64px)", height: 44, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.08em", color: T.ink3 }}>
-                            © 2026{" "}
-                            <span style={{ fontFamily: "'AcroterionJF', cursive", fontSize: 17, letterSpacing: "0.01em" }}>Sabrina Liu</span>
-                            {" "}— UX/UI Designer · Brooklyn, NY
-                        </span>
+                        <span style={{ fontFamily: "'AcroterionJF', cursive", fontWeight: 600, fontSize: 16, color: T.ink3 }}>© 2026 Sabrina Liu — UX/UI Designer · Brooklyn, NY</span>
                         <span onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", color: T.ink3, cursor: "pointer" }}>↑ Top</span>
                     </div>
                 </div>
