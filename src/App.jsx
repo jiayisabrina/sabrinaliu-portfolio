@@ -314,7 +314,7 @@ function TempoPanel() {
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* HEADER */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.bg2, borderBottom: `1px solid ${T.border}` }}>
+            <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", background: T.bg2, borderBottom: `1px solid ${T.border}` }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -417,7 +417,7 @@ function TempoPanel() {
 
             {/* TAB: DESIGN DECISIONS */}
             {activeTab === "decisions" && (
-                <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Design Decisions</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>5 decisions that defined Ditto</div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -537,7 +537,7 @@ function TempoPanel() {
                             </div>
                             <iframe
                                 src="/tempo-prototype.html"
-                                style={{ width: "100%", height: 680, border: "none", display: "block" }}
+                                style={{ width: "100%", height: "72vh", minHeight: 480, border: "none", display: "block" }}
                                 title="ditto app prototype"
                             />
                         </div>
@@ -661,7 +661,7 @@ function BlogPanel() {
         <div style={{ borderTop: `1px solid ${T.pinkL}` }}>
 
             {/* HEADER */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
+            <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 40, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -701,7 +701,7 @@ function BlogPanel() {
             <StatBar stats={STATS} />
 
             {/* TABS */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
                     {[
                         { id: "overview", label: "Content strategy" },
@@ -825,7 +825,7 @@ function BlogPanel() {
             </div>
 
             {/* OUTCOMES */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.bg2 }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg2 }}>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(23px,2vw,26px)", textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>What this demonstrates</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 8 }}>
                     {[
@@ -958,7 +958,7 @@ function OdooPanel() {
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* ── HEADER ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
+            <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -1064,7 +1064,7 @@ function OdooPanel() {
 
             {/* ── MAIN SCREEN EXPLORER ── */}
             <div style={{ borderBottom: `1px solid ${T.border}`, background: T.bg }}>
-                <div style={{ padding: "52px clamp(40px,8vw,120px) 28px" }}>
+                <div style={{ padding: "32px clamp(40px,8vw,120px) 20px" }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Screen Explorer</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 0 }}>28+ screens across 8 document types</div>
                 </div>
@@ -1130,7 +1130,7 @@ function OdooPanel() {
                                 {/* Screen — constrained to 16:10 desktop ratio */}
                                 <div
                                     onClick={() => currentScreen.img && setLightbox({ src: currentScreen.img, alt: currentScreen.label })}
-                                    style={{ aspectRatio: "16/10", overflow: "hidden", cursor: currentScreen.img ? "zoom-in" : "default", background: T.bg2 }}>
+                                    style={{ aspectRatio: "16/10", maxHeight: "46vh", overflow: "hidden", cursor: currentScreen.img ? "zoom-in" : "default", background: T.bg2 }}>
                                     {currentScreen.img ? (
                                         <img src={currentScreen.img} alt={currentScreen.label} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
                                     ) : (
@@ -1147,7 +1147,7 @@ function OdooPanel() {
             </div>
 
             {/* ── KEY DESIGN DECISIONS ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>03 — Design Decisions</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>Decisions that defined the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -1177,7 +1177,7 @@ function OdooPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>04 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Jun – Oct 2025 · 4 phases</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1200,7 +1200,7 @@ function OdooPanel() {
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.pinkBg }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.pinkBg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>What changed for Homery</div>
                 <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 24px", maxWidth: 600 }}>
@@ -1239,7 +1239,7 @@ function ShopAppliancesPanel() {
 
             {/* ── HEADER STRIP ── */}
             <div style={{
-                padding: "52px clamp(40px,8vw,120px) 40px",
+                padding: "40px clamp(40px,8vw,120px) 40px",
                 background: T.pinkBg,
                 borderBottom: `1px solid ${T.pinkL}`,
                 display: "grid",
@@ -1294,7 +1294,7 @@ function ShopAppliancesPanel() {
                 gap: 0,
                 borderBottom: `1px solid ${T.border}`,
             }}>
-                <div style={{ padding: "52px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
+                <div style={{ padding: "40px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Generic pages,<br />no brand identity</div>
                     <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 12px"}}>
@@ -1304,7 +1304,7 @@ function ShopAppliancesPanel() {
                         High-intent shoppers researching a specific brand were landing on pages identical to a plain filtered product list.
                     </p>
                 </div>
-                <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.bg2 }}>
+                <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg2 }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 16 }}>Constraints</div>
                     {[
                         "35+ brands with wildly different product depths — 1 category to 6+",
@@ -1322,7 +1322,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── UX ROLE ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>02 — UI / UX Thinking</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24, lineHeight: 1.1 }}>Design decisions that shaped the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -1345,7 +1345,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── BRANDS ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
                 <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>03 — Brand Scope</div>
@@ -1390,7 +1390,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>04 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>How it was built</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1407,7 +1407,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── LIVE PAGES ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Published Work</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Live brand pages</div>
                 <div style={{ display: "flex", flexDirection: "column", border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1470,7 +1470,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.bg }}>
+            <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>06 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>What this unlocked</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
@@ -1986,7 +1986,7 @@ export default function Portfolio() {
                         <div style={{ background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden" }}>
 
                 {/* HERO */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(320px,38vw,480px)", minHeight: 560, borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(320px,38vw,480px)", minHeight: "min(560px, 70vh)", borderBottom: `1px solid ${T.border}` }}>
                     <div style={{ padding: "48px clamp(40px,8vw,120px) 40px", display: "flex", flexDirection: "column", borderRight: `1px solid ${T.border}` }}>
                         <div>
                             <div style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}>
