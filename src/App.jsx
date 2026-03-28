@@ -781,7 +781,7 @@ function OdooPanel() {
                         </div>
 
                         {/* Image */}
-                        <div style={{ padding: "28px 32px", background: T.bg3, flex: 1 }}>
+                        <div style={{ padding: "36px clamp(32px,5vw,64px)", background: T.bg3, flex: 1 }}>
                             <div
                                 onClick={() => currentScreen.img && setLightbox({ src: currentScreen.img, alt: currentScreen.label })}
                                 style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}`, cursor: currentScreen.img ? "zoom-in" : "default" }}>
