@@ -99,7 +99,7 @@ const PROJECTS = [
         type: "UX · ERP",
         typeVariant: "pink",
         tag: "UX Research · Systems Design · ERP · Jun–Oct 2025",
-        desc: "End-to-end redesign of Odoo across CRM, Sales, Inventory, and Operations — serving internal ops, sales reps, warehouse staff, and managers. Untangled a fragmented multi-module system into a cohesive, task-efficient experience.",
+        desc: "End-to-end redesign of Odoo across CRM, Sales, Inventory, and Operations — sole designer. Early research invalidated our assumed user flows: warehouse staff completing tasks in a different order than the system expected. Restarted the IA from their actual sequence. Task completion time dropped, onboarding friction measurably reduced.",
         bgColor: T.pinkBg,
         isOdoo: true,
     },
@@ -110,31 +110,31 @@ const PROJECTS = [
         type: "UX · E-Commerce",
         typeVariant: "pink",
         tag: "UX Design · UI Design · Figma Spec · E-Commerce",
-        desc: "Designed and delivered a modular brand page system for Shop Appliances covering 35+ brands across 100+ appliance categories — from luxury European imports to mass-market household names. Built the full Figma feature spec used directly by the dev team.",
+        desc: "Sole designer on a modular brand page system — 35+ brands, 100+ categories. Key decision: three distinct content voices by market tier (luxury, premium, mainstream) after auditing how different buyers actually decide. The Figma spec delivered was used directly by the dev team as single source of truth.",
         bgColor: T.pinkBg,
         isShopAppliances: true,
     },
     {
         num: "003",
+        title: "Tempo — Productivity Dashboard",
+        year: "2025",
+        type: "UX · Product · Mobile",
+        typeVariant: "mist",
+        tag: "UX Research · Data Viz · Design System · Mobile · Concept 2025",
+        desc: "A concept productivity app that surfaces when you work best — not just what to do next. Tempo uses your own behavioral patterns (deep work windows, distraction spikes, energy rhythms) as a personal data layer to help knowledge workers stop fighting their schedule and start designing around it.",
+        bgColor: T.bg2,
+        isTempo: true,
+    },
+    {
+        num: "004",
         title: "Shop Appliances — Content & SEO",
         year: "2026",
         type: "Content · SEO",
         typeVariant: "sage",
         tag: "Content Strategy · SEO · UX Writing · Feb 2026 — Ongoing",
-        desc: "Lead content strategist and writer for the Shop Appliances blog — 34 articles produced, 10+ with byline, spanning buying guides, maintenance, and installation content. Grew organic traffic 60% through data-driven SEO strategy.",
+        desc: "Lead content strategist and writer — 36 articles, full editorial calendar ownership. Pivot that mattered: GA4 showed news content had near-zero conversion assist. Shifted to evergreen buying guides. Organic traffic grew 60%. Multiple articles hit Google P1 within weeks. Cited by ChatGPT and Gemini.",
         bgColor: "#fceef1",
         isBlog: true,
-    },
-    {
-        num: "004",
-        title: "The Self-Care Scoop",
-        year: "2024",
-        type: "Editorial · Design",
-        typeVariant: "sand",
-        tag: "Editorial Design · Newsletter · Columbia SPS · Nov 2024",
-        desc: "End-to-end editorial design for The Self-Care Scoop — the Columbia SPS Office of Student Wellness monthly newsletter. Designed 17 pages of layout, typography, and illustration direction for a publication reaching the full graduate student body.",
-        bgColor: T.bg2,
-        isSelfCare: true,
     },
 ]
 
@@ -244,7 +244,274 @@ const SA_TIER = {
 // ── ODOO SCREEN IMAGES ──────────────────────────────────────────────────────────
 import OI from './images_oi.js'
 
-// ── SELF-CARE SCOOP PANEL ────────────────────────────────────────────────────
+// ── TEMPO CASE STUDY PANEL ───────────────────────────────────────────────────
+function TempoPanel() {
+    const [activeTab, setActiveTab] = useState("research")
+    const [lightbox, setLightbox] = useState(null)
+
+    const PERSONAS = [
+        {
+            name: "The Overloaded Manager", age: "32", role: "Product Manager, 60-hr weeks",
+            pain: "Meetings eat into deep work. Ends each day unsure if anything important actually got done.",
+            need: "Visibility into where time actually goes vs. where it should go.",
+            quote: "I feel productive but I can't point to what I built.",
+        },
+        {
+            name: "The Scattered Creative", age: "27", role: "UX Designer / Freelancer",
+            pain: "Works in bursts — highly productive for 2hrs, then crashes. Can't predict or replicate good days.",
+            need: "A system that works with her energy patterns, not against them.",
+            quote: "Some days I do my best work at 11pm. The 9-5 makes no sense for me.",
+        },
+        {
+            name: "The Anxious Achiever", age: "29", role: "Software Engineer, remote",
+            pain: "Always online, always available. Hard to justify not responding immediately. Focus is fragmented.",
+            need: "Permission structure to protect deep work — backed by data, not willpower.",
+            quote: "I need something to tell me it's okay to be unavailable for 2 hours.",
+        },
+    ]
+
+    const RESEARCH = [
+        { phase: "01", method: "Competitive Audit", finding: "Reviewed Notion, Linear, Todoist, Reclaim, Motion, and Structured. All focus on task management. None surface behavioral patterns or personal energy data. The gap: they tell you what to do, not when you're best equipped to do it." },
+        { phase: "02", method: "User Interviews (6 participants)", finding: "Interviewed knowledge workers across PM, design, engineering, and writing. Common theme: everyone had a rough intuition about when they work best but no system to surface or protect it. Most productivity tools add cognitive load instead of reducing it." },
+        { phase: "03", method: "Behavioral Analysis", finding: "Analyzed anonymized screen-time data patterns from interview participants. Identified 3 consistent productivity archetypes: Morning Sprinters (peak 8–11am), Midday Sustainers (consistent 10am–3pm), and Night Owls (irregular but high output after 8pm). All three were fighting standard 9–5 structures." },
+        { phase: "04", method: "Design Principles", finding: "Three guiding principles emerged: (1) Show patterns, don't prescribe behavior. (2) Make the invisible visible — most people don't know what they don't know about their own habits. (3) Protect focus first, then optimize — the system earns trust before asking for behavior change." },
+    ]
+
+    const DECISIONS = [
+        { num: "01", title: "Focus Score over task count", body: "Most productivity metrics reward volume — tasks completed, hours logged. Tempo's primary metric is a daily Focus Score: a weighted composite of session depth, distraction events, and recovery time. It's harder to game and more meaningful at a glance." },
+        { num: "02", title: "Weekly Rhythm Heatmap as the hero visual", body: "The central dashboard element is a 7×24 grid showing focus quality across every hour of the past week. Color intensity = session depth. At a glance, users see their actual work patterns rather than an idealized calendar. This is the single most sticky feature in testing." },
+        { num: "03", title: "Soft blocks instead of hard lockouts", body: "Early prototypes used hard app blocks during focus sessions — users rejected them as punitive. Tempo uses soft blocks: friction, not walls. Attempting to open Slack during a focus session shows a gentle nudge (you have 18 minutes left) rather than an error. Users report this feels more respectful of their autonomy." },
+        { num: "04", title: "Mobile as the ambient layer", body: "Desktop is where focused work happens. Mobile is the ambient check-in: glanceable daily score, quick session start, and end-of-day summary. The mobile app was designed for 10-second interactions — no scrolling, no decisions, just status at a glance." },
+        { num: "05", title: "Design system built token-first", body: "Tempo's design system starts with semantic tokens: --color-focus (deep teal), --color-rest (warm sand), --color-alert (muted coral). All components inherit from tokens, making dark mode and theming a configuration change rather than a redesign. Component library covers 24 atoms and 8 organisms." },
+    ]
+
+    const COMPONENTS = [
+        { name: "FocusRing", desc: "Circular progress indicator for active sessions. Animates in real-time, changes color at 25/50/75% thresholds." },
+        { name: "RhythmHeatmap", desc: "7×24 grid of hourly focus quality. Hover reveals exact score. Color scale: sand → teal = low → deep." },
+        { name: "SessionCard", desc: "Session summary tile: duration, depth score, distraction count, and a single insight label (Deep Work / Fragmented / Recovering)." },
+        { name: "DailyScore", desc: "Large typographic score (0–100) with sparkline showing 7-day trend. Primary mobile dashboard element." },
+        { name: "BlockNudge", desc: "Soft interruption overlay for focus protection. Dismissable in 2 taps. Never blocks, always nudges." },
+        { name: "InsightCard", desc: "Weekly pattern insight rendered as a short editorial statement: 'Your best work happens before 11am on Tuesdays.'" },
+    ]
+
+    const tabs = [
+        { id: "research", label: "Research" },
+        { id: "decisions", label: "Design Decisions" },
+        { id: "system", label: "Design System" },
+        { id: "screens", label: "Screens" },
+    ]
+
+    // Simple ASCII-style screen mockups as colored blocks
+    const SCREENS = [
+        { label: "Dashboard — Weekly Rhythm", desc: "Primary desktop view showing the 7×24 rhythm heatmap, today's focus score, and three upcoming focus windows recommended by the system based on historical patterns." },
+        { label: "Focus Session — Active", desc: "Minimal full-screen mode during an active session. Shows elapsed time, FocusRing progress, and a single motivational data point. All other UI removed to reduce distraction." },
+        { label: "Mobile — Daily Glance", desc: "Home screen widget and app entry point. 10-second read: today's score, current session status, and one insight. No scrolling required." },
+        { label: "Weekly Review", desc: "End-of-week summary screen surfacing behavioral patterns, longest focus streaks, and one actionable insight for the coming week." },
+    ]
+
+    return (
+        <div style={{ borderTop: `1px solid ${T.border}` }}>
+            {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
+
+            {/* HEADER */}
+            <div style={{ padding: "52px clamp(40px,8vw,120px) 48px", background: T.bg2, borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
+                    <div>
+                        <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.mist, marginBottom: 12 }}>
+                            UX Research · Data Viz · Design System · Mobile · Concept 2025
+                        </div>
+                        <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(37px,4vw,63px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>
+                            Tempo<br />
+                            <span style={{ color: T.mist, fontStyle: "italic", fontWeight: 700 }}>Productivity Dashboard</span>
+                        </div>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 480 }}>
+                            Most productivity apps tell you what to do. Tempo tells you when you work best — surfacing your own behavioral patterns as a personal data layer so you can design your schedule around how you actually operate, not how you think you should.
+                        </p>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px 28px" }}>
+                            {[
+                                { k: "Type",      v: "Concept Project" },
+                                { k: "Platform",  v: "Web + iOS" },
+                                { k: "Role",      v: "Solo UX / Product Designer" },
+                                { k: "Timeline",  v: "2025" },
+                                { k: "Methods",   v: "User interviews · Audit · Prototyping" },
+                            ].map(m => (
+                                <div key={m.k}>
+                                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: T.border2, marginBottom: 4 }}>{m.k}</div>
+                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, letterSpacing: "0.04em", color: T.ink }}>{m.v}</div>
+                                </div>
+                            ))}
+                        </div>
+                        {/* Concept badge */}
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: T.bg3, border: `1px solid ${T.border2}`, borderRadius: 2, padding: "8px 14px", width: "fit-content" }}>
+                            <div style={{ width: 6, height: 6, borderRadius: "50%", background: T.mist }} />
+                            <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: T.ink3 }}>Concept project — not shipped</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* STATS */}
+            <StatBar stats={[
+                { num: "6",   label: "User interviews",        accent: T.mist },
+                { num: "3",   label: "User archetypes",        accent: T.sand },
+                { num: "24",  label: "Component atoms",        accent: T.sage },
+                { num: "4",   label: "Core screens",           accent: T.mist },
+                { num: "5",   label: "Design decisions",       accent: T.pink },
+            ]} />
+
+            {/* TABS */}
+            <div style={{ padding: "0 clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg, display: "flex", gap: 0 }}>
+                {tabs.map(t => (
+                    <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
+                        fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase",
+                        padding: "16px 20px", background: "transparent", border: "none",
+                        borderBottom: activeTab === t.id ? `2px solid ${T.mist}` : "2px solid transparent",
+                        color: activeTab === t.id ? T.mist : T.ink3,
+                        cursor: "pointer", transition: "all 0.15s", marginBottom: -1,
+                    }}>{t.label}</button>
+                ))}
+            </div>
+
+            {/* TAB: RESEARCH */}
+            {activeTab === "research" && (
+                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                    {/* Personas */}
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>User Archetypes</div>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>3 knowledge worker profiles</div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
+                            {PERSONAS.map((p, i) => (
+                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "32px 28px", position: "relative" }}>
+                                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: [T.mist, T.sand, T.sage][i] }} />
+                                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>{p.age} · {p.role}</div>
+                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink, marginBottom: 12 }}>{p.name}</div>
+                                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>Pain</div>
+                                    <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2, margin: "0 0 12px" }}>{p.pain}</p>
+                                    <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>Need</div>
+                                    <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2, margin: "0 0 16px" }}>{p.need}</p>
+                                    <div style={{ borderLeft: `2px solid ${[T.mist, T.sand, T.sage][i]}`, paddingLeft: 12, fontFamily: mono, fontSize: 13, fontStyle: "italic", color: T.ink3, lineHeight: 1.8 }}>"{p.quote}"</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    {/* Research phases */}
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)" }}>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Research Process</div>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>4 phases to design principles</div>
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            {RESEARCH.map((r, i) => (
+                                <div key={i} style={{ display: "grid", gridTemplateColumns: "48px 1fr", gap: 24, paddingBottom: 28, paddingTop: i === 0 ? 0 : 28, borderBottom: i < RESEARCH.length - 1 ? `1px solid ${T.border}` : "none" }}>
+                                    <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 24, color: T.mist, lineHeight: 1 }}>{r.phase}</div>
+                                    <div>
+                                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 17, textTransform: "uppercase", letterSpacing: "0.05em", color: T.ink, marginBottom: 8 }}>{r.method}</div>
+                                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 700 }}>{r.finding}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* TAB: DESIGN DECISIONS */}
+            {activeTab === "decisions" && (
+                <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Design Decisions</div>
+                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>5 decisions that defined Tempo</div>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        {DECISIONS.map((d, i) => (
+                            <div key={i} style={{ display: "grid", gridTemplateColumns: "clamp(40px,5vw,60px) 1fr", gap: 24, padding: "24px 0", borderBottom: i < DECISIONS.length - 1 ? `1px solid ${T.border}` : "none" }}>
+                                <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 30, color: T.border2, lineHeight: 1 }}>{d.num}</div>
+                                <div>
+                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, letterSpacing: "0.06em", textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>{d.title}</div>
+                                    <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 680 }}>{d.body}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* TAB: DESIGN SYSTEM */}
+            {activeTab === "system" && (
+                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                    {/* Color tokens */}
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Color Tokens</div>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>Semantic, not decorative</div>
+                        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                            {[
+                                { token: "--color-focus", hex: "#3d7a8a", label: "Deep Focus" },
+                                { token: "--color-flow",  hex: "#6aa4b0", label: "In Flow" },
+                                { token: "--color-rest",  hex: "#c8b898", label: "Rest / Recovery" },
+                                { token: "--color-alert", hex: "#c47a65", label: "Distraction" },
+                                { token: "--color-ink",   hex: "#1e2830", label: "Primary Text" },
+                                { token: "--color-bg",    hex: "#f4f2ee", label: "Surface" },
+                            ].map(c => (
+                                <div key={c.token} style={{ display: "flex", flexDirection: "column", gap: 8, width: 130 }}>
+                                    <div style={{ height: 56, borderRadius: 8, background: c.hex, border: `1px solid rgba(0,0,0,0.08)` }} />
+                                    <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.06em", color: T.ink3 }}>{c.token}</div>
+                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 14, color: T.ink }}>{c.label}</div>
+                                    <div style={{ fontFamily: mono, fontSize: 11, color: T.ink3 }}>{c.hex}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    {/* Components */}
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)" }}>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Component Library</div>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>24 atoms · 8 organisms</div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
+                            {COMPONENTS.map((c, i) => (
+                                <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "28px 24px" }}>
+                                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: T.mist, marginBottom: 6 }}>Component</div>
+                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>{c.name}</div>
+                                    <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink2, margin: 0 }}>{c.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* TAB: SCREENS */}
+            {activeTab === "screens" && (
+                <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Key Screens</div>
+                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>4 core moments in the product</div>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))", gap: 24 }}>
+                        {SCREENS.map((s, i) => (
+                            <div key={i} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                {/* Screen placeholder — styled mockup frame */}
+                                <div style={{ borderRadius: 16, overflow: "hidden", border: `1px solid ${T.border2}`, background: "#1e2830", aspectRatio: i % 3 === 2 ? "9/16" : "16/10", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16, padding: 24 }}>
+                                    <div style={{ width: "60%", height: 8, borderRadius: 4, background: "#3d7a8a", opacity: 0.8 }} />
+                                    <div style={{ display: "grid", gridTemplateColumns: "repeat(7,1fr)", gap: 3, width: "80%" }}>
+                                        {Array.from({length: 7*6}).map((_, j) => (
+                                            <div key={j} style={{ height: 10, borderRadius: 2, background: `rgba(61,122,138,${Math.random() * 0.8 + 0.1})` }} />
+                                        ))}
+                                    </div>
+                                    <div style={{ width: "40%", height: 6, borderRadius: 3, background: "#c8b898", opacity: 0.5 }} />
+                                    <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Tempo · {s.label}</div>
+                                </div>
+                                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink }}>{s.label}</div>
+                                <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink2, margin: 0 }}>{s.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div style={{ marginTop: 32, padding: "20px 24px", background: T.bg3, border: `1px solid ${T.border}`, borderRadius: 4 }}>
+                        <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink3, margin: 0 }}>
+                            <span style={{ color: T.mist, fontWeight: 600 }}>Note:</span> Tempo is a concept project. Screens above are structural wireframe-level representations. High-fidelity Figma screens available on request.
+                        </p>
+                    </div>
+                </div>
+            )}
+        </div>
+    )
+}
+
+
 function SelfCarePanel() {
     const [active, setActive] = useState(0)
     const [lightbox, setLightbox] = useState(null)
@@ -1275,8 +1542,8 @@ function WorkRow({ project, isOpen, onToggle }) {
                 transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                 style={{ overflow: "hidden", background: project.bgColor }}
             >
-                {project.isSelfCare ? (
-                    <SelfCarePanel />
+                {project.isTempo ? (
+                    <TempoPanel />
                 ) : project.isBlog ? (
                     <BlogPanel />
                 ) : project.isOdoo ? (
@@ -1720,8 +1987,33 @@ export default function Portfolio() {
                 </motion.div>
 
 
-                {/* LAB PLACEHOLDER */}
-                <div id="lab" />
+                {/* LAB SECTION */}
+                <div id="lab">
+                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "16px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, borderTop: `1px solid ${T.border}`, flexWrap: "wrap", gap: 8, background: T.bg2 }}>
+                        <span style={{ fontFamily: bebas, fontSize: 30, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink }}>Lab & Side Projects</span>
+                        <span style={{ fontFamily: mono, fontSize: 14, color: T.ink3, letterSpacing: "0.1em" }}>editorial · print · experiments</span>
+                    </div>
+                    {/* Self-Care Scoop lab entry */}
+                    <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                        <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)", background: T.bg2, display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
+                            <div style={{ flex: 1, minWidth: 260 }}>
+                                <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: T.sand, marginBottom: 10 }}>Editorial Design · Newsletter · Nov 2024</div>
+                                <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(28px,3vw,42px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 14 }}>
+                                    The Self-Care Scoop
+                                </div>
+                                <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 560, margin: "0 0 16px" }}>
+                                    Sole designer for Columbia SPS Office of Student Wellness newsletter. 17-page editorial layout borrowing hierarchy from consumer wellness magazines. Delivered 6 reusable templates for future issues.
+                                </p>
+                                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                                    {["Editorial Design", "Typography", "Layout Systems", "Columbia SPS"].map(t => (
+                                        <span key={t} style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 2, background: T.bg3, border: `1px solid ${T.border2}`, color: T.ink3 }}>{t}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <SelfCarePanel />
+                    </div>
+                </div>
 
                 {/* CTA */}
                 <motion.div id="contact" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}
