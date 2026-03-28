@@ -1812,28 +1812,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                     <OdooPanel />
                 ) : project.isShopAppliances ? (
                     <ShopAppliancesPanel />
-                ) : (
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", borderTop: `1px solid ${T.pinkL}` }}>
-                        <div style={{ borderRight: `1px solid ${T.pinkL}`, padding: "28px clamp(28px,4vw,56px)" }}>
-                            <div style={{ height: 180, background: T.bg2, border: `1px solid ${T.border}`, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                <span style={{ fontFamily: mono, fontSize: 14, color: T.border2, textAlign: "center", lineHeight: 1.7 }}>Project image<br />640 × 180px</span>
-                            </div>
-                        </div>
-                        <div style={{ padding: "28px clamp(28px,4vw,56px)", display: "flex", flexDirection: "column", gap: 12 }}>
-                            <span style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: T.pink }}>{project.tag}</span>
-                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.05, color: T.ink2, margin: 0}}>{project.desc}</p>
-                            <motion.span
-                                data-cursor="true"
-                                whileHover="hover"
-                                initial="rest"
-                                style={{ marginTop: "auto", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: cond, fontWeight: 700, fontSize: 16, letterSpacing: "0.1em", textTransform: "uppercase", color: T.pink, cursor: "pointer" }}
-                            >
-                                View case study
-                                <motion.span variants={{ rest: { x: 0 }, hover: { x: 5 } }} transition={{ type: "spring", stiffness: 400 }}>→</motion.span>
-                            </motion.span>
-                        </div>
-                    </div>
-                )}
+                ) : null}
             </motion.div>
         </div>
     )
