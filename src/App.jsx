@@ -1536,10 +1536,10 @@ function Chip({ label }) {
 // ── WORK ROW ──────────────────────────────────────────────────────────────────
 function WorkRow({ project, isOpen, onToggle }) {
     const accents = {
-        "001": { label: "ERP · Systems Design",   color: T.pink,  bg: T.pinkBg,  titleColor: T.pink,    dots: ["64%","78%","88%"] },
-        "002": { label: "E-Commerce · Brand",      color: T.sand,  bg: "#fdf8f0", titleColor: T.ink,     dots: ["60%","72%","84%"] },
-        "003": { label: "UX · Product · Mobile",   color: T.sage,  bg: "#f2f4f0", titleColor: T.pink,    dots: ["65%","76%","87%"] },
-        "004": { label: "Content · SEO Strategy",  color: T.ink3,  bg: T.bg2,     titleColor: T.ink,     dots: ["62%","74%","85%"] },
+        "001": { label: "ERP · Systems Design",   color: T.pink,  bg: T.pinkBg,  titleColor: T.pink,    closedColor: T.ink,   dots: ["64%","78%","88%"] },
+        "002": { label: "E-Commerce · Brand",      color: T.sand,  bg: "#fdf8f0", titleColor: T.ink,     closedColor: T.pink,  dots: ["60%","72%","84%"] },
+        "003": { label: "UX · Product · Mobile",   color: T.sage,  bg: "#f2f4f0", titleColor: T.pink,    closedColor: T.ink,   dots: ["65%","76%","87%"] },
+        "004": { label: "Content · SEO Strategy",  color: T.ink3,  bg: T.bg2,     titleColor: T.ink,     closedColor: T.pink,  dots: ["62%","74%","85%"] },
     }
     const accent = accents[project.num] || accents["001"]
     const rowRef = useRef(null)
@@ -1596,7 +1596,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
                         <div style={{ flex: 1 }}>
                             <motion.div
-                                animate={{ color: isOpen ? accent.titleColor : T.ink }}
+                                animate={{ color: isOpen ? accent.titleColor : accent.closedColor }}
                                 style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3.8vw,64px)", letterSpacing: "0.01em", textTransform: "uppercase", lineHeight: 1.0, marginBottom: 12 }}
                             >{project.title}</motion.div>
                             {/* Description preview — hides when open */}
