@@ -100,7 +100,7 @@ const PROJECTS = [
         typeVariant: "pink",
         tag: "UX Research · Systems Design · ERP · Jun–Oct 2025",
         desc: "End-to-end redesign of Odoo across CRM, Sales, Inventory, and Operations — sole designer. Early research invalidated our assumed user flows: warehouse staff completing tasks in a different order than the system expected. Restarted the IA from their actual sequence. Task completion time dropped, onboarding friction measurably reduced.",
-        bgColor: T.pinkBg,
+        bgColor: T.bg,
         isOdoo: true,
     },
     {
@@ -111,7 +111,7 @@ const PROJECTS = [
         typeVariant: "pink",
         tag: "UX Design · UI Design · Figma Spec · E-Commerce",
         desc: "Sole designer on a modular brand page system — 35+ brands, 100+ categories. Key decision: three distinct content voices by market tier (luxury, premium, mainstream) after auditing how different buyers actually decide. The Figma spec delivered was used directly by the dev team as single source of truth.",
-        bgColor: T.pinkBg,
+        bgColor: T.bg,
         isShopAppliances: true,
     },
     {
@@ -122,7 +122,7 @@ const PROJECTS = [
         typeVariant: "mist",
         tag: "UX Research · Data Viz · Design System · Mobile · Concept 2025",
         desc: "A concept productivity app designed specifically for women — built around the insight that most productivity tools were made for a body without a cycle. Ditto surfaces your behavioral patterns and cycle phase as one unified scheduling layer, so your calendar finally reflects how you actually work.",
-        bgColor: T.bg2,
+        bgColor: T.bg,
         isTempo: true,
     },
     {
@@ -133,7 +133,7 @@ const PROJECTS = [
         typeVariant: "sage",
         tag: "Content Strategy · SEO · UX Writing · Feb 2026 — Ongoing",
         desc: "Lead content strategist and writer — 36 articles, full editorial calendar ownership. Pivot that mattered: GA4 showed news content had near-zero conversion assist. Shifted to evergreen buying guides. Organic traffic grew 60%. Multiple articles hit Google P1 within weeks. Cited by ChatGPT and Gemini.",
-        bgColor: "#fceef1",
+        bgColor: T.bg,
         isBlog: true,
     },
 ]
@@ -313,7 +313,7 @@ function TempoPanel() {
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* HEADER */}
-            <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", background: T.bg2, borderBottom: `1px solid ${T.border}` }}>
+            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", background: T.bg2, paddingBottom: "72px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -361,7 +361,7 @@ function TempoPanel() {
             ]} />
 
             {/* TABS */}
-            <div style={{ padding: "0 clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg, display: "flex", gap: 0 }}>
+            <div style={{ padding: "0 clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg, display: "flex", gap: 0 }}>
                 {tabs.map(t => (
                     <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
                         fontFamily: mono, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase",
@@ -375,9 +375,9 @@ function TempoPanel() {
 
             {/* TAB: RESEARCH */}
             {activeTab === "research" && (
-                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                <div style={{}}>
                     {/* Personas */}
-                    <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>User Archetypes</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>3 knowledge worker profiles</div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
@@ -401,7 +401,7 @@ function TempoPanel() {
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>4 phases to design principles</div>
                         <div style={{ display: "flex", flexDirection: "column" }}>
                             {RESEARCH.map((r, i) => (
-                                <div key={i} style={{ display: "grid", gridTemplateColumns: "48px 1fr", gap: 24, paddingBottom: 28, paddingTop: i === 0 ? 0 : 28, borderBottom: i < RESEARCH.length - 1 ? `1px solid ${T.border}` : "none" }}>
+                                <div key={i} style={{ display: "grid", gridTemplateColumns: "48px 1fr", gap: 24, paddingBottom: 36, paddingTop: i === 0 ? 0 : 36, borderBottom: i < RESEARCH.length - 1 ? `1px solid ${T.border}` : "none" }}>
                                     <div style={{ fontFamily: cond, fontWeight: 900, fontSize: 24, color: T.pink, lineHeight: 1 }}>{r.phase}</div>
                                     <div>
                                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 17, textTransform: "uppercase", letterSpacing: "0.05em", color: T.ink, marginBottom: 8 }}>{r.method}</div>
@@ -416,7 +416,7 @@ function TempoPanel() {
 
             {/* TAB: DESIGN DECISIONS */}
             {activeTab === "decisions" && (
-                <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Design Decisions</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>5 decisions that defined Ditto</div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -435,9 +435,9 @@ function TempoPanel() {
 
             {/* TAB: DESIGN SYSTEM */}
             {activeTab === "system" && (
-                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                <div style={{}}>
                     {/* Color tokens */}
-                    <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", paddingBottom: "72px" }}>
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Color Tokens</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Semantic, not decorative</div>
                         <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 600 }}>Colors carry meaning — each token maps directly to a productivity state or cycle phase. The palette stays warm and editorial, consistent with how the app should feel: calm, not clinical.</p>
@@ -463,7 +463,7 @@ function TempoPanel() {
                     </div>
 
                     {/* Cycle tracking feature */}
-                    <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Feature — Cycle-Aware Scheduling</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>Designed for how female bodies actually work</div>
                         <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 680, margin: "0 0 28px" }}>
@@ -512,7 +512,7 @@ function TempoPanel() {
 
             {/* TAB: SCREENS */}
             {activeTab === "screens" && (
-                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                <div style={{}}>
                     <div style={{ padding: "32px clamp(40px,8vw,120px) 20px" }}>
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Interactive Prototype</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>ditto — live prototype</div>
@@ -523,7 +523,7 @@ function TempoPanel() {
                     <div style={{ padding: "40px clamp(40px,8vw,120px) 52px", background: T.bg3 }}>
                         <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.16), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
                             {/* Browser chrome */}
-                            <div style={{ background: T.bg2, borderBottom: `1px solid ${T.border}`, padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                            <div style={{ background: T.bg2, padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
                                 <div style={{ display: "flex", gap: 5 }}>
                                     <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.pink, opacity: 0.7 }} />
                                     <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sand, opacity: 0.7 }} />
@@ -561,7 +561,7 @@ function SelfCarePanel() {
                 { num: "Columbia SPS", label: "Client" },
                 { num: "Nov 2024",     label: "Published" },
             ]} />
-            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", borderBottom:`1px solid ${T.border}` }}>
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", marginBottom: 48 }}>
                 <div style={{ padding:"40px clamp(40px,8vw,120px)", borderRight:`1px solid ${T.border}`, display:"flex", flexDirection:"column", gap:16 }}>
                     <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>Overview</div>
                     <p style={{ fontFamily:cond, fontSize: 15, lineHeight:1.85, color:T.ink3, margin:0, fontWeight: 400 }}>
@@ -657,10 +657,10 @@ function BlogPanel() {
     ]
 
     return (
-        <div style={{ borderTop: `1px solid ${T.pinkL}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
+        <div style={{ borderTop: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
 
             {/* HEADER */}
-            <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
+            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", background: T.bg2, paddingBottom: "72px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 40, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -700,7 +700,7 @@ function BlogPanel() {
             <StatBar stats={STATS} />
 
             {/* TABS */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                 <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
                     {[
                         { id: "overview", label: "Content strategy" },
@@ -824,7 +824,7 @@ function BlogPanel() {
             </div>
 
             {/* OUTCOMES */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(23px,2vw,26px)", textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>What this demonstrates</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 8 }}>
                     {[
@@ -852,11 +852,11 @@ function OdooPanel() {
     const [lightbox, setLightbox] = useState(null)
 
     return (
-        <div style={{ borderTop: `1px solid ${T.pinkL}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
+        <div style={{ borderTop: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
             {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
 
             {/* ── HEADER ── */}
-            <div style={{ padding: "36px clamp(40px,8vw,120px) 36px", background: T.pinkBg, borderBottom: `1px solid ${T.pinkL}` }}>
+            <div style={{ padding: "48px clamp(40px,8vw,120px) 56px", background: T.bg2, paddingBottom: "72px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 48, alignItems: "start" }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 12 }}>
@@ -924,7 +924,7 @@ function OdooPanel() {
             ]} />
 
             {/* ── PROBLEM ── */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", borderBottom: `1px solid ${T.border}` }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))" }}>
                 <div style={{ padding: "48px 40px 48px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Stock Odoo wasn't built<br />for appliance retail</div>
@@ -940,7 +940,7 @@ function OdooPanel() {
                         <div style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.85, color: T.ink2 }}>Early research invalidated the original brief — stakeholders wanted a cosmetic refresh. Workflow mapping with warehouse staff showed the problem was structural: wrong IA, missing data surfaces, no cross-module cohesion. I reframed the scope from visual polish to system redesign. That decision defined the entire project.</div>
                     </div>
                 </div>
-                <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg2 }}>
+                <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>What needed solving</div>
                     {[
                         { t: "No unified order view",       b: "Checking order status required visiting Sales, Inventory, and Accounting separately. No cross-module status bar existed." },
@@ -961,7 +961,7 @@ function OdooPanel() {
             </div>
 
             {/* ── KEY DESIGN DECISIONS ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>02 — Design Decisions</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>Decisions that defined the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -991,7 +991,7 @@ function OdooPanel() {
             </div>
 
             {/* ── USER FLOW ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>04 — User Flow</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Order lifecycle — end to end</div>
                 <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 640 }}>
@@ -1040,7 +1040,7 @@ function OdooPanel() {
             </div>
 
             {/* ── DESIGN SYSTEM ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Design System</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Built for an ERP, not a website</div>
                 <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 640 }}>
@@ -1080,7 +1080,7 @@ function OdooPanel() {
                                 { label: "Body / value",  size: "13px", weight: "400", sample: "Homery – Brooklyn NY" },
                                 { label: "Badge / tag",   size: "10px", weight: "600", sample: "CONFIRMED" },
                             ].map(t => (
-                                <div key={t.label} style={{ display: "flex", alignItems: "baseline", gap: 10, paddingBottom: 8, borderBottom: `1px solid ${T.border}` }}>
+                                <div key={t.label} style={{ display: "flex", alignItems: "baseline", gap: 10, paddingBottom: 8 }}>
                                     <div style={{ fontFamily: mono, fontSize: 10, color: T.ink3, width: 90, flexShrink: 0 }}>{t.label}</div>
                                     <div style={{ fontFamily: "Inter, sans-serif", fontSize: t.size, fontWeight: t.weight, color: T.ink, flex: 1 }}>{t.sample}</div>
                                     <div style={{ fontFamily: mono, fontSize: 9, color: T.ink3 }}>{t.size} / {t.weight}</div>
@@ -1138,7 +1138,7 @@ function OdooPanel() {
             </div>
 
             {/* ── LIVE PROTOTYPE ── */}
-            <div style={{ borderBottom: `1px solid ${T.border}` }}>
+            <div style={{}}>
                 <div style={{ padding: "32px clamp(40px,8vw,120px) 20px" }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>06 — Interactive Prototype</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Live ERP prototype</div>
@@ -1170,7 +1170,7 @@ function OdooPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>07 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Jun – Oct 2025 · 4 phases</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1193,7 +1193,7 @@ function OdooPanel() {
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.pinkBg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>08 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: "clamp(26px,2.5vw,29px)", textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>What changed for Homery</div>
                 <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 24px", maxWidth: 600 }}>
@@ -1228,12 +1228,12 @@ function ShopAppliancesPanel() {
     const visible = brandFilter === "all" ? SA_BRANDS : SA_BRANDS.filter(b => b.tier === brandFilter)
 
     return (
-        <div style={{ borderTop: `1px solid ${T.pinkL}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
+        <div style={{ borderTop: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
 
             {/* ── HEADER STRIP ── */}
             <div style={{
                 padding: "40px clamp(40px,8vw,120px) 40px",
-                background: T.pinkBg,
+                background: T.bg2,
                 borderBottom: `1px solid ${T.pinkL}`,
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -1285,9 +1285,9 @@ function ShopAppliancesPanel() {
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
                 gap: 0,
-                borderBottom: `1px solid ${T.border}`,
+                
             }}>
-                <div style={{ padding: "40px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
+                <div style={{ padding: "64px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Generic pages,<br />no brand identity</div>
                     <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.1, color: T.ink2, margin: "0 0 12px"}}>
@@ -1297,7 +1297,7 @@ function ShopAppliancesPanel() {
                         High-intent shoppers researching a specific brand were landing on pages identical to a plain filtered product list.
                     </p>
                 </div>
-                <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg2 }}>
+                <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg2 }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 16 }}>Constraints</div>
                     {[
                         "35+ brands with wildly different product depths — 1 category to 6+",
@@ -1315,7 +1315,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── UX ROLE ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>02 — UI / UX Thinking</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24, lineHeight: 1.1 }}>Design decisions that shaped the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -1338,7 +1338,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── BRANDS ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
                 <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>03 — Brand Scope</div>
@@ -1383,7 +1383,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>04 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>How it was built</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1400,7 +1400,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── LIVE PAGES ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Published Work</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Live brand pages</div>
                 <div style={{ display: "flex", flexDirection: "column", border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1463,7 +1463,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "40px clamp(40px,8vw,120px)", background: T.bg }}>
+            <div style={{ padding: "64px clamp(40px,8vw,120px)", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>06 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>What this unlocked</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
@@ -1674,7 +1674,7 @@ function MagneticPhoto() {
             onMouseMove={(e) => { handleMove(e); setHovered(true) }}
             onMouseLeave={handleLeave}
             data-cursor="true"
-            style={{ flex: 1, position: "relative", overflow: "hidden", borderBottom: `1px solid ${T.border}`, display: "flex", alignItems: "center", justifyContent: "center", background: T.bg, cursor: "none", perspective: 1000 }}>
+            style={{ flex: 1, position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", background: T.bg, cursor: "none", perspective: 1000 }}>
 
 
 
@@ -1724,7 +1724,7 @@ const ACCENT_CYCLE = [T.pink, T.sand, T.border2, T.pinkL, T.sage, T.rust]
 function StatBar({ stats, cols }) {
     const gridCols = cols ? `repeat(${cols}, 1fr)` : `repeat(auto-fit, minmax(130px,1fr))`
     return (
-        <div style={{ display: "grid", gridTemplateColumns: gridCols, borderBottom: `1px solid ${T.border}` }}>
+        <div style={{ display: "grid", gridTemplateColumns: gridCols }}>
             {stats.map((s, i) => (
                 <motion.div key={i} whileHover={{ background: T.pinkBg }}
                     style={{ padding: "44px clamp(32px,4vw,56px)", borderRight: i < stats.length - 1 ? `1px solid ${T.border}` : "none", background: i % 2 === 0 ? T.bg : T.bg2, position: "relative", transition: "background 0.2s" }}>
@@ -1874,7 +1874,7 @@ function LabSection() {
                 transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                 style={{ overflow: "hidden", background: T.bg2 }}
             >
-                <div style={{ borderBottom: `1px solid ${T.border}`, maxWidth: 1400, margin: "0 auto", width: "100%" }}>
+                <div style={{ maxWidth: 1400, margin: "0 auto", width: "100%" }}>
                     <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)", background: T.bg2, display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
                         <div style={{ flex: 1, minWidth: 260 }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: T.sand, marginBottom: 10 }}>Editorial Design · Newsletter · Nov 2024</div>
@@ -1958,7 +1958,7 @@ export default function Portfolio() {
                         <div style={{ background: T.bg, color: T.ink, fontFamily: cond, overflowX: "hidden" }}>
 
                 {/* HERO */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(320px,38vw,480px)", minHeight: "min(560px, 70vh)", borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(320px,38vw,480px)", minHeight: "min(560px, 70vh)" }}>
                     <div style={{ padding: "48px clamp(40px,8vw,120px) 40px", display: "flex", flexDirection: "column", borderRight: `1px solid ${T.border}` }}>
                         <div>
                             <div style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}>
@@ -1994,7 +1994,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* TICKER */}
-                <div style={{ height: 32, overflow: "hidden", borderBottom: `1px solid ${T.border}`, background: T.bg3, display: "flex", alignItems: "center" }}
+                <div style={{ height: 32, overflow: "hidden", paddingBottom: "72px", background: T.bg3, display: "flex", alignItems: "center" }}
                     onMouseEnter={() => setTickerPaused(true)} onMouseLeave={() => setTickerPaused(false)}>
                     <motion.div
                         animate={{ x: tickerPaused ? undefined : [0, -1200] }}
@@ -2009,7 +2009,7 @@ export default function Portfolio() {
 
                 {/* WORK */}
                 <div id="work" style={{ borderBottom: `1px solid ${T.border}` }}>
-                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "16px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, flexWrap: "wrap", gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "16px clamp(40px,8vw,120px)", flexWrap: "wrap", gap: 8 }}>
                         <span style={{ fontFamily: bebas, fontSize: 30, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink }}>Selected Work</span>
                         <span style={{ fontFamily: mono, fontSize: 14, color: T.ink3, letterSpacing: "0.1em" }}>click to expand</span>
                     </div>
@@ -2020,7 +2020,7 @@ export default function Portfolio() {
 
                 {/* ABOUT */}
                 <motion.div id="about" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}
-                    style={{ display: "grid", gridTemplateColumns: "1fr clamp(280px,38%,480px)", borderBottom: `1px solid ${T.border}` }}>
+                    style={{ display: "grid", gridTemplateColumns: "1fr clamp(280px,38%,480px)" }}>
 
                     {/* LEFT — bio + principles */}
                     <div style={{ padding: "48px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 28 }}>
@@ -2094,7 +2094,7 @@ export default function Portfolio() {
                         ]} />
 
                         {/* Approach tags — market/brand language */}
-                        <div style={{ padding: "24px 32px", borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+                        <div style={{ padding: "24px 32px", borderTop: `1px solid ${T.border}`, paddingBottom: "72px", background: T.bg2 }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Approach</div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                                 {[
@@ -2113,7 +2113,7 @@ export default function Portfolio() {
                         </div>
 
                         {/* Currently + Education stacked */}
-                        <div style={{ padding: "24px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+                        <div style={{ padding: "24px clamp(40px,8vw,120px)", paddingBottom: "72px", background: T.bg }}>
                             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.ink3, marginBottom: 14 }}>Currently</div>
                             {[
                                 { dot: T.pink, label: "Open to full-time UX roles" },
