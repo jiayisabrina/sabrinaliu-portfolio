@@ -282,7 +282,7 @@ function TempoPanel() {
         { num: "02", title: "Weekly Rhythm Heatmap as the hero visual", body: "The central dashboard element is a 7×24 grid showing focus quality across every hour of the past week. Color intensity = session depth. At a glance, users see their actual work patterns rather than an idealized calendar. This is the single most sticky feature in testing." },
         { num: "03", title: "Soft blocks instead of hard lockouts", body: "Early prototypes used hard app blocks during focus sessions — users rejected them as punitive. Tempo uses soft blocks: friction, not walls. Attempting to open Slack during a focus session shows a gentle nudge (you have 18 minutes left) rather than an error. Users report this feels more respectful of their autonomy." },
         { num: "04", title: "Mobile as the ambient layer", body: "Desktop is where focused work happens. Mobile is the ambient check-in: glanceable daily score, quick session start, and end-of-day summary. The mobile app was designed for 10-second interactions — no scrolling, no decisions, just status at a glance." },
-        { num: "05", title: "Design system built token-first", body: "Tempo's design system starts with semantic tokens: --color-focus (deep teal), --color-rest (warm sand), --color-alert (muted coral). All components inherit from tokens, making dark mode and theming a configuration change rather than a redesign. Component library covers 24 atoms and 8 organisms." },
+        { num: "05", title: "Design system built token-first", body: "Tempo's design system starts with semantic tokens mapped to productivity and cycle states. --color-rest (warm sand) signals luteal phase low-demand windows. --color-cycle (blush pink) marks menstrual and follicular phases. All components inherit from tokens, making the cycle overlay a configuration layer — not a redesign. Component library covers 24 atoms and 8 organisms." },
     ]
 
     const COMPONENTS = [
@@ -439,34 +439,69 @@ function TempoPanel() {
                 <div style={{ borderBottom: `1px solid ${T.border}` }}>
                     {/* Color tokens */}
                     <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
-                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Color Tokens</div>
-                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>Semantic, not decorative</div>
-                        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Color Tokens</div>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 6 }}>Semantic, not decorative</div>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 28px", maxWidth: 600 }}>Colors carry meaning — each token maps directly to a productivity state or cycle phase. The palette stays warm and editorial, consistent with how the app should feel: calm, not clinical.</p>
+                        <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                             {[
-                                { token: "--color-focus", hex: "#3d7a8a", label: "Deep Focus" },
-                                { token: "--color-flow",  hex: "#6aa4b0", label: "In Flow" },
-                                { token: "--color-rest",  hex: "#c8b898", label: "Rest / Recovery" },
-                                { token: "--color-alert", hex: "#c47a65", label: "Distraction" },
-                                { token: "--color-ink",   hex: "#1e2830", label: "Primary Text" },
-                                { token: "--color-bg",    hex: "#f4f2ee", label: "Surface" },
+                                { token: "--color-focus",    hex: T.ink,    label: "Deep Focus",        desc: "High-intensity work sessions" },
+                                { token: "--color-flow",     hex: T.ink2,   label: "In Flow",           desc: "Productive but relaxed state" },
+                                { token: "--color-surface",  hex: T.bg,     label: "Surface",           desc: "Primary background" },
+                                { token: "--color-warm",     hex: T.bg2,    label: "Warm Ground",       desc: "Secondary surface, cards" },
+                                { token: "--color-accent",   hex: T.pink,   label: "Accent / Alert",    desc: "CTAs, distraction signals" },
+                                { token: "--color-rest",     hex: T.sand,   label: "Rest",              desc: "Luteal · low-demand windows" },
+                                { token: "--color-cycle",    hex: "#e8a0b4",label: "Cycle Awareness",    desc: "Menstrual / follicular phase" },
+                                { token: "--color-border",   hex: T.border, label: "Border",            desc: "Dividers, subtle structure" },
                             ].map(c => (
-                                <div key={c.token} style={{ display: "flex", flexDirection: "column", gap: 8, width: 130 }}>
-                                    <div style={{ height: 56, borderRadius: 8, background: c.hex, border: `1px solid rgba(0,0,0,0.08)` }} />
+                                <div key={c.token} style={{ display: "flex", flexDirection: "column", gap: 8, width: 140 }}>
+                                    <div style={{ height: 52, borderRadius: 10, background: c.hex, border: `1px solid ${T.border}` }} />
                                     <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.06em", color: T.ink3 }}>{c.token}</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 14, color: T.ink }}>{c.label}</div>
-                                    <div style={{ fontFamily: mono, fontSize: 11, color: T.ink3 }}>{c.hex}</div>
+                                    <div style={{ fontFamily: mono, fontSize: 11, color: T.ink3, lineHeight: 1.6 }}>{c.desc}</div>
                                 </div>
                             ))}
                         </div>
                     </div>
+
+                    {/* Cycle tracking feature */}
+                    <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Feature — Cycle-Aware Scheduling</div>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>Designed for how female bodies actually work</div>
+                        <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 680, margin: "0 0 28px" }}>
+                            Tempo integrates an optional menstrual cycle tracking layer that maps productivity recommendations to cycle phases. Energy, focus capacity, and recovery needs shift significantly across the cycle — most productivity apps ignore this entirely. Tempo surfaces it as a first-class scheduling input.
+                        </p>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
+                            {[
+                                { phase: "Menstrual", days: "Days 1–5", color: "#e8a0b4", energy: "Low", rec: "Rest, reflection, light admin. Avoid high-stakes decisions or creative sprints." },
+                                { phase: "Follicular", days: "Days 6–13", color: T.pink, energy: "Rising", rec: "Ideal for new projects, brainstorming, and starting difficult work. Energy and focus are climbing." },
+                                { phase: "Ovulatory", days: "Days 14–16", color: T.sage, energy: "Peak", rec: "Schedule your most important work, presentations, and collaborative sessions here. Peak cognitive and social energy." },
+                                { phase: "Luteal", days: "Days 17–28", color: T.sand, energy: "Declining", rec: "Front-load the early luteal phase for deep work. Wind down toward rest as PMS symptoms may emerge. Protect recovery time." },
+                            ].map((p, i) => (
+                                <div key={i} style={{ background: T.bg, padding: "28px 24px", position: "relative" }}>
+                                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: p.color }} />
+                                    <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink3, marginBottom: 6 }}>{p.days}</div>
+                                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", color: T.ink, marginBottom: 4 }}>{p.phase}</div>
+                                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
+                                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: p.color }} />
+                                        <span style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: T.ink3 }}>Energy: {p.energy}</span>
+                                    </div>
+                                    <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink2, margin: 0 }}>{p.rec}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink3, margin: "20px 0 0" }}>
+                            The cycle layer is opt-in and entirely private — never synced, never shared. It surfaces as a subtle overlay on the weekly rhythm heatmap, color-coded by phase, with gentle scheduling nudges ("Luteal phase — consider lighter cognitive load this week").
+                        </p>
+                    </div>
+
                     {/* Components */}
                     <div style={{ padding: "48px clamp(40px,8vw,120px)" }}>
-                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.mist, marginBottom: 8 }}>Component Library</div>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Component Library</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>24 atoms · 8 organisms</div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
                             {COMPONENTS.map((c, i) => (
                                 <div key={i} style={{ background: i % 2 === 0 ? T.bg : T.bg2, padding: "28px 24px" }}>
-                                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: T.mist, marginBottom: 6 }}>Component</div>
+                                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: T.pink, marginBottom: 6 }}>Component</div>
                                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 18, textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>{c.name}</div>
                                     <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink2, margin: 0 }}>{c.desc}</p>
                                 </div>
