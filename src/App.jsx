@@ -273,15 +273,17 @@ function SelfCarePanel() {
                         ))}
                     </div>
                 </div>
-                <div style={{ padding:"32px clamp(28px,4vw,56px)", display:"flex", flexDirection:"column", gap:16 }}>
+                <div style={{ padding:"28px clamp(28px,4vw,56px)", display:"flex", flexDirection:"column", gap:16 }}>
                     <div style={{ fontFamily:mono, fontSize: 11, letterSpacing:"0.16em", textTransform:"uppercase", color:T.pink }}>All Pages</div>
-                    <div style={{ background:T.bg3, border:`1px solid ${T.border}`, overflow:"hidden", width:"100%", aspectRatio:"1/1" }}>
-                        <img src={LAB[pages[active]]} alt={`Page ${active+1}`} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top", display:"block" }} />
+                    <div style={{ background: T.bg3, padding: "28px", borderRadius: 20, boxShadow: "0 8px 40px rgba(61,53,48,0.13), 0 2px 8px rgba(61,53,48,0.08)" }}>
+                        <div style={{ borderRadius: 12, overflow:"hidden", border:`1px solid ${T.border2}` }}>
+                            <img src={LAB[pages[active]]} alt={`Page ${active+1}`} style={{ width:"100%", height:"auto", objectFit:"cover", objectPosition:"top", display:"block" }} />
+                        </div>
                     </div>
                     <div style={{ display:"grid", gridTemplateColumns:"repeat(9,1fr)", gap:3 }}>
                         {pages.map((key,i) => (
                             <motion.div key={i} onClick={() => setActive(i)} whileHover={{ scale:1.06 }}
-                                style={{ aspectRatio:"1", overflow:"hidden", cursor:"pointer", border: active===i ? `2px solid ${T.pink}` : `1px solid ${T.border}`, background:T.bg3 }}>
+                                style={{ aspectRatio:"1", overflow:"hidden", cursor:"pointer", borderRadius: 4, border: active===i ? `2px solid ${T.pink}` : `1px solid ${T.border}`, background:T.bg3 }}>
                                 <img src={LAB[key]} alt={`p${i+1}`} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top", display:"block" }} />
                             </motion.div>
                         ))}
@@ -895,7 +897,7 @@ function ShopAppliancesPanel() {
 
             {/* ── HEADER STRIP ── */}
             <div style={{
-                padding: "32px 64px 28px",
+                padding: "52px clamp(40px,8vw,120px) 40px",
                 background: T.pinkBg,
                 borderBottom: `1px solid ${T.pinkL}`,
                 display: "grid",
@@ -972,7 +974,7 @@ function ShopAppliancesPanel() {
                 gap: 0,
                 borderBottom: `1px solid ${T.border}`,
             }}>
-                <div style={{ padding: "36px 40px 36px 64px", borderRight: `1px solid ${T.border}` }}>
+                <div style={{ padding: "52px clamp(40px,8vw,120px)", borderRight: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 12 }}>01 — The Problem</div>
                     <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 12, lineHeight: 1.1 }}>Generic pages,<br />no brand identity</div>
                     <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.1, color: T.ink2, margin: "0 0 12px" }}>
@@ -982,7 +984,7 @@ function ShopAppliancesPanel() {
                         High-intent shoppers researching a specific brand were landing on pages identical to a plain filtered product list.
                     </p>
                 </div>
-                <div style={{ padding: "36px 40px", background: T.bg2 }}>
+                <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.bg2 }}>
                     <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 16 }}>Constraints</div>
                     {[
                         "35+ brands with wildly different product depths — 1 category to 6+",
@@ -1000,7 +1002,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── UX ROLE ── */}
-            <div style={{ padding: "36px 64px", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>02 — UI / UX Thinking</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24, lineHeight: 1.1 }}>Design decisions that shaped the system</div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -1023,7 +1025,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── BRANDS ── */}
-            <div style={{ padding: "36px 64px", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
                 <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
                     <div>
                         <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>03 — Brand Scope</div>
@@ -1068,7 +1070,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── PROCESS ── */}
-            <div style={{ padding: "36px 64px", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>04 — Process</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 24 }}>How it was built</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1085,7 +1087,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── LIVE PAGES ── */}
-            <div style={{ padding: "36px 64px", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, background: T.bg2 }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 8 }}>05 — Published Work</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>Live brand pages</div>
                 <div style={{ display: "flex", flexDirection: "column", border: `1px solid ${T.border}`, borderRadius: 3, overflow: "hidden" }}>
@@ -1148,7 +1150,7 @@ function ShopAppliancesPanel() {
             </div>
 
             {/* ── OUTCOMES ── */}
-            <div style={{ padding: "36px 64px", background: T.bg }}>
+            <div style={{ padding: "52px clamp(40px,8vw,120px)", background: T.bg }}>
                 <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", color: T.ink3, marginBottom: 20 }}>06 — Outcomes</div>
                 <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 20 }}>What this unlocked</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
