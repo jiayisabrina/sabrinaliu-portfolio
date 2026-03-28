@@ -1536,10 +1536,10 @@ function Chip({ label }) {
 // ── WORK ROW ──────────────────────────────────────────────────────────────────
 function WorkRow({ project, isOpen, onToggle }) {
     const accents = {
-        "001": { label: "ERP · Systems Design", dots: ["64%","78%","88%"] },
-        "002": { label: "E-Commerce · Brand", dots: ["60%","72%","84%"] },
-        "003": { label: "Content · SEO", dots: ["65%","76%","87%"] },
-        "004": { label: "Editorial · Print", dots: ["62%","74%","85%"] },
+        "001": { label: "ERP · Systems Design",   color: T.pink,  bg: T.pinkBg,  dots: ["64%","78%","88%"] },
+        "002": { label: "E-Commerce · Brand",      color: T.sand,  bg: "#fdf8f0", dots: ["60%","72%","84%"] },
+        "003": { label: "UX · Product · Mobile",   color: T.sage,  bg: "#f2f4f0", dots: ["65%","76%","87%"] },
+        "004": { label: "Content · SEO Strategy",  color: T.ink3,  bg: T.bg2,     dots: ["62%","74%","85%"] },
     }
     const accent = accents[project.num] || accents["001"]
     const rowRef = useRef(null)
@@ -1564,13 +1564,13 @@ function WorkRow({ project, isOpen, onToggle }) {
             <motion.div
                 data-cursor="true"
                 onClick={handleToggle}
-                animate={{ background: isOpen ? T.pinkBg : T.bg }}
-                whileHover={{ background: isOpen ? T.pinkBg : T.bg2 }}
+                animate={{ background: isOpen ? accent.bg : T.bg }}
+                whileHover={{ background: isOpen ? accent.bg : T.bg2 }}
                 style={{ cursor: "pointer", position: "relative", overflow: "hidden" }}
             >
-                {/* Pink left accent bar */}
+                {/* Per-project colored left accent bar */}
                 <motion.div animate={{ opacity: isOpen ? 1 : 0.3, scaleY: isOpen ? 1 : 0.6 }}
-                    style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: T.pink, transformOrigin: "top" }} />
+                    style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: accent.color, transformOrigin: "top" }} />
 
                 {/* Decorative dot pattern top-right */}
                 <div style={{ position: "absolute", right: "clamp(60px,8vw,120px)", top: 0, bottom: 0, display: "flex", alignItems: "center", gap: 6, pointerEvents: "none" }}>
@@ -1578,7 +1578,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                         <motion.div key={i}
                             animate={{ opacity: isOpen ? 0.5 : 0.12, scale: isOpen ? 1 : 0.7 }}
                             transition={{ delay: i * 0.05 }}
-                            style={{ width: 6, height: 6, borderRadius: "50%", background: T.pink }} />
+                            style={{ width: 6, height: 6, borderRadius: "50%", background: accent.color }} />
                     ))}
                 </div>
 
@@ -1587,7 +1587,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                     <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
                         <span style={{ fontFamily: serif, fontSize: 15, fontStyle: "italic", color: T.ink3, letterSpacing: "0.02em" }}>{project.num}</span>
                         <span style={{ flex: 1, height: 1, background: T.border }} />
-                        <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: T.pink }}>{accent.label}</span>
+                        <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: accent.color }}>{accent.label}</span>
                         <span style={{ fontFamily: mono, fontSize: 12, color: T.border2, letterSpacing: "0.06em" }}>{project.year}</span>
                         <Tag label={project.type} variant={project.typeVariant} />
                     </div>
@@ -1596,7 +1596,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
                         <div style={{ flex: 1 }}>
                             <motion.div
-                                animate={{ color: isOpen ? T.pink : T.ink }}
+                                animate={{ color: isOpen ? accent.color : T.ink }}
                                 style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3.8vw,64px)", letterSpacing: "0.01em", textTransform: "uppercase", lineHeight: 1.0, marginBottom: 12 }}
                             >{project.title}</motion.div>
                             {/* Description preview — hides when open */}
@@ -1610,7 +1610,7 @@ function WorkRow({ project, isOpen, onToggle }) {
                         {/* Right: expand */}
                         <div style={{ display: "flex", alignItems: "flex-end", flexShrink: 0, paddingBottom: 4 }}>
                             <motion.div
-                                animate={{ rotate: isOpen ? 45 : 0, color: isOpen ? T.pink : T.ink3 }}
+                                animate={{ rotate: isOpen ? 45 : 0, color: isOpen ? accent.color : T.ink3 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                 style={{ fontSize: 22, lineHeight: 1, fontFamily: mono }}
                             >+</motion.div>
@@ -1822,6 +1822,107 @@ function Lightbox({ src, alt, onClose }) {
     )
 }
 
+
+// ── LAB SECTION ───────────────────────────────────────────────────────────────
+function LabSection() {
+    const [isOpen, setIsOpen] = useState(false)
+    const rowRef = useRef(null)
+
+    const handleToggle = () => {
+        const opening = !isOpen
+        setIsOpen(!isOpen)
+        if (opening) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    if (rowRef.current) {
+                        const top = rowRef.current.getBoundingClientRect().top + window.scrollY - 52
+                        window.scrollTo({ top, behavior: "smooth" })
+                    }
+                })
+            })
+        }
+    }
+
+    return (
+        <div id="lab" ref={rowRef} style={{ borderBottom: `1px solid ${T.border}` }}>
+            <motion.div
+                data-cursor="true"
+                onClick={handleToggle}
+                animate={{ background: isOpen ? "#f5f0e8" : T.bg }}
+                whileHover={{ background: isOpen ? "#f5f0e8" : T.bg2 }}
+                style={{ cursor: "pointer", position: "relative", overflow: "hidden" }}
+            >
+                {/* Sand left accent bar */}
+                <motion.div animate={{ opacity: isOpen ? 1 : 0.3, scaleY: isOpen ? 1 : 0.6 }}
+                    style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: T.sand, transformOrigin: "top" }} />
+                {/* Dots */}
+                <div style={{ position: "absolute", right: "clamp(60px,8vw,120px)", top: 0, bottom: 0, display: "flex", alignItems: "center", gap: 6, pointerEvents: "none" }}>
+                    {[0,1,2].map(i => (
+                        <motion.div key={i}
+                            animate={{ opacity: isOpen ? 0.5 : 0.12, scale: isOpen ? 1 : 0.7 }}
+                            transition={{ delay: i * 0.05 }}
+                            style={{ width: 6, height: 6, borderRadius: "50%", background: T.sand }} />
+                    ))}
+                </div>
+
+                <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
+                        <span style={{ fontFamily: serif, fontSize: 15, fontStyle: "italic", color: T.ink3, letterSpacing: "0.02em" }}>lab</span>
+                        <span style={{ flex: 1, height: 1, background: T.border }} />
+                        <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: T.sand }}>Editorial · Print · Experiments</span>
+                        <span style={{ fontFamily: mono, fontSize: 12, color: T.border2, letterSpacing: "0.06em" }}>2024</span>
+                        <Tag label="Editorial · Design" variant="sand" />
+                    </div>
+                    <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
+                        <div style={{ flex: 1 }}>
+                            <motion.div
+                                animate={{ color: isOpen ? T.sand : T.ink }}
+                                style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(32px,3.8vw,64px)", letterSpacing: "0.01em", textTransform: "uppercase", lineHeight: 1.0, marginBottom: 12 }}
+                            >Lab & Side Projects</motion.div>
+                            <motion.p
+                                animate={{ opacity: isOpen ? 0 : 1, height: isOpen ? 0 : "auto" }}
+                                transition={{ duration: 0.25 }}
+                                style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 560, overflow: "hidden" }}
+                            >Side projects, editorial work, and experiments. The Self-Care Scoop — a 17-page editorial newsletter for Columbia SPS — lives here.</motion.p>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "flex-end", flexShrink: 0, paddingBottom: 4 }}>
+                            <motion.div
+                                animate={{ rotate: isOpen ? 45 : 0, color: isOpen ? T.sand : T.ink3 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                style={{ fontSize: 22, lineHeight: 1, fontFamily: mono }}
+                            >+</motion.div>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            <motion.div
+                initial={false}
+                animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                style={{ overflow: "hidden", background: T.bg2 }}
+            >
+                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                    <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)", background: T.bg2, display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
+                        <div style={{ flex: 1, minWidth: 260 }}>
+                            <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: T.sand, marginBottom: 10 }}>Editorial Design · Newsletter · Nov 2024</div>
+                            <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(28px,3vw,42px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 14 }}>The Self-Care Scoop</div>
+                            <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 560, margin: "0 0 16px" }}>
+                                Sole designer for Columbia SPS Office of Student Wellness newsletter. 17-page editorial layout borrowing hierarchy from consumer wellness magazines. Delivered 6 reusable templates for future issues.
+                            </p>
+                            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                                {["Editorial Design", "Typography", "Layout Systems", "Columbia SPS"].map(t => (
+                                    <span key={t} style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 2, background: T.bg3, border: `1px solid ${T.border2}`, color: T.ink3 }}>{t}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <SelfCarePanel />
+                </div>
+            </motion.div>
+        </div>
+    )
+}
 
 export default function Portfolio() {
     const [openRows, setOpenRows] = useState(new Set())
@@ -2071,32 +2172,7 @@ export default function Portfolio() {
 
 
                 {/* LAB SECTION */}
-                <div id="lab">
-                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "16px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}`, borderTop: `1px solid ${T.border}`, flexWrap: "wrap", gap: 8, background: T.bg2 }}>
-                        <span style={{ fontFamily: bebas, fontSize: 30, letterSpacing: "0.12em", textTransform: "uppercase", color: T.ink }}>Lab & Side Projects</span>
-                        <span style={{ fontFamily: mono, fontSize: 14, color: T.ink3, letterSpacing: "0.1em" }}>editorial · print · experiments</span>
-                    </div>
-                    {/* Self-Care Scoop lab entry */}
-                    <div style={{ borderBottom: `1px solid ${T.border}` }}>
-                        <div style={{ padding: "clamp(22px,3vw,40px) clamp(40px,8vw,120px)", background: T.bg2, display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
-                            <div style={{ flex: 1, minWidth: 260 }}>
-                                <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: T.sand, marginBottom: 10 }}>Editorial Design · Newsletter · Nov 2024</div>
-                                <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(28px,3vw,42px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 14 }}>
-                                    The Self-Care Scoop
-                                </div>
-                                <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 560, margin: "0 0 16px" }}>
-                                    Sole designer for Columbia SPS Office of Student Wellness newsletter. 17-page editorial layout borrowing hierarchy from consumer wellness magazines. Delivered 6 reusable templates for future issues.
-                                </p>
-                                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                                    {["Editorial Design", "Typography", "Layout Systems", "Columbia SPS"].map(t => (
-                                        <span key={t} style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 2, background: T.bg3, border: `1px solid ${T.border2}`, color: T.ink3 }}>{t}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                        <SelfCarePanel />
-                    </div>
-                </div>
+                <LabSection />
 
                 {/* CTA */}
                 <motion.div id="contact" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}
