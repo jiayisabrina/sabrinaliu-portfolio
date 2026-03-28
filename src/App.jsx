@@ -116,12 +116,12 @@ const PROJECTS = [
     },
     {
         num: "003",
-        title: "Tempo — Productivity Dashboard",
+        title: "Ditto — Productivity Dashboard",
         year: "2025",
         type: "UX · Product · Mobile",
         typeVariant: "mist",
         tag: "UX Research · Data Viz · Design System · Mobile · Concept 2025",
-        desc: "A concept productivity app that surfaces when you work best — not just what to do next. Tempo uses your own behavioral patterns (deep work windows, distraction spikes, energy rhythms) as a personal data layer to help knowledge workers stop fighting their schedule and start designing around it.",
+        desc: "A concept productivity app that surfaces when you work best — not just what to do next. Ditto uses your own behavioral patterns (deep work windows, distraction spikes, energy rhythms) as a personal data layer, with a built-in cycle-aware scheduling system designed for how female bodies actually work.",
         bgColor: T.bg2,
         isTempo: true,
     },
@@ -278,11 +278,11 @@ function TempoPanel() {
     ]
 
     const DECISIONS = [
-        { num: "01", title: "Focus Score over task count", body: "Most productivity metrics reward volume — tasks completed, hours logged. Tempo's primary metric is a daily Focus Score: a weighted composite of session depth, distraction events, and recovery time. It's harder to game and more meaningful at a glance." },
+        { num: "01", title: "Focus Score over task count", body: "Most productivity metrics reward volume — tasks completed, hours logged. Ditto's primary metric is a daily Focus Score: a weighted composite of session depth, distraction events, and recovery time. It's harder to game and more meaningful at a glance." },
         { num: "02", title: "Weekly Rhythm Heatmap as the hero visual", body: "The central dashboard element is a 7×24 grid showing focus quality across every hour of the past week. Color intensity = session depth. At a glance, users see their actual work patterns rather than an idealized calendar. This is the single most sticky feature in testing." },
         { num: "03", title: "Soft blocks instead of hard lockouts", body: "Early prototypes used hard app blocks during focus sessions — users rejected them as punitive. Tempo uses soft blocks: friction, not walls. Attempting to open Slack during a focus session shows a gentle nudge (you have 18 minutes left) rather than an error. Users report this feels more respectful of their autonomy." },
         { num: "04", title: "Mobile as the ambient layer", body: "Desktop is where focused work happens. Mobile is the ambient check-in: glanceable daily score, quick session start, and end-of-day summary. The mobile app was designed for 10-second interactions — no scrolling, no decisions, just status at a glance." },
-        { num: "05", title: "Design system built token-first", body: "Tempo's design system starts with semantic tokens mapped to productivity and cycle states. --color-rest (warm sand) signals luteal phase low-demand windows. --color-cycle (blush pink) marks menstrual and follicular phases. All components inherit from tokens, making the cycle overlay a configuration layer — not a redesign. Component library covers 24 atoms and 8 organisms." },
+        { num: "05", title: "Design system built token-first", body: "Ditto's design system starts with semantic tokens mapped to productivity and cycle states. --color-rest (warm sand) signals luteal phase low-demand windows. --color-cycle (blush pink) marks menstrual and follicular phases. All components inherit from tokens, making the cycle overlay a configuration layer — not a redesign. Component library covers 24 atoms and 8 organisms." },
     ]
 
     const COMPONENTS = [
@@ -321,11 +321,11 @@ function TempoPanel() {
                             UX Research · Data Viz · Design System · Mobile · Concept 2025
                         </div>
                         <div style={{ fontFamily: cond, fontWeight: 900, fontSize: "clamp(37px,4vw,63px)", lineHeight: 0.96, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>
-                            Tempo<br />
+                            Ditto<br />
                             <span style={{ color: T.pink, fontStyle: "italic", fontWeight: 700 }}>Productivity Dashboard</span>
                         </div>
                         <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, margin: 0, maxWidth: 480 }}>
-                            Most productivity apps tell you what to do. Tempo tells you when you work best — surfacing your own behavioral patterns as a personal data layer so you can design your schedule around how you actually operate, not how you think you should.
+                            Most productivity apps tell you what to do. Ditto tells you when you work best — surfacing your own behavioral patterns as a personal data layer so you can design your schedule around how you actually operate, not how you think you should.
                         </p>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -419,7 +419,7 @@ function TempoPanel() {
             {activeTab === "decisions" && (
                 <div style={{ padding: "52px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
                     <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Design Decisions</div>
-                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>5 decisions that defined Tempo</div>
+                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>5 decisions that defined Ditto</div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         {DECISIONS.map((d, i) => (
                             <div key={i} style={{ display: "grid", gridTemplateColumns: "clamp(40px,5vw,60px) 1fr", gap: 24, padding: "24px 0", borderBottom: i < DECISIONS.length - 1 ? `1px solid ${T.border}` : "none" }}>
@@ -468,7 +468,7 @@ function TempoPanel() {
                         <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Feature — Cycle-Aware Scheduling</div>
                         <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 16 }}>Designed for how female bodies actually work</div>
                         <p style={{ fontFamily: mono, fontSize: 15, lineHeight: 2.0, color: T.ink2, maxWidth: 680, margin: "0 0 28px" }}>
-                            Tempo integrates an optional menstrual cycle tracking layer that maps productivity recommendations to cycle phases. Energy, focus capacity, and recovery needs shift significantly across the cycle — most productivity apps ignore this entirely. Tempo surfaces it as a first-class scheduling input.
+                            Ditto integrates an optional menstrual cycle tracking layer that maps productivity recommendations to cycle phases. Energy, focus capacity, and recovery needs shift significantly across the cycle — most productivity apps ignore this entirely. Ditto surfaces it as a first-class scheduling input.
                         </p>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px,1fr))", gap: 1, background: T.border, border: `1px solid ${T.border}`, overflow: "hidden" }}>
                             {[
@@ -513,32 +513,34 @@ function TempoPanel() {
 
             {/* TAB: SCREENS */}
             {activeTab === "screens" && (
-                <div style={{ padding: "48px clamp(40px,8vw,120px)", borderBottom: `1px solid ${T.border}` }}>
-                    <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Key Screens</div>
-                    <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 28 }}>4 core moments in the product</div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))", gap: 24 }}>
-                        {SCREENS.map((s, i) => (
-                            <div key={i} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                                {/* Screen placeholder — styled mockup frame */}
-                                <div style={{ borderRadius: 16, overflow: "hidden", border: `1px solid ${T.border2}`, background: "#1e2830", aspectRatio: i % 3 === 2 ? "9/16" : "16/10", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16, padding: 24 }}>
-                                    <div style={{ width: "60%", height: 8, borderRadius: 4, background: "#3d7a8a", opacity: 0.8 }} />
-                                    <div style={{ display: "grid", gridTemplateColumns: "repeat(7,1fr)", gap: 3, width: "80%" }}>
-                                        {Array.from({length: 7*6}).map((_, j) => (
-                                            <div key={j} style={{ height: 10, borderRadius: 2, background: `rgba(61,122,138,${Math.random() * 0.8 + 0.1})` }} />
-                                        ))}
-                                    </div>
-                                    <div style={{ width: "40%", height: 6, borderRadius: 3, background: "#c8b898", opacity: 0.5 }} />
-                                    <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Tempo · {s.label}</div>
-                                </div>
-                                <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.04em", color: T.ink }}>{s.label}</div>
-                                <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink2, margin: 0 }}>{s.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <div style={{ marginTop: 32, padding: "20px 24px", background: T.bg3, border: `1px solid ${T.border}`, borderRadius: 4 }}>
-                        <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.9, color: T.ink3, margin: 0 }}>
-                            <span style={{ color: T.pink, fontWeight: 600 }}>Note:</span> Tempo is a concept project. Screens above are structural wireframe-level representations. High-fidelity Figma screens available on request.
+                <div style={{ borderBottom: `1px solid ${T.border}` }}>
+                    <div style={{ padding: "32px clamp(40px,8vw,120px) 20px" }}>
+                        <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: T.pink, marginBottom: 8 }}>Interactive Prototype</div>
+                        <div style={{ fontFamily: cond, fontWeight: 700, fontSize: 24, textTransform: "uppercase", color: T.ink, marginBottom: 8 }}>ditto — live prototype</div>
+                        <p style={{ fontFamily: mono, fontSize: 14, lineHeight: 2.0, color: T.ink2, margin: "0 0 20px", maxWidth: 560 }}>
+                            Fully interactive — navigate Dashboard, Focus, Insights, Cycle Layer, and Weekly Review. Click any cycle phase to explore the scheduling recommendations.
                         </p>
+                    </div>
+                    <div style={{ padding: "0 clamp(40px,8vw,120px) 40px", background: T.bg3 }}>
+                        <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 40px rgba(61,53,48,0.16), 0 2px 8px rgba(61,53,48,0.08)", border: `1px solid ${T.border2}` }}>
+                            {/* Browser chrome */}
+                            <div style={{ background: T.bg2, borderBottom: `1px solid ${T.border}`, padding: "8px 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                                <div style={{ display: "flex", gap: 5 }}>
+                                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.pink, opacity: 0.7 }} />
+                                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sand, opacity: 0.7 }} />
+                                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: T.sage, opacity: 0.7 }} />
+                                </div>
+                                <div style={{ flex: 1, background: T.bg3, borderRadius: 4, padding: "3px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: T.border2 }} />
+                                    <span style={{ fontFamily: mono, fontSize: 10, color: T.ink3, letterSpacing: "0.04em" }}>ditto.app · prototype</span>
+                                </div>
+                            </div>
+                            <iframe
+                                src="/tempo-prototype.html"
+                                style={{ width: "100%", height: 560, border: "none", display: "block" }}
+                                title="ditto app prototype"
+                            />
+                        </div>
                     </div>
                 </div>
             )}
